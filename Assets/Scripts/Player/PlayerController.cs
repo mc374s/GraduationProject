@@ -22,6 +22,11 @@ public class PlayerController : CharacterController2D
     protected readonly int hashUsingSkill = Animator.StringToHash("usingSkill");
     protected readonly int hashSkillType = Animator.StringToHash("skillType");
     protected readonly int hashDodgeRoll = Animator.StringToHash("roll");
+    protected readonly int hashHurt = Animator.StringToHash("hurt");
+    protected readonly int hashKnockDown = Animator.StringToHash("knockDown");
+    protected readonly int hashDead = Animator.StringToHash("dead");
+
+    public Damageable damageableReference;
 
     private void Awake()
     {
@@ -163,14 +168,37 @@ public class PlayerController : CharacterController2D
         }
     }
 
+    public override void OnHurt()
+    {
+        animator.SetTrigger(hashHurt);
+    }
+    private Damager damagerRecord;
     public void OnHurt(Damager damager, Damageable damageable)
     {
-        //Debug.Log(gameObject.name + " hurt by " + damager.name);
+        if (damagerRecord != damager)
+        {
+            animator.SetTrigger(hashHurt);
+            damagerRecord = damager;
+        }
+    }
+    public override void OnKnockDown(/*Damager damager, Damageable damageable*/)
+    {
+        animator.SetBool(hashKnockDown, true);
     }
 
     public override void OnDie()
     {
+        animator.SetTrigger(hashDead);
+        //Destroy(gameObject, 2);
+        SceneController.Instance.ReloadCurrentScene(2);
+    }
 
+    public override void DamageUpdate()
+    {
+        if (!damageableReference.IsKnockDown)
+        {
+            animator.SetBool(hashKnockDown, false);
+        }
     }
 
     public override void Respawn()
