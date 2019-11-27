@@ -85,10 +85,11 @@ public class Damageable : MonoBehaviour
         }
         if (isAutoHealing)
         {
-            m_CurrentHealth += (int)(healSpeed * Time.deltaTime);
+            GainHealth((int)(healSpeed * Time.deltaTime));
             if (m_CurrentHealth>safeHealth)
             {
                 m_CurrentHealth = safeHealth;
+                SetHealth(safeHealth);
                 isAutoHealing = false;
             }
         }
