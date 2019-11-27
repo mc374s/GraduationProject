@@ -34,13 +34,16 @@ public class Damageable : MonoBehaviour
     protected float m_InulnerabilityTimer;
     [SerializeField]
     protected int m_CurrentHealth;
+    protected int m_CurrentSkillEnergy;
     protected Vector2 m_DamageDirection;
     protected bool m_ResetHealthOnSceneReload;
+    protected bool m_ResetSkillEnergyOnSceneReload;
 
     public int CurrentHealth
     {
         get { return m_CurrentHealth; }
     }
+
 
     public bool IsKnockDown { get; set; }
 
@@ -159,5 +162,7 @@ public class Damageable : MonoBehaviour
 
         OnHealthSet.Invoke(this);
     }
+
+
 
 }
