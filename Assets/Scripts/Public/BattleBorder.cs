@@ -18,10 +18,11 @@ public class BattleBorder : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!spawner.CheckAlive())
+        if (!spawner.CheckAlive() && Global.isBattling)
         {
             gameObject.SetActive(false);
             spawner.enabled = false;
+            Global.isBattling = false;
         }
     }
 
