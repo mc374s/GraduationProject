@@ -21,6 +21,7 @@ public class BattleBorder : MonoBehaviour
         if (!spawner.CheckAlive())
         {
             gameObject.SetActive(false);
+            spawner.enabled = false;
         }
     }
 
@@ -30,6 +31,7 @@ public class BattleBorder : MonoBehaviour
         {
             Global.isBattling = true;
             collider.enabled = false;
+            spawner.enabled = true;
             foreach (var item in wallCollection)
             {
                 if (item != null)
