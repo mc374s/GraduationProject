@@ -196,12 +196,12 @@ PrefabInstance:
     - target: {fileID: 1617523640982515048, guid: c0faddab44c01904f9b3bd56f1304c8e,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.9986606
+      value: -0.9986619
       objectReference: {fileID: 0}
     - target: {fileID: 1617523640982515048, guid: c0faddab44c01904f9b3bd56f1304c8e,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.05173927
+      value: 0.051716644
       objectReference: {fileID: 0}
     - target: {fileID: 8936900407527903848, guid: c0faddab44c01904f9b3bd56f1304c8e,
         type: 3}
@@ -221,12 +221,12 @@ PrefabInstance:
     - target: {fileID: 1248803179554845252, guid: c0faddab44c01904f9b3bd56f1304c8e,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.99686575
+      value: 0.99686635
       objectReference: {fileID: 0}
     - target: {fileID: 1248803179554845252, guid: c0faddab44c01904f9b3bd56f1304c8e,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.07911272
+      value: 0.079105265
       objectReference: {fileID: 0}
     - target: {fileID: 808951338, guid: c0faddab44c01904f9b3bd56f1304c8e, type: 3}
       propertyPath: target
@@ -1710,6 +1710,10 @@ PrefabInstance:
       propertyPath: OnHealthSet.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1342613595}
+    - target: {fileID: 1733131482, guid: c11b34a2ca1d083459abdfcc2d083c98, type: 3}
+      propertyPath: healSpeed
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5316028766880582998, guid: c11b34a2ca1d083459abdfcc2d083c98,
         type: 3}
       propertyPath: m_LocalPosition.x

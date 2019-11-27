@@ -18,6 +18,7 @@ public class Damageable : MonoBehaviour
 
     public int startingHealth = 5;
     public int safeHealth = 5;
+    public int healSpeed = 60;
     public bool invulnerableAfterDamage = true;
     public float invulnerabilityDuration = 3f;
     public bool disableOnDeath = false;
@@ -48,7 +49,6 @@ public class Damageable : MonoBehaviour
 
     public bool IsKnockDown { get; set; }
     protected bool isAutoHealing = false;
-    protected int healSpeed = 60;
 
     void OnEnable()
     {
@@ -82,6 +82,10 @@ public class Damageable : MonoBehaviour
                 IsKnockDown = false;
                 isAutoHealing = true;
             }
+        }
+        else
+        {
+            GainHealth((int)(healSpeed * Time.deltaTime));
         }
         if (isAutoHealing)
         {
