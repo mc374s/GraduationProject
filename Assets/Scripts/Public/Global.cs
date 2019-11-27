@@ -5,7 +5,8 @@ using UnityEngine;
 public class Global : MonoBehaviour
 {
     static public bool isBattling = false;
-
+    static public float borderLeft;
+    static public float borderRight;
     // Start is called before the first frame update
     void Start()
     {

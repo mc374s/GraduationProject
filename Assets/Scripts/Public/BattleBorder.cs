@@ -30,15 +30,21 @@ public class BattleBorder : MonoBehaviour
         if (collision.tag == "Player")
         {
             Global.isBattling = true;
+            Global.borderLeft = wallCollection[0].transform.position.x/* + wallCollection[0].GetComponentInParent<Transform>().position.x + transform.position.x*/;
+            Global.borderRight = wallCollection[1].transform.position.x/* + wallCollection[1].GetComponentInParent<Transform>().position.x + transform.position.x*/;
+
             collider.enabled = false;
             spawner.enabled = true;
-            foreach (var item in wallCollection)
-            {
-                if (item != null)
-                {
-                    item.isTrigger = !Global.isBattling;
-                }
-            }
+            //foreach (var item in wallCollection)
+            //{
+            //    if (item != null)
+            //    {
+            //        item.isTrigger = !Global.isBattling;
+            //    }
+            //}
+            wallCollection[0].isTrigger = !Global.isBattling;
+            wallCollection[1].isTrigger = !Global.isBattling;
+
         }
         Debug.Log(gameObject.name + " Trigger Exit");
     }

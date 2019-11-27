@@ -124,14 +124,36 @@ public class PlayerController : CharacterController2D
     public override void DodgeRollUpdate()
     {
         moveVector.x = dodgeRollVelocityX;
+        if (moveVector.y < 0)
+        {
+            InvulnerableOff();
+        }
+        if (Global.isBattling)
+        {
+            //Debug.Log("Px: " + transform.position.x + ", BLx: " + Global.borderLeft + ", BRx: " + Global.borderRight);
+            if (transform.position.x < Global.borderLeft + 1)
+            {
+                moveVector.x = 0;
+                InvulnerableOff();
+                transform.position = new Vector3(Global.borderLeft + 1, transform.position.y, transform.position.z);
+            }
+            if (transform.position.x > Global.borderRight - 1)
+            {
+                moveVector.x = 0;
+                InvulnerableOff();
+                transform.position = new Vector3(Global.borderRight - 1, transform.position.y, transform.position.z);
+            }
+        }
     }
     public override void InvulnerableOn()
     {
         GetComponent<Collider2D>().enabled = false;
+        //damageableReference.EnableInvulnerability();
     }
     public override void InvulnerableOff()
     {
         GetComponent<Collider2D>().enabled = true;
+        //damageableReference.in;
     }
 
     public override void ResetMoveVector()
@@ -190,7 +212,7 @@ public class PlayerController : CharacterController2D
     {
         animator.SetTrigger(hashDead);
         //Destroy(gameObject, 2);
-        SceneController.Instance.ReloadCurrentScene(2);
+        SceneController.Instance.ReloadCurrentScene(1);
     }
 
     public override void DamageUpdate()
