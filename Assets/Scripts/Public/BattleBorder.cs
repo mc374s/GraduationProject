@@ -4,28 +4,41 @@ using UnityEngine;
 
 public class BattleBorder : MonoBehaviour
 {
-    public bool isTrigger = false;
     new Collider2D collider = null;
+
+    public Collider2D[] wallCollection;
+    public EnemySpawner spawner;
     // Start is called before the first frame update
     void Start()
     {
         collider = GetComponent<Collider2D>();
+        collider.enabled = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (collider != null)
+        if (!spawner.CheckAlive())
         {
-            collider.isTrigger = !Global.isBattling;
+            gameObject.SetActive(false);
+            spawner.enabled = false;
         }
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Player")
         {
             Global.isBattling = true;
+            collider.enabled = false;
+            spawner.enabled = true;
+            foreach (var item in wallCollection)
+            {
+                if (item != null)
+                {
+                    item.isTrigger = !Global.isBattling;
+                }
+            }
         }
         Debug.Log(gameObject.name + " Trigger Exit");
     }

@@ -1218,7 +1218,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 2000
+  m_Mass: 45
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -1302,6 +1302,7 @@ MonoBehaviour:
   jumpHoldIncrement: 1.2
   jumpTime: 0.35
   dodgeRollSpeed: 20
+  damageableReference: {fileID: 1733131482}
 --- !u!114 &1733131482
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1314,10 +1315,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33914396592d55142a102751fac28421, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingHealth: 2000
+  startingHealth: 1000
+  safeHealth: 100
   invulnerableAfterDamage: 0
   invulnerabilityDuration: 3
   disableOnDeath: 0
+  knockDownTime: 4
   centreOffset: {x: 0, y: 1}
   OnHealthSet:
     m_PersistentCalls:
@@ -1340,9 +1343,36 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: Damageable+DamageEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
+  OnKnockDown:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5637558989583303163}
+        m_MethodName: OnKnockDown
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: Damageable+DamageEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
   OnDie:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5637558989583303163}
+        m_MethodName: OnDie
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: Damageable+DamageEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
   OnGainHealth:
