@@ -2,11 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(Character2D))]
 public class CharacterController2D : MonoBehaviour
 {
-    protected Animator animator;
+    public Animator animator;
     protected Character2D character2D;
     [HideInInspector]
     public WrappedInput input = new WrappedInput();

@@ -10,7 +10,7 @@ public class DodgeRollSMB : StateMachineBehaviour
     {
         if (characterController == null)
         {
-            characterController = animator.gameObject.GetComponent<CharacterController2D>();
+            characterController = animator.gameObject.GetComponentInParent<CharacterController2D>();
         }
         characterController.InvulnerableOn();
     }

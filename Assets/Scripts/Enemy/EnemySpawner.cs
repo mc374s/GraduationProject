@@ -23,7 +23,7 @@ public class EnemySpawner : MonoBehaviour
     {
         enemyCollection = new GameObject[total];
         count = 0;
-        Debug.Log(gameObject.name + " Start");
+        //Debug.Log(gameObject.name + " Start");
     }
 
     // Update is called once per frame

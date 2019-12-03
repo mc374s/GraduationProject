@@ -47,6 +47,6 @@ public class BattleBorder : MonoBehaviour
             wallCollection[1].isTrigger = !Global.isBattling;
 
         }
-        Debug.Log(gameObject.name + " Trigger Exit");
+        //Debug.Log(gameObject.name + " Trigger Exit");
     }
 }

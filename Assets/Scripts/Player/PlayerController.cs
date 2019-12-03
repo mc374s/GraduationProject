@@ -30,7 +30,7 @@ public class PlayerController : CharacterController2D
 
     private void Awake()
     {
-        animator = GetComponent<Animator>();
+        //animator = GetComponent<Animator>();
         character2D = GetComponent<Character2D>();
     }
 

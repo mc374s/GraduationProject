@@ -18,7 +18,7 @@ public class EnemyController : CharacterController2D
     // Start is called before the first frame update
     void Start()
     {
-        animator = GetComponent<Animator>();
+        //animator = GetComponent<Animator>();
         character2D = GetComponent<Character2D>();
     }
 
@@ -123,44 +123,23 @@ public class EnemyController : CharacterController2D
 
 
 #if UNITY_EDITOR
-    float height;
-    void OnEnable()
-    {
-        height = Global.debugUIStartY;
-        Global.debugUIStartY += 20;
-    }
-    void OnGUI()
-    {
-        if (Global.isDebugMenuOpen)
-        {
-            GUILayout.BeginArea(new Rect(Global.debugUIStartX, height, 200, 100));
-            GUILayout.Label("Enemy MoveVector: " + moveVector.ToString());
+    //float height;
+    //void OnEnable()
+    //{
+    //    height = Global.debugUIStartY;
+    //    Global.debugUIStartY += 20;
+    //}
+    //void OnGUI()
+    //{
+    //    if (Global.isDebugMenuOpen)
+    //    {
+    //        GUILayout.BeginArea(new Rect(Global.debugUIStartX, height, 200, 100));
+    //        GUILayout.Label("Enemy MoveVector: " + moveVector.ToString());
 
-            GUILayout.EndArea();
+    //        GUILayout.EndArea();
 
-        }
-    }
-    private void OnDrawGizmosSelected()
-    {
-        //bool spriteFaceLeft = true;
-        //float viewFov = 300;
-        //float viewDirection = 0;
-        //float viewDistance = 10;
-        ////draw the cone of view
-        //Vector3 forward = character2D.spriteFaceLeft ? Vector2.left : Vector2.right;
-        //forward = Quaternion.Euler(0, 0, character2D.spriteFaceLeft ? -viewDirection : viewDirection) * forward;
-
-        //if (GetComponent<SpriteRenderer>().flipX) forward.x = -forward.x;
-
-        //Vector3 endpoint = transform.position + (Quaternion.Euler(0, 0, viewFov * 0.5f) * forward);
-
-        //Handles.color = new Color(0, 1.0f, 0, 0.2f);
-        //Handles.DrawSolidArc(transform.position, -Vector3.forward, (endpoint - transform.position).normalized, viewFov, viewDistance);
-
-        ////Draw attack range
-        ////Handles.color = new Color(1.0f, 0, 0, 0.1f);
-        ////Handles.DrawSolidDisc(transform.position, Vector3.back, meleeRange);
-    }
+    //    }
+    //}
 
 #endif
 }

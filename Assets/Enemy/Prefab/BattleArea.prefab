@@ -38,18 +38,18 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3404024101526805110}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e08b569931832774eaca4a43e15c5c3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 3074480270425239371, guid: c0faddab44c01904f9b3bd56f1304c8e,
+  enemyPrefab: {fileID: 3297778842532651816, guid: ac6c463a7fc801944a2c027103578ae3,
     type: 3}
   target: {fileID: 0}
   offset: {x: 0, y: 0}
   size: {x: 100, y: 60}
-  total: 5
-  spawnTime: 5
+  total: 4
+  spawnTime: 7
 --- !u!1 &3404024101757727421
 GameObject:
   m_ObjectHideFlags: 0

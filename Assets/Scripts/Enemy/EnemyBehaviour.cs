@@ -10,7 +10,7 @@ public class EnemyBehaviour : MonoBehaviour
     EnemyController enemyController;
     Character2D character2D;
 
-    public Transform target = null;
+    public Transform target=null;
 
     [Range(0,360)]
     public float attackFov = 30;
@@ -38,6 +38,10 @@ public class EnemyBehaviour : MonoBehaviour
 
     void SimpleBehaviour()
     {
+        if (target == null)
+        {
+            return;
+        }
         //enemyController.input.Gain();
         Vector3 dir = target.position - transform.position - offset;
         //dir = new Vector3(dir.x, 0, dir.z);
@@ -63,13 +67,13 @@ public class EnemyBehaviour : MonoBehaviour
 
 
 #if UNITY_EDITOR
-    float height;
     bool spriteFaceLeft;
-    void OnEnable()
-    {
-        height = Global.debugUIStartY;
-        Global.debugUIStartY += 20;
-    }
+    //float height;
+    //void OnEnable()
+    //{
+    //    height = Global.debugUIStartY;
+    //    Global.debugUIStartY += 20;
+    //}
     void Reset()
     {
         enemyController = GetComponent<EnemyController>();

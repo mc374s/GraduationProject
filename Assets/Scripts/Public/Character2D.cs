@@ -136,34 +136,34 @@ public class Character2D : MonoBehaviour
 
 #if UNITY_EDITOR
 
-    float height = 0;
-    void OnEnable()
-    {
-        height = Global.debugUIStartY;
-        Global.debugUIStartY += 100;
-    }
+    //float height = 0;
+    //void OnEnable()
+    //{
+    //    height = Global.debugUIStartY;
+    //    Global.debugUIStartY += 100;
+    //}
 
-    void OnGUI()
-    {
-        if (Global.isDebugMenuOpen)
-        {
-            GUILayout.BeginArea(new Rect(Global.debugUIStartX, height, 200, 200));
-            //GUILayout.BeginVertical("box");
-            GUILayout.Label("currentPosition: " + currentPosition);
-            GUILayout.Label("Raycast hit Count: " + count);
-            GUILayout.Label("IsGrounded: " + IsGrounded);
-            GUILayout.Label("Rgbd Velocity: " + rigidbody2D.velocity);
+    //void OnGUI()
+    //{
+    //    if (Global.isDebugMenuOpen)
+    //    {
+    //        GUILayout.BeginArea(new Rect(Global.debugUIStartX, height, 200, 200));
+    //        //GUILayout.BeginVertical("box");
+    //        GUILayout.Label("currentPosition: " + currentPosition);
+    //        GUILayout.Label("Raycast hit Count: " + count);
+    //        GUILayout.Label("IsGrounded: " + IsGrounded);
+    //        GUILayout.Label("Rgbd Velocity: " + rigidbody2D.velocity);
 
-            //GUILayout.EndVertical();
-            GUILayout.EndArea();
-        }
-    }
-    private void OnDrawGizmosSelected()
-    {
-        //Handles.color = new Color(0, 1.0f, 0, 0.2f);
-        //Handles.DrawSolidArc(transform.position, -Vector3.forward, (endpoint - transform.position).normalized, viewFov, viewDistance);
+    //        //GUILayout.EndVertical();
+    //        GUILayout.EndArea();
+    //    }
+    //}
+    //private void OnDrawGizmosSelected()
+    //{
+    //    //Handles.color = new Color(0, 1.0f, 0, 0.2f);
+    //    //Handles.DrawSolidArc(transform.position, -Vector3.forward, (endpoint - transform.position).normalized, viewFov, viewDistance);
 
-    }
+    //}
 
 #endif
 

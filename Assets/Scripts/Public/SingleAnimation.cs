@@ -47,28 +47,28 @@ public class SingleAnimation : MonoBehaviour
 
 #if UNITY_EDITOR
 
-    private float height = 0;
-    private void OnEnable()
-    {
-        height = Global.debugUIStartY;
-        Global.debugUIStartY += 20;
-    }
+    //private float height = 0;
+    //private void OnEnable()
+    //{
+    //    height = Global.debugUIStartY;
+    //    Global.debugUIStartY += 20;
+    //}
 
-    void OnGUI()
-    {
-        if (Global.isDebugMenuOpen)
-        {
-            if (GUI.Button(new Rect(Global.debugUIStartX, height, 100, 20), animationClip.name))
-            {
-                Play();
-            }
-        }
-    }
+    //void OnGUI()
+    //{
+    //    if (Global.isDebugMenuOpen)
+    //    {
+    //        if (GUI.Button(new Rect(Global.debugUIStartX, height, 100, 20), animationClip.name))
+    //        {
+    //            Play();
+    //        }
+    //    }
+    //}
 
-    void OnDestroy()
-    {
-        Global.debugUIStartY -= 20;
-    }
+    //void OnDestroy()
+    //{
+    //    Global.debugUIStartY -= 20;
+    //}
 
 #endif
 }

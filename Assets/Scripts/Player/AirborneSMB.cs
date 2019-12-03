@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AirborneSMB : StateMachineBehaviour
 {
-    private PlayerController playerController = null;
+    private CharacterController2D characterController = null;
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     //override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     //{
@@ -14,16 +14,16 @@ public class AirborneSMB : StateMachineBehaviour
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if (playerController == null)
+        if (characterController == null)
         {
-            playerController = animator.gameObject.GetComponent<PlayerController>();
+            characterController = animator.gameObject.GetComponentInParent<CharacterController2D>();
         }
-        playerController.HorizatalMovment();
-        playerController.VerticalMovment();
-        playerController.FacingUpdate();
-        playerController.Jump();
-        playerController.JumpUpdate();
-        playerController.Attack();
+        characterController.HorizatalMovment();
+        characterController.VerticalMovment();
+        characterController.FacingUpdate();
+        characterController.Jump();
+        characterController.JumpUpdate();
+        characterController.Attack();
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state

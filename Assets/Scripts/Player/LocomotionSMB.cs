@@ -16,7 +16,7 @@ public class LocomotionSMB : StateMachineBehaviour
     {
         if (CharacterController == null)
         {
-            CharacterController = animator.gameObject.GetComponent<CharacterController2D>();
+            CharacterController = animator.gameObject.GetComponentInParent<CharacterController2D>();
         }
         CharacterController.HorizatalMovment();
         CharacterController.VerticalMovment();
