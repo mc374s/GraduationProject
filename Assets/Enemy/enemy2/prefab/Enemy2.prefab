@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 3297778842532651823}
   - component: {fileID: 3297778842532651822}
   m_Layer: 9
-  m_Name: Enemy2Rebuild
+  m_Name: Enemy2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -146,8 +146,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startingHealth: 600
-  safeHealth: 100
-  healSpeed: 60
+  knockDownHealth: 64000000
+  recoveryHealthIncrement: 100
+  healSpeed: 0
   invulnerableAfterDamage: 0
   invulnerabilityDuration: 2
   disableOnDeath: 0
@@ -216,6 +217,11 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
     m_TypeName: Damageable+DamageEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  OnHealHealth:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Damageable+HealEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
   OnGainHealth:
     m_PersistentCalls:
@@ -420,7 +426,7 @@ PrefabInstance:
       propertyPath: HealthGauge
       value: 
       objectReference: {fileID: 6287586864376659631}
-    - target: {fileID: 8828724955742956628, guid: 9df973a10fde5a64aa41b6def32c39be,
+    - target: {fileID: 8828724956488016311, guid: 9df973a10fde5a64aa41b6def32c39be,
         type: 3}
       propertyPath: m_Layer
       value: 9
@@ -430,7 +436,7 @@ PrefabInstance:
       propertyPath: m_SortingLayerID
       value: -1519077607
       objectReference: {fileID: 0}
-    - target: {fileID: 8828724956488016311, guid: 9df973a10fde5a64aa41b6def32c39be,
+    - target: {fileID: 8828724955742956628, guid: 9df973a10fde5a64aa41b6def32c39be,
         type: 3}
       propertyPath: m_Layer
       value: 9
@@ -534,15 +540,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3660474166502253686, guid: 9aed52855727c32419d9a4223ef888b4,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.17900348
+      objectReference: {fileID: 0}
+    - target: {fileID: 3660474166502253686, guid: 9aed52855727c32419d9a4223ef888b4,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.9838485
+      objectReference: {fileID: 0}
     - target: {fileID: 1617523640982515048, guid: 9aed52855727c32419d9a4223ef888b4,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.9986589
+      value: -0.9986606
       objectReference: {fileID: 0}
     - target: {fileID: 1617523640982515048, guid: 9aed52855727c32419d9a4223ef888b4,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.051773988
+      value: 0.05173927
       objectReference: {fileID: 0}
     - target: {fileID: 8936900407527903848, guid: 9aed52855727c32419d9a4223ef888b4,
         type: 3}
@@ -554,25 +570,15 @@ PrefabInstance:
       propertyPath: m_LocalRotation.w
       value: 0.23245724
       objectReference: {fileID: 0}
-    - target: {fileID: 3660474166502253686, guid: 9aed52855727c32419d9a4223ef888b4,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0.9838486
-      objectReference: {fileID: 0}
-    - target: {fileID: 3660474166502253686, guid: 9aed52855727c32419d9a4223ef888b4,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.17900287
-      objectReference: {fileID: 0}
     - target: {fileID: 1248803179554845252, guid: 9aed52855727c32419d9a4223ef888b4,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.99686635
+      value: 0.99686605
       objectReference: {fileID: 0}
     - target: {fileID: 1248803179554845252, guid: 9aed52855727c32419d9a4223ef888b4,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.07910454
+      value: 0.07910899
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9aed52855727c32419d9a4223ef888b4, type: 3}

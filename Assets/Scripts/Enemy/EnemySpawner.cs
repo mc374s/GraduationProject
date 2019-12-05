@@ -7,12 +7,17 @@ public class EnemySpawner : MonoBehaviour
     public GameObject enemyPrefab;
     public Transform target;
 
-    public Vector2 offset = new Vector2(1.5f, 1f);
-    public Vector2 size = new Vector2(2.5f, 1f);
     public int total = 5;
     int count = 0;
     public float spawnTime = 5f;
     private float spawnTimer = 0;
+
+    public bool RandomSapwn = true;
+    [Header("ランダム生成範囲"),Tooltip("When RandomSapwn is true")]
+    public Vector2 offset = new Vector2(1.5f, 1f);
+    public Vector2 size = new Vector2(2.5f, 1f);
+    [Header("指定生成位置"), Tooltip("When RandomSapwn is false")]
+    public GameObject[] spawnPoints;
 
     private bool isSpawning = false;
 
@@ -43,8 +48,20 @@ public class EnemySpawner : MonoBehaviour
             spawnTimer += Time.deltaTime;
             if (spawnTimer > spawnTime)
             {
-                Vector3 spaenPosition = transform.position + new Vector3(offset.x + Random.Range(-size.x / 2, size.x / 2), offset.y + Random.Range(-size.y / 2, size.y / 2), 0);
-                enemyCollection[count] = Instantiate(enemyPrefab, spaenPosition, transform.rotation);
+                Vector3 spawnPosition;
+                Quaternion spawnRotation;
+                if (RandomSapwn)
+                {
+                    spawnPosition = transform.position + new Vector3(offset.x + Random.Range(-size.x / 2, size.x / 2), offset.y + Random.Range(-size.y / 2, size.y / 2), 0);
+                    spawnRotation = transform.rotation;
+                }
+                else
+                {
+                    int spawnPointIndex = count < spawnPoints.Length ? count : spawnPoints.Length - 1;
+                    spawnPosition = spawnPoints[spawnPointIndex].transform.position;
+                    spawnRotation = spawnPoints[spawnPointIndex].transform.rotation;
+                }
+                enemyCollection[count] = Instantiate(enemyPrefab, spawnPosition, spawnRotation);
                 enemyCollection[count].GetComponent<EnemyBehaviour>().target = target;
                 ++count;
                 spawnTimer = 0;

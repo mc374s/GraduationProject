@@ -83,35 +83,43 @@ public class Character2D : MonoBehaviour
     }
     
 
-
-    int count = 0;
     private void Collider2DCheck()
     {
         Vector2 raycastStart;
         Vector2 raycastDirection;
+        Vector2 offset;
         float raycastDistance;
         if (capsule)
         {
-            raycastStart = rigidbody2D.position + capsule.offset + Vector2.down * (capsule.size.y * 0.5f - capsule.size.x * 0.5f);
-            raycastDirection = Vector2.down;
+            raycastStart = rigidbody2D.position + capsule.offset;
+            offset = Vector2.down * (capsule.size.y * 0.5f - capsule.size.x * 0.5f);
             raycastDistance = capsule.size.x * 0.5f + groundedRaycastDistance * 2f;
         }
         else
         {
-            raycastStart = rigidbody2D.position + Vector2.up;
-            raycastDirection = Vector2.down;
+            raycastStart = rigidbody2D.position;
+            offset = Vector2.zero;
             raycastDistance = 1 + groundedRaycastDistance;
         }
-        int count = Physics2D.Raycast(raycastStart, raycastDirection, contactFilter2D, hitBuffer, raycastDistance);
-        Debug.DrawLine(raycastStart, raycastStart + raycastDirection * raycastDistance, Color.blue);
+        IsGrounded = true;
+        IsCeilinged = false;
 
-        if (count > 0)
-        {
-            IsGrounded = true;
-        }
-        else
+        // Ground Check
+        raycastDirection = Vector2.down;
+        int hitCount = Physics2D.Raycast(raycastStart + offset, raycastDirection, contactFilter2D, hitBuffer, raycastDistance);
+        Debug.DrawLine(raycastStart + offset, raycastStart + offset + raycastDirection * raycastDistance, Color.blue);
+        if (hitCount <= 0)
         {
             IsGrounded = false;
+        }
+
+        // Ceiling Check
+        raycastDirection = Vector2.up;
+        hitCount = Physics2D.Raycast(raycastStart - offset, raycastDirection, contactFilter2D, hitBuffer, raycastDistance);
+        Debug.DrawLine(raycastStart - offset, raycastStart - offset + raycastDirection * raycastDistance, Color.red);
+        if (hitCount > 0)
+        {
+            IsCeilinged = true;
         }
 
     }

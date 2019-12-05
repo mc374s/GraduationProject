@@ -46,10 +46,12 @@ MonoBehaviour:
   enemyPrefab: {fileID: 3297778842532651816, guid: ac6c463a7fc801944a2c027103578ae3,
     type: 3}
   target: {fileID: 0}
-  offset: {x: 0, y: 0}
-  size: {x: 100, y: 60}
   total: 4
   spawnTime: 7
+  RandomSapwn: 1
+  offset: {x: 0, y: 0}
+  size: {x: 100, y: 60}
+  spawnPoints: []
 --- !u!1 &3404024101757727421
 GameObject:
   m_ObjectHideFlags: 0
@@ -268,6 +270,51 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 898785d368ea5f24ba7a8b3a654391bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  includeLayers:
+    serializedVersion: 2
+    m_Bits: 256
+  onEnter:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1724653346}
+        m_MethodName: StartBattle
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: Trigger+Event, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  onStay:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Trigger+Event, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  onExit:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Trigger+Event, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  onBattleFinish:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1724653346}
+        m_MethodName: FinishBattle
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: Trigger+Event, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
   wallCollection:
   - {fileID: 3404024102030367537}
   - {fileID: 3404024101757727423}

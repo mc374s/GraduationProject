@@ -10,7 +10,7 @@ public class EnemyBehaviour : MonoBehaviour
     EnemyController enemyController;
     Character2D character2D;
 
-    public Transform target=null;
+    public Transform target = null;
 
     [Range(0,360)]
     public float attackFov = 30;
@@ -62,6 +62,8 @@ public class EnemyBehaviour : MonoBehaviour
 
 
     }
+
+
 
 
 

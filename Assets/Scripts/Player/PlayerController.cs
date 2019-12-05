@@ -18,6 +18,7 @@ public class PlayerController : CharacterController2D
     protected readonly int hashHorizontalSpeed = Animator.StringToHash("horizontalSpeed");
     protected readonly int hashVerticalSpeed = Animator.StringToHash("verticalSpeed");
     protected readonly int hashGrounded = Animator.StringToHash("grounded");
+    protected readonly int hashCeilinged = Animator.StringToHash("ceilinged");
     protected readonly int hashAttack = Animator.StringToHash("attack");
     protected readonly int hashUsingSkill = Animator.StringToHash("usingSkill");
     protected readonly int hashSkillType = Animator.StringToHash("skillType");
@@ -44,6 +45,10 @@ public class PlayerController : CharacterController2D
     void Update()
     {
         input.Gain();
+        if (!SceneController.Instance.SceneFiledCheck(gameObject))
+        {
+            OnDie();
+        }
     }
 
     private void FixedUpdate()
@@ -53,8 +58,8 @@ public class PlayerController : CharacterController2D
         animator.SetFloat(hashHorizontalSpeed, character2D.Velocity.x);
         animator.SetFloat(hashVerticalSpeed, character2D.Velocity.y);
         animator.SetBool(hashGrounded, character2D.IsGrounded);
+        animator.SetBool(hashCeilinged, character2D.IsCeilinged);
     }
-
 
     public override void HorizatalMovment()
     {
@@ -76,6 +81,10 @@ public class PlayerController : CharacterController2D
         {
             moveVector.y = 0;
         }
+        if (character2D.IsCeilinged && moveVector.y > 0)
+        {
+            moveVector.y = 0;
+        }
     }
 
     public override void Jump()
@@ -84,8 +93,9 @@ public class PlayerController : CharacterController2D
         {
             jumpCounter = 0;
         }
-        if (input.Jump.Down && ++jumpCounter < jumpCounterMax)
+        if (input.Jump.Down && jumpCounter < jumpCounterMax)
         {
+            ++jumpCounter;
             isJumping = true;
             jumpTimer = jumpTime;
             moveVector.y = 0;
@@ -98,7 +108,7 @@ public class PlayerController : CharacterController2D
         {
             if (jumpTimer > 0)
             {
-                moveVector.y += jumpHoldIncrement;
+                moveVector.y += jumpHoldIncrement * Time.deltaTime;
                 jumpTimer -= Time.deltaTime;
             }
             else
@@ -111,6 +121,10 @@ public class PlayerController : CharacterController2D
             jumpTimer = 0;
             isJumping = false;
         }
+        //if (character2D.IsCeilinged)
+        //{
+        //    moveVector.y = 0;
+        //}
     }
 
     public override void DodgeRoll()

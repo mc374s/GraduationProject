@@ -17,8 +17,11 @@ public class Damageable : MonoBehaviour
     { }
 
     public int startingHealth = 5;
-    public int safeHealth = 5;
-    public int healSpeed = 60;
+    public int[] knockDownHealth;
+    private int knockDownHealthIndex;
+    private int maxHealHealth;
+    public int recoveryHealthIncrement = 5;
+    public int healSpeed = 0;
     public bool invulnerableAfterDamage = true;
     public float invulnerabilityDuration = 3f;
     public bool disableOnDeath = false;
@@ -30,6 +33,7 @@ public class Damageable : MonoBehaviour
     public DamageEvent OnTakeDamage;
     public DamageEvent OnKnockDown;
     public DamageEvent OnDie;
+    public HealEvent OnHealHealth;
     public HealEvent OnGainHealth;
 
     protected bool m_Invulnerable;
@@ -57,6 +61,8 @@ public class Damageable : MonoBehaviour
         OnHealthSet.Invoke(this);
 
         DisableInvulnerability();
+
+        knockDownHealthIndex = knockDownHealth.Length - 1;
     }
 
     void OnDisable()
@@ -68,7 +74,6 @@ public class Damageable : MonoBehaviour
         if (m_Invulnerable)
         {
             m_InulnerabilityTimer -= Time.deltaTime;
-
             if (m_InulnerabilityTimer <= 0f)
             {
                 m_Invulnerable = false;
@@ -81,19 +86,23 @@ public class Damageable : MonoBehaviour
             {
                 IsKnockDown = false;
                 isAutoHealing = true;
+                if (knockDownHealth.Length < 2)
+                {
+                    SetHealth(knockDownHealth[knockDownHealthIndex] + recoveryHealthIncrement);
+                }
             }
         }
         else
         {
-            GainHealth((int)(healSpeed * Time.deltaTime));
+            HealHealth((int)(healSpeed * Time.deltaTime));
         }
         if (isAutoHealing)
         {
-            GainHealth((int)(healSpeed * Time.deltaTime));
-            if (m_CurrentHealth>safeHealth)
+            HealHealth((int)(healSpeed * Time.deltaTime));
+            if (m_CurrentHealth > maxHealHealth + recoveryHealthIncrement)
             {
-                m_CurrentHealth = safeHealth;
-                SetHealth(safeHealth);
+                //m_CurrentHealth = knockDownHealth[knockDownHealthIndex] + recoveryHealthIncrement;
+                SetHealth(maxHealHealth + recoveryHealthIncrement);
                 isAutoHealing = false;
             }
         }
@@ -138,32 +147,41 @@ public class Damageable : MonoBehaviour
 
         OnTakeDamage.Invoke(damager, this);
 
-        if (m_CurrentHealth <= 0 && !IsKnockDown)
-        {
-            OnKnockDown.Invoke(damager, this);
-            m_CurrentHealth = 1;
-            knockDownTimer = knockDownTime;
-            EnableInvulnerability();
-            IsKnockDown = true;
-        }
-        if (m_CurrentHealth <= 0 && IsKnockDown)
+        if (m_CurrentHealth <= 0)
         {
             OnDie.Invoke(damager, this);
             m_ResetHealthOnSceneReload = true;
             EnableInvulnerability();
             if (disableOnDeath) gameObject.SetActive(false);
         }
+        else if (knockDownHealthIndex >= 0 && m_CurrentHealth <= knockDownHealth[knockDownHealthIndex] && !IsKnockDown)
+        {
+            OnKnockDown.Invoke(damager, this);
+            knockDownTimer = knockDownTime;
+            maxHealHealth = knockDownHealth[knockDownHealthIndex];
+            //EnableInvulnerability();
+            IsKnockDown = true;
+            if (knockDownHealth.Length > 1)
+            {
+                --knockDownHealthIndex;
+            }
+        }
     }
 
-    public void GainHealth(int amount)
+    public void HealHealth(int amount)
     {
         m_CurrentHealth += amount;
 
         if (m_CurrentHealth > startingHealth)
             m_CurrentHealth = startingHealth;
 
+        OnHealHealth.Invoke(amount, this);
         OnHealthSet.Invoke(this);
+    }
 
+    public void GainHealth(int amount)
+    {
+        startingHealth += amount;
         OnGainHealth.Invoke(amount, this);
     }
 
