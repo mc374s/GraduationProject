@@ -52,6 +52,8 @@ public class Damageable : MonoBehaviour
 
 
     public bool IsKnockDown { get; set; }
+    public bool KnockDownWait { get; set; }
+    public bool IsKnockDownFinish { get; set; }
     protected bool isAutoHealing = false;
 
     void OnEnable()
@@ -63,6 +65,8 @@ public class Damageable : MonoBehaviour
         DisableInvulnerability();
 
         knockDownHealthIndex = knockDownHealth.Length - 1;
+        KnockDownWait = false;
+        IsKnockDownFinish = false;
     }
 
     void OnDisable()
@@ -81,12 +85,28 @@ public class Damageable : MonoBehaviour
         }
         if (IsKnockDown)
         {
-            knockDownTimer -= Time.deltaTime;
+            if (KnockDownWait)
+            {
+                knockDownTimer = knockDownTime;
+            }
+            else
+            {
+                knockDownTimer -= Time.deltaTime;
+            }
+            if (IsKnockDownFinish)
+            {
+                knockDownTimer = 0;
+            }
             if (knockDownTimer <= 0f)
             {
                 IsKnockDown = false;
                 isAutoHealing = true;
-                if (knockDownHealth.Length < 2)
+                KnockDownWait = false;
+                if (m_CurrentHealth <= 0)
+                {
+                    SetHealth(m_CurrentHealth);
+                }
+                else if (knockDownHealth.Length < 2)
                 {
                     SetHealth(knockDownHealth[knockDownHealthIndex] + recoveryHealthIncrement);
                 }
@@ -127,7 +147,7 @@ public class Damageable : MonoBehaviour
 
     public void TakeDamage(Damager damager, bool ignoreInvincible = false)
     {
-        if ((m_Invulnerable && !ignoreInvincible) || m_CurrentHealth <= 0)
+        if ((m_Invulnerable && !ignoreInvincible)/* || m_CurrentHealth <= 0*/)
             return;
 
         //we can reach that point if the damager was one that was ignoring invincible state.
@@ -147,7 +167,7 @@ public class Damageable : MonoBehaviour
 
         OnTakeDamage.Invoke(damager, this);
 
-        if (m_CurrentHealth <= 0)
+        if (m_CurrentHealth <= 0 && IsKnockDownFinish)
         {
             OnDie.Invoke(damager, this);
             m_ResetHealthOnSceneReload = true;
@@ -161,6 +181,7 @@ public class Damageable : MonoBehaviour
             maxHealHealth = knockDownHealth[knockDownHealthIndex];
             //EnableInvulnerability();
             IsKnockDown = true;
+            IsKnockDownFinish = false;
             if (knockDownHealth.Length > 1)
             {
                 --knockDownHealthIndex;
@@ -189,7 +210,7 @@ public class Damageable : MonoBehaviour
     {
         m_CurrentHealth = amount;
 
-        if (m_CurrentHealth <= 0)
+        if (m_CurrentHealth <= 0 && IsKnockDownFinish)
         {
             OnDie.Invoke(null, this);
             m_ResetHealthOnSceneReload = true;

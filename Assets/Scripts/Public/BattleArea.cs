@@ -7,12 +7,15 @@ public class BattleArea : Trigger
     public Event onBattleFinish;
 
     public Collider2D[] wallCollection;
+    [HideInInspector]
     public EnemySpawner spawner;
     // Start is called before the first frame update
     void Start()
     {
         collider = GetComponent<Collider2D>();
         collider.enabled = true;
+        spawner = GetComponent<EnemySpawner>();
+        spawner.enabled = false;
     }
 
     // Update is called once per frame
@@ -21,7 +24,7 @@ public class BattleArea : Trigger
         if (!spawner.CheckAlive() && Global.isBattling)
         {
             //FinishBattle();
-            onBattleFinish.Invoke();
+            onBattleFinish.Invoke(gameObject);
         }
     }
 

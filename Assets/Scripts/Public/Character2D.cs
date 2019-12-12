@@ -121,7 +121,6 @@ public class Character2D : MonoBehaviour
         {
             IsCeilinged = true;
         }
-
     }
 
     public void Flip()

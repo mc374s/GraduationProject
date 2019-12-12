@@ -22,23 +22,19 @@ public class PlayerController : CharacterController2D
     protected readonly int hashAttack = Animator.StringToHash("attack");
     protected readonly int hashUsingSkill = Animator.StringToHash("usingSkill");
     protected readonly int hashSkillType = Animator.StringToHash("skillType");
+    protected readonly int hashAction = Animator.StringToHash("action");
     protected readonly int hashDodgeRoll = Animator.StringToHash("roll");
     protected readonly int hashHurt = Animator.StringToHash("hurt");
     protected readonly int hashKnockDown = Animator.StringToHash("knockDown");
     protected readonly int hashDead = Animator.StringToHash("dead");
+    protected readonly int hashAttacking = Animator.StringToHash("attacking");
 
     public Damageable damageableReference;
-
-    private void Awake()
-    {
-        //animator = GetComponent<Animator>();
-        character2D = GetComponent<Character2D>();
-    }
 
     // Start is called before the first frame update
     void Start()
     {
-
+        character2D = GetComponent<Character2D>();
     }
 
     // Update is called once per frame
@@ -59,32 +55,6 @@ public class PlayerController : CharacterController2D
         animator.SetFloat(hashVerticalSpeed, character2D.Velocity.y);
         animator.SetBool(hashGrounded, character2D.IsGrounded);
         animator.SetBool(hashCeilinged, character2D.IsCeilinged);
-    }
-
-    public override void HorizatalMovment()
-    {
-        moveVector.x = input.Horizontal * horzontalSpeed;
-
-    }
-    public override void FacingUpdate()
-    {
-        if ((moveVector.x < 0 && !character2D.spriteFaceLeft || moveVector.x > 0 && character2D.spriteFaceLeft))
-        {
-            character2D.Flip();
-        }
-    }
-
-    public override void VerticalMovment()
-    {
-        moveVector.y += gravity * Time.deltaTime;
-        if (character2D.IsGrounded && moveVector.y < 0)
-        {
-            moveVector.y = 0;
-        }
-        if (character2D.IsCeilinged && moveVector.y > 0)
-        {
-            moveVector.y = 0;
-        }
     }
 
     public override void Jump()
@@ -170,11 +140,6 @@ public class PlayerController : CharacterController2D
         //damageableReference.in;
     }
 
-    public override void ResetMoveVector()
-    {
-        moveVector = Vector2.zero;
-    }
-
     public override void Attack()
     {
         if (input.Attack.Down)
@@ -198,11 +163,33 @@ public class PlayerController : CharacterController2D
                 animator.SetInteger(hashSkillType, 1);
             }
         }
-        if (input.Action.Down)
+    }
+
+    public void QualityAttackDetection(GameObject targetObject)
+    {
+        if (input.Action.Down && !animator.GetBool(hashAttacking))
         {
-            Debug.Log("Action");
+            focusedObject = targetObject;
+            focusedObject.GetComponent<EnemyController>().QualityAttackedStart();
+            Debug.Log("QuilityAttackDetected: " + focusedObject.name);
+            ResetMoveVector();
+            animator.SetTrigger(hashAction);
+            animator.SetBool(hashAttacking, true);
+            animator.SetInteger(hashSkillType, Random.Range(1, 4));
         }
     }
+
+    public override void QualityAttackUpdate()
+    {
+        //Debug.Log("QualityAttackUpdate: " + animator.GetInteger(hashSkillType));
+    }
+    public override void QualityAttackFinish()
+    {
+        animator.SetBool(hashAttacking, false);
+        focusedObject.GetComponent<EnemyController>().QualityAttackedFinish();
+        Debug.Log("QuilityAttackFinish: " + focusedObject.name);
+    }
+
 
     public override void OnHurt()
     {
@@ -266,12 +253,12 @@ public class PlayerController : CharacterController2D
 
         }
     }
-    private void OnDrawGizmosSelected()
-    {
-        //Handles.color = new Color(0, 1.0f, 0, 0.2f);
-        //Handles.DrawSolidArc(transform.position, -Vector3.forward, (endpoint - transform.position).normalized, viewFov, viewDistance);
+    //private void OnDrawGizmosSelected()
+    //{
+    //    //Handles.color = new Color(0, 1.0f, 0, 0.2f);
+    //    //Handles.DrawSolidArc(transform.position, -Vector3.forward, (endpoint - transform.position).normalized, viewFov, viewDistance);
 
-    }
+    //}
 
 #endif
 }

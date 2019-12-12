@@ -41,6 +41,9 @@ public class Damager : MonoBehaviour
     protected Transform m_DamagerTransform;
     protected Collider2D m_LastHit;
 
+    [HideInInspector]
+    public GameObject targetObject = null;
+
     void Awake()
     {
         m_AttackContactFilter.layerMask = hittableLayers;
@@ -86,7 +89,7 @@ public class Damager : MonoBehaviour
             m_LastHit = m_AttackOverlapResults[i];
             Damageable damageable = m_LastHit.GetComponent<Damageable>();
 
-            if (damageable)
+            if ((targetObject == null && damageable) || (targetObject != null && targetObject == damageable.gameObject))
             {
                 OnDamageableHit.Invoke(this, damageable);
                 damageable.TakeDamage(this, ignoreInvincibility);

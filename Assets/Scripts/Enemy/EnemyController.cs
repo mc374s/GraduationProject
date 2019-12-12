@@ -14,12 +14,16 @@ public class EnemyController : CharacterController2D
     protected readonly int hashDead = Animator.StringToHash("dead");
 
     public Damageable damageable;
+    public LayerMask layerWhenKnockDown;
+    private int initLayer;
+    private int newLayer;
 
     // Start is called before the first frame update
     void Start()
     {
-        //animator = GetComponent<Animator>();
         character2D = GetComponent<Character2D>();
+        initLayer = gameObject.layer;
+        newLayer = Mathf.RoundToInt(Mathf.Log(layerWhenKnockDown.value, 2));
     }
 
     // Update is called once per frame
@@ -41,28 +45,6 @@ public class EnemyController : CharacterController2D
         animator.SetBool(hashGrounded, character2D.IsGrounded);
     }
 
-
-    public override void HorizatalMovment()
-    {
-        moveVector.x = input.Horizontal * horzontalSpeed;
-    }
-    public override void FacingUpdate()
-    {
-        if ((moveVector.x < 0 && !character2D.spriteFaceLeft || moveVector.x > 0 && character2D.spriteFaceLeft))
-        {
-            character2D.Flip();
-        }
-    }
-
-    public override void VerticalMovment()
-    {
-        moveVector.y += gravity * Time.deltaTime;
-        if (character2D.IsGrounded && moveVector.y < 0)
-        {
-            moveVector.y = 0;
-        }
-    }
-
     public override void Jump()
     {
         if (character2D.IsGrounded)
@@ -74,11 +56,6 @@ public class EnemyController : CharacterController2D
             moveVector.y = 0;
             moveVector.y = Mathf.Sqrt(-2f * gravity * jumpHeight);
         }
-    }
-
-    public override void ResetMoveVector()
-    {
-        moveVector = Vector2.zero;
     }
 
     public override void Attack()
@@ -100,11 +77,18 @@ public class EnemyController : CharacterController2D
         {
             animator.SetTrigger(hashHurt);
             damagerRecord = damager;
+            if (gameObject.layer == newLayer)
+            {
+                damageable.IsKnockDown = true;
+                animator.SetBool(hashKnockDown, true);
+            }
         }
     }
+
     public override void OnKnockDown(/*Damager damager, Damageable damageable*/)
     {
         animator.SetBool(hashKnockDown, true);
+        gameObject.layer = newLayer;
     }
 
     public override void OnDie()
@@ -118,9 +102,18 @@ public class EnemyController : CharacterController2D
         if (!damageable.IsKnockDown)
         {
             animator.SetBool(hashKnockDown, false);
+            gameObject.layer = initLayer;
         }
     }
 
+    public void QualityAttackedStart()
+    {
+        damageable.KnockDownWait = true;
+    }
+    public void QualityAttackedFinish()
+    {
+        damageable.IsKnockDownFinish = true;
+    }
 
 #if UNITY_EDITOR
     //float height;

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3092161727128022214}
   - component: {fileID: 763716701}
   m_Layer: 0
-  m_Name: UpperSlashEffect
+  m_Name: QualityAttackEffectLast
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayer: 4
   m_SortingOrder: 30
   m_Sprite: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -114,7 +114,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abaea85ab1ca34848988c71de529739d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animationClip: {fileID: 7400000, guid: 42aff3d846f730d42aad39c221ebbd9e, type: 2}
+  animationClip: {fileID: 7400000, guid: 01b9c0cf566acf540a23a7b2d3f4674a, type: 2}
 --- !u!114 &763716701
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -127,7 +127,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f5ebf0cb45896640b4c0bdebca23273, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 20
+  damage: 300
   offset: {x: 0.24834532, y: -0.48416328}
   size: {x: 2.576192, y: 3.8049374}
   offsetBasedOnSpriteFacing: 1
@@ -138,7 +138,7 @@ MonoBehaviour:
   ignoreInvincibility: 0
   hittableLayers:
     serializedVersion: 2
-    m_Bits: 33280
+    m_Bits: 32768
   OnDamageableHit:
     m_PersistentCalls:
       m_Calls: []
@@ -149,3 +149,4 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: Damager+NonDamagableEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
+  targetObject: {fileID: 0}

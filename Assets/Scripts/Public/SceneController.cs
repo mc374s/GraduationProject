@@ -9,6 +9,10 @@ public class SceneController : MonoBehaviour
     public Object nextScene;
 
     public SquareArea SceneFiled { get; private set; }
+    [HideInInspector]
+    public Vector2 leftTop;
+    [HideInInspector]
+    public Vector2 rightButtom;
 
     void Awake()
     {
@@ -17,6 +21,10 @@ public class SceneController : MonoBehaviour
             Instance = this;
         }
         SceneFiled = GetComponent<SquareArea>();
+        Vector2 center = new Vector2(transform.position.x + SceneFiled.offset.x, transform.position.y + SceneFiled.offset.y);
+        Vector2 offset = new Vector2(-SceneFiled.size.x * 0.5f, SceneFiled.size.y * 0.5f);
+        leftTop = center + offset;
+        rightButtom = center - offset;
     }
 
     //// Start is called before the first frame update
@@ -36,10 +44,6 @@ public class SceneController : MonoBehaviour
     //
     public bool SceneFiledCheck(GameObject target)
     {
-        Vector2 center = new Vector2(transform.position.x + SceneFiled.offset.x, transform.position.y + SceneFiled.offset.y);
-        Vector2 offset = new Vector2(-SceneFiled.size.x * 0.5f, SceneFiled.size.y * 0.5f);
-        Vector2 leftTop = center + offset;
-        Vector2 rightButtom = center - offset;
 
         Vector3 newPosition = target.transform.position;
         if (target.transform.position.y < rightButtom.y)

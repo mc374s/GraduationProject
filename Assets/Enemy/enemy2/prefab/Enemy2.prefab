@@ -116,6 +116,9 @@ MonoBehaviour:
   rightPoint: {fileID: 3297778842873182607}
   attackEffectPoint: {fileID: 0}
   damageable: {fileID: 3297778842532651822}
+  layerWhenKnockDown:
+    serializedVersion: 2
+    m_Bits: 32768
 --- !u!114 &3297778842532651823
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -543,7 +546,7 @@ PrefabInstance:
     - target: {fileID: 3660474166502253686, guid: 9aed52855727c32419d9a4223ef888b4,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.17900348
+      value: 0.17900336
       objectReference: {fileID: 0}
     - target: {fileID: 3660474166502253686, guid: 9aed52855727c32419d9a4223ef888b4,
         type: 3}
@@ -553,12 +556,12 @@ PrefabInstance:
     - target: {fileID: 1617523640982515048, guid: 9aed52855727c32419d9a4223ef888b4,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.9986606
+      value: -0.9986641
       objectReference: {fileID: 0}
     - target: {fileID: 1617523640982515048, guid: 9aed52855727c32419d9a4223ef888b4,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.05173927
+      value: 0.05167248
       objectReference: {fileID: 0}
     - target: {fileID: 8936900407527903848, guid: 9aed52855727c32419d9a4223ef888b4,
         type: 3}
@@ -578,7 +581,7 @@ PrefabInstance:
     - target: {fileID: 1248803179554845252, guid: 9aed52855727c32419d9a4223ef888b4,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.07910899
+      value: 0.079108626
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9aed52855727c32419d9a4223ef888b4, type: 3}

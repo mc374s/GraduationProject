@@ -15,12 +15,12 @@ public class AttackSMB : StateMachineBehaviour
         }
         characterController.ResetMoveVector();
 
-
         GameObject effectClone = Instantiate(attackEffect, characterController.rightPoint);
         if (characterController.IsFacingLeft)
         {
             effectClone.GetComponent<SpriteRenderer>().flipX = false;
         }
+
     }
 
     // OnStateUpdate is called before OnStateUpdate is called on any state inside this state machine
@@ -30,10 +30,10 @@ public class AttackSMB : StateMachineBehaviour
     }
 
     //OnStateExit is called before OnStateExit is called on any state inside this state machine
-    //override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    //animator.gameObject.GetComponent<Character2D>().GravityEnable();
-    //}
+    override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        //animator.SetBool("");
+    }
 
     // OnStateMove is called before OnStateMove is called on any state inside this state machine
     //override public void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

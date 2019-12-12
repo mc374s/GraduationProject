@@ -26,19 +26,51 @@ public class CharacterController2D : MonoBehaviour
 
     public Transform leftPoint;
     public Transform rightPoint;
+    public Transform montionRightPoint;
     [HideInInspector]
-    public Transform attackEffectPoint;
+    public GameObject focusedObject;
+
     public bool IsFacingLeft { get { return character2D.spriteFaceLeft; } }
 
-    public virtual void HorizatalMovment() { }
-    public virtual void VerticalMovment() { }
-    public virtual void FacingUpdate() { }
+    void Start()
+    {
+        Debug.Log("CharacterController2D Start");
+    }
+
+    public virtual void HorizatalMovment()
+    {
+        moveVector.x = input.Horizontal * horzontalSpeed;
+    }
+    public virtual void VerticalMovment()
+    {
+        moveVector.y += gravity * Time.deltaTime;
+        if (character2D.IsGrounded && moveVector.y < 0)
+        {
+            moveVector.y = 0;
+        }
+        if (character2D.IsCeilinged && moveVector.y > 0)
+        {
+            moveVector.y = 0;
+        }
+    }
+    public virtual void FacingUpdate()
+    {
+        if ((moveVector.x < 0 && !character2D.spriteFaceLeft || moveVector.x > 0 && character2D.spriteFaceLeft))
+        {
+            character2D.Flip();
+        }
+    }
     public virtual void Jump() { }
     public virtual void JumpUpdate() { }
     public virtual void DodgeRoll() { }
     public virtual void DodgeRollUpdate() { }
-    public virtual void ResetMoveVector() { }
+    public virtual void ResetMoveVector()
+    {
+        moveVector = Vector2.zero;
+    }
     public virtual void Attack() { }
+    public virtual void QualityAttackUpdate() { }
+    public virtual void QualityAttackFinish() { }
     public virtual void DamageUpdate() { }
     public virtual void OnHurt() { }
     public virtual void OnKnockDown() { }
