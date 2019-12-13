@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1465355230922387158}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -403.96, y: 5.11, z: -100}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1465355231657916228}
@@ -271,7 +271,7 @@ CompositeCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -281,20 +281,20 @@ CompositeCollider2D:
   m_ColliderPaths:
   - m_Collider: {fileID: 1465355232015084940}
     m_ColliderPaths:
-    - - X: -4617872
-        Y: -166787312
-      - X: -4617872
-        Y: 115339280
-      - X: -362154784
-        Y: 115339251
-      - X: -362154755
-        Y: -166787312
+    - - X: 2022656099
+        Y: -239437792
+      - X: 2022656099
+        Y: 274269952
+      - X: -4441711616
+        Y: 274269923
+      - X: -4441711587
+        Y: -239437792
   m_CompositePaths:
     m_Paths:
-    - - {x: -0.4617901, y: -16.678732}
-      - {x: -0.4617901, y: 11.533928}
-      - {x: -36.215477, y: 11.533922}
-      - {x: -36.215473, y: -16.678732}
+    - - {x: 202.26561, y: -23.943779}
+      - {x: 202.26561, y: 27.426996}
+      - {x: -444.17117, y: 27.426989}
+      - {x: -444.17117, y: -23.943779}
   m_VertexDistance: 0.0005
   m_OffsetDistance: 0.000005
 --- !u!61 &1465355232015084940
@@ -310,7 +310,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 1
-  m_Offset: {x: -18.33863, y: -2.572402}
+  m_Offset: {x: -120.952774, y: 1.7416077}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -321,7 +321,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 35.753693, y: 28.21266}
+  m_Size: {x: 646.43677, y: 51.370773}
   m_EdgeRadius: 0
 --- !u!1 &1465355232048720873
 GameObject:
@@ -366,6 +366,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1205778741679353279}
   - component: {fileID: 8083936850367437724}
+  - component: {fileID: 1334710694}
+  - component: {fileID: 1334710693}
   m_Layer: 14
   m_Name: CM vcam2
   m_TagString: Untagged
@@ -381,7 +383,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7395525475999517857}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -403.96, y: 5.11, z: -100}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8751309082060868151}
@@ -425,6 +427,37 @@ MonoBehaviour:
         Culture=neutral, PublicKeyToken=null
   m_LegacyBlendHint: 0
   m_ComponentOwner: {fileID: 8751309082060868151}
+--- !u!114 &1334710694
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7395525475999517857}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2fba25a5cd15594e8f050a11e386c80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ConfineMode: 0
+  m_BoundingVolume: {fileID: 0}
+  m_BoundingShape2D: {fileID: 1465355232015084939}
+  m_ConfineScreenEdges: 1
+  m_Damping: 0
+--- !u!114 &1334710693
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7395525475999517857}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44d70cc20219cd84593f67d248eafe36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Offset: {x: 0, y: 5, z: 0}
+  m_ApplyAfter: 0
 --- !u!1 &7992031367785316440
 GameObject:
   m_ObjectHideFlags: 0
@@ -489,13 +522,13 @@ MonoBehaviour:
   m_ZDamping: 1
   m_ScreenX: 0.5
   m_ScreenY: 0.5
-  m_CameraDistance: 10
-  m_DeadZoneWidth: 0
-  m_DeadZoneHeight: 0
+  m_CameraDistance: 100
+  m_DeadZoneWidth: 0.2572914
+  m_DeadZoneHeight: 0.5
   m_DeadZoneDepth: 0
   m_UnlimitedSoftZone: 0
-  m_SoftZoneWidth: 0.8
-  m_SoftZoneHeight: 0.8
+  m_SoftZoneWidth: 1
+  m_SoftZoneHeight: 1
   m_BiasX: 0
   m_BiasY: 0
   m_CenterOnActivate: 1

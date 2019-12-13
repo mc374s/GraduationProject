@@ -94,6 +94,7 @@ public class EnemyController : CharacterController2D
     public override void OnDie()
     {
         animator.SetTrigger(hashDead);
+        gameObject.layer = initLayer;
         Destroy(gameObject, 2);
     }
 
@@ -109,6 +110,7 @@ public class EnemyController : CharacterController2D
     public void QualityAttackedStart()
     {
         damageable.KnockDownWait = true;
+        damageable.IsKnockDownFinish = false;
     }
     public void QualityAttackedFinish()
     {

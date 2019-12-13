@@ -8,7 +8,7 @@ public class SceneController : MonoBehaviour
 
     public Object nextScene;
 
-    public SquareArea SceneFiled { get; private set; }
+    public BoxArea SceneFiled { get; private set; }
     [HideInInspector]
     public Vector2 leftTop;
     [HideInInspector]
@@ -20,7 +20,7 @@ public class SceneController : MonoBehaviour
         {
             Instance = this;
         }
-        SceneFiled = GetComponent<SquareArea>();
+        SceneFiled = GetComponent<BoxArea>();
         Vector2 center = new Vector2(transform.position.x + SceneFiled.offset.x, transform.position.y + SceneFiled.offset.y);
         Vector2 offset = new Vector2(-SceneFiled.size.x * 0.5f, SceneFiled.size.y * 0.5f);
         leftTop = center + offset;
