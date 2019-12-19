@@ -6,8 +6,8 @@ using UnityEngine;
 public class BoxAreaEditor : Editor
 {
 
-    static BoxBoundsHandle s_BoxBoundsHandle = new BoxBoundsHandle();
-    static Color s_EnabledColor = Color.green + Color.grey;
+    static BoxBoundsHandle boxBoundsHandle = new BoxBoundsHandle();
+    static Color enabledColor = Color.green + Color.grey;
     void OnSceneGUI()
     {
         BoxArea boxArea = (BoxArea)target;
@@ -21,18 +21,18 @@ public class BoxAreaEditor : Editor
         handleMatrix.SetRow(2, new Vector4(0f, 0f, 1f, boxArea.transform.position.z));
         using (new Handles.DrawingScope(handleMatrix))
         {
-            s_BoxBoundsHandle.center = boxArea.offset;
-            s_BoxBoundsHandle.size = boxArea.size;
+            boxBoundsHandle.center = boxArea.offset;
+            boxBoundsHandle.size = boxArea.size;
 
-            s_BoxBoundsHandle.SetColor(s_EnabledColor);
+            boxBoundsHandle.SetColor(enabledColor);
             EditorGUI.BeginChangeCheck();
-            s_BoxBoundsHandle.DrawHandle();
+            boxBoundsHandle.DrawHandle();
             if (EditorGUI.EndChangeCheck())
             {
                 Undo.RecordObject(boxArea, "Modify Spawner");
 
-                boxArea.size = s_BoxBoundsHandle.size;
-                boxArea.offset = s_BoxBoundsHandle.center;
+                boxArea.size = boxBoundsHandle.size;
+                boxArea.offset = boxBoundsHandle.center;
             }
         }
     }

@@ -73,7 +73,7 @@ public class EnemyController : CharacterController2D
     private Damager damagerRecord;
     public void OnHurt(Damager damager,Damageable damageable)
     {
-        if (damagerRecord != damager)
+        if (/*damagerRecord != damager*/true)
         {
             animator.SetTrigger(hashHurt);
             damagerRecord = damager;

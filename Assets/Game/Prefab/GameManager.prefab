@@ -43,11 +43,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 2082227927070732656}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c8cba5efdafcaaf4caac7915100c507f, type: 3}
+  m_Script: {fileID: 11500000, guid: 36e600e3b8e6a714882ebcad77de986f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  offset: {x: -109.46582, y: 36.93518, z: 0}
-  size: {x: 719.98895, y: 393.52075, z: 0}
+  offset: {x: -109.21834, y: 36.760498, z: 0}
+  size: {x: 731.44727, y: 307.8662, z: 0}
 --- !u!114 &2082227927070732653
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -61,8 +61,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nextScene: {fileID: 102900000, guid: a425272e2c05e594ca786d9fdba6729f, type: 3}
-  leftTop: {x: 0, y: 0}
-  rightButtom: {x: 0, y: 0}
+  leftTop: {x: 0, y: 0, z: 0}
+  rightButtom: {x: 0, y: 0, z: 0}
 --- !u!114 &3338392437202389379
 MonoBehaviour:
   m_ObjectHideFlags: 0

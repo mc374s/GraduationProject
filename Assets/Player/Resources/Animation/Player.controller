@@ -29,7 +29,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e14d4c8a4c8540946830c68c5b979bb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackEffect: {fileID: 3092161727128022215, guid: 50bcb4da12eead94a91f7b16f5fa0269,
+  attackEffect: {fileID: 3092161727128022215, guid: 05b2e21f3d9adb143b3c3f3725959609,
     type: 3}
 --- !u!1109 &-9014738372148784938
 AnimatorTransition:
@@ -1711,7 +1711,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e14d4c8a4c8540946830c68c5b979bb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackEffect: {fileID: 3092161727128022215, guid: eb6af09886ef497499d0835887a881d5,
+  attackEffect: {fileID: 3092161727128022215, guid: 0593e05dc5305c248ad57c1a376bdd3d,
     type: 3}
 --- !u!1101 &-1386258181076622618
 AnimatorStateTransition:
@@ -2509,7 +2509,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   KilledMontion: 1
-  attackEffect: {fileID: 3092161727128022215, guid: 7bf11e130ec1a284c9ee412afb886cd3,
+  attackEffect: {fileID: 3092161727128022215, guid: 15d53f7fafa557343b1add45274083ad,
     type: 3}
   effectAsChild: 1
 --- !u!114 &3128720042438429636
@@ -2525,7 +2525,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   KilledMontion: 1
-  attackEffect: {fileID: 3092161727128022215, guid: 7bf11e130ec1a284c9ee412afb886cd3,
+  attackEffect: {fileID: 3092161727128022215, guid: 51dea090791e742478014afcdeea17d6,
     type: 3}
   effectAsChild: 1
 --- !u!114 &3139751950622569101

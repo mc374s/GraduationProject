@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class AttackSMB : StateMachineBehaviour
 {
+    //public bool hitStop
     public GameObject attackEffect;
+
     private CharacterController2D characterController = null;
+    GameObject effectClone = null;
     // OnStateEnter is called before OnStateEnter is called on any state inside this state machine
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
@@ -15,7 +18,12 @@ public class AttackSMB : StateMachineBehaviour
         }
         characterController.ResetMoveVector();
 
-        GameObject effectClone = Instantiate(attackEffect, characterController.rightPoint);
+        effectClone = Instantiate(attackEffect, characterController.rightPoint);
+        //effectClone.GetComponent<Damager>().OnDamageableHit = characterController.OnDamagerDamageableHit;
+        if (effectClone.GetComponent<EffectController>() != null)
+        {
+            effectClone.GetComponent<EffectController>().parentAnimator = animator;
+        }
         if (characterController.IsFacingLeft)
         {
             effectClone.GetComponent<SpriteRenderer>().flipX = false;
@@ -32,7 +40,10 @@ public class AttackSMB : StateMachineBehaviour
     //OnStateExit is called before OnStateExit is called on any state inside this state machine
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        //animator.SetBool("");
+        if (effectClone != null)
+        {
+            Destroy(effectClone);
+        }
     }
 
     // OnStateMove is called before OnStateMove is called on any state inside this state machine

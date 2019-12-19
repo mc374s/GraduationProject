@@ -128,6 +128,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 20
+  HitTimes: 5
+  nextDamageTime: 0.05
   offset: {x: 0.24834532, y: -0.48416328}
   size: {x: 2.576192, y: 3.8049374}
   offsetBasedOnSpriteFacing: 1
@@ -149,3 +151,4 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: Damager+NonDamagableEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
+  targetObject: {fileID: 0}
