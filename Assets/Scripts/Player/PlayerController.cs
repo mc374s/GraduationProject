@@ -15,6 +15,11 @@ public class PlayerController : CharacterController2D
     private float dodgeRollSpeed = 10f;
     private float dodgeRollVelocityX = 0;
 
+    private float thrustDistance;
+    public float thrustMaxDistance = 300f;
+    public float thrustMoveSpeed = 20f;
+    private int state = 0;
+
     protected readonly int hashHorizontalSpeed = Animator.StringToHash("horizontalSpeed");
     protected readonly int hashVerticalSpeed = Animator.StringToHash("verticalSpeed");
     protected readonly int hashGrounded = Animator.StringToHash("grounded");
@@ -28,6 +33,7 @@ public class PlayerController : CharacterController2D
     protected readonly int hashKnockDown = Animator.StringToHash("knockDown");
     protected readonly int hashDead = Animator.StringToHash("dead");
     protected readonly int hashAttacking = Animator.StringToHash("attacking");
+    protected readonly int hashThrust = Animator.StringToHash("thrust");
 
     public Damageable damageableReference;
 
@@ -140,6 +146,38 @@ public class PlayerController : CharacterController2D
         //damageableReference.in;
     }
 
+    public override void Thrust()
+    {
+        if (state == 0)
+        {
+            animator.SetTrigger(hashThrust);
+            state = 1;
+        }
+    }
+
+    public override void ThrustUpdate()
+    {
+        input.Release();
+        switch (state)
+        {
+            case 0:
+                moveVector.x = character2D.spriteFaceLeft ? -thrustMoveSpeed : thrustMoveSpeed;
+                thrustDistance -= thrustMoveSpeed;
+
+                if (thrustDistance <= 0)
+                {
+                    animator.SetTrigger(hashThrust);
+                    state = 1;
+                }
+                break;
+            case 1:
+                moveVector.x = character2D.spriteFaceLeft ? -10 : 10;
+                break;    
+
+        }
+
+    }
+
     public override void Attack()
     {
         if (input.Attack.Down)
@@ -150,9 +188,11 @@ public class PlayerController : CharacterController2D
         if (input.Skill.Down)
         {
             animator.SetTrigger(hashUsingSkill);
-            if (input.Horizontal > 0)
+            if (input.Horizontal != 0)
             {
                 animator.SetInteger(hashSkillType, 2);
+                thrustDistance = thrustMaxDistance;
+                state = 0;
             }
             else if (input.Vertical > 0)
             {
