@@ -28,7 +28,10 @@ public class QualityAttackSMB : StateMachineBehaviour
         }
         effectClone.GetComponent<Damager>().targetObject = characterController.focusedObject;
         //effectClone.GetComponent<Damager>().OnDamageableHit = characterController.OnDamagerDamageableHit;
-        effectClone.GetComponent<EffectController>().parentAnimator = animator;
+        if (effectClone.GetComponent<EffectController>() != null)
+        {
+            effectClone.GetComponent<EffectController>().parentAnimator = animator;
+        }
         if (characterController.IsFacingLeft)
         {
             effectClone.GetComponent<SpriteRenderer>().flipX = false;
@@ -55,7 +58,7 @@ public class QualityAttackSMB : StateMachineBehaviour
             characterController.QualityAttackFinish();
             CameraController.Instance.ResetZoom(0.2f, 1f);
         }
-        if (effectClone != null)
+        if (effectAsChild && effectClone != null)
         {
             Destroy(effectClone);
         }

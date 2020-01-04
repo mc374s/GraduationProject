@@ -31,6 +31,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackEffect: {fileID: 3092161727128022215, guid: 05b2e21f3d9adb143b3c3f3725959609,
     type: 3}
+  effectAsChild: 0
 --- !u!1109 &-9014738372148784938
 AnimatorTransition:
   m_ObjectHideFlags: 1
@@ -434,6 +435,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackEffect: {fileID: 3092161727128022215, guid: 52507bf7f2d0a2d478fe0bba20d41f8c,
     type: 3}
+  effectAsChild: 0
 --- !u!1109 &-7345736092150456167
 AnimatorTransition:
   m_ObjectHideFlags: 1
@@ -721,6 +723,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackEffect: {fileID: 3092161727128022215, guid: d95e49558b4710b40b358df3db819966,
     type: 3}
+  effectAsChild: 0
 --- !u!1102 &-6374761225894733023
 AnimatorState:
   serializedVersion: 5
@@ -869,8 +872,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e14d4c8a4c8540946830c68c5b979bb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackEffect: {fileID: 3092161727128022215, guid: eb6af09886ef497499d0835887a881d5,
+  attackEffect: {fileID: 3092161727128022215, guid: 9c36b0ff58dc4a2478406fd3eee13da8,
     type: 3}
+  effectAsChild: 0
 --- !u!114 &-5398988642068917843
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1419,6 +1423,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackEffect: {fileID: 3092161727128022215, guid: eb6af09886ef497499d0835887a881d5,
     type: 3}
+  effectAsChild: 0
 --- !u!1102 &-3444027692817589520
 AnimatorState:
   serializedVersion: 5
@@ -1713,6 +1718,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackEffect: {fileID: 3092161727128022215, guid: 0593e05dc5305c248ad57c1a376bdd3d,
     type: 3}
+  effectAsChild: 0
 --- !u!1101 &-1386258181076622618
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -2734,6 +2740,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackEffect: {fileID: 3092161727128022215, guid: d19ca0dc8fe05c04c8e3ffaab76c799d,
     type: 3}
+  effectAsChild: 0
 --- !u!1102 &4149537159284698347
 AnimatorState:
   serializedVersion: 5

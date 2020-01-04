@@ -64,7 +64,7 @@ public class Damager : MonoBehaviour
         //if (hitTimes > 0)
         //{
         //}
-        hitIntervalTimer = 0;
+        //hitIntervalTimer = 0;
         m_CanDamage = true;
     }
 

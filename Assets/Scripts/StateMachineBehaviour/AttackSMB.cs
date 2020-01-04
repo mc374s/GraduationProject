@@ -6,6 +6,7 @@ public class AttackSMB : StateMachineBehaviour
 {
     //public bool hitStop
     public GameObject attackEffect;
+    public bool effectAsChild = false;
 
     private CharacterController2D characterController = null;
     GameObject effectClone = null;
@@ -18,16 +19,23 @@ public class AttackSMB : StateMachineBehaviour
         }
         characterController.ResetMoveVector();
 
-        effectClone = Instantiate(attackEffect, characterController.rightPoint);
+        if (effectAsChild)
+        {
+            effectClone = Instantiate(attackEffect, characterController.montionRightPoint);
+        }
+        else
+        {
+            effectClone = Instantiate(attackEffect, characterController.rightPoint.position, characterController.rightPoint.rotation);
+        }
         //effectClone.GetComponent<Damager>().OnDamageableHit = characterController.OnDamagerDamageableHit;
         if (effectClone.GetComponent<EffectController>() != null)
         {
             effectClone.GetComponent<EffectController>().parentAnimator = animator;
         }
-        if (characterController.IsFacingLeft)
-        {
-            effectClone.GetComponent<SpriteRenderer>().flipX = false;
-        }
+        //if (!characterController.IsFacingLeft)
+        //{
+        //    effectClone.GetComponent<SpriteRenderer>().flipX = false;
+        //}
 
     }
 
@@ -40,7 +48,7 @@ public class AttackSMB : StateMachineBehaviour
     //OnStateExit is called before OnStateExit is called on any state inside this state machine
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if (effectClone != null)
+        if (effectAsChild && effectClone != null)
         {
             Destroy(effectClone);
         }
