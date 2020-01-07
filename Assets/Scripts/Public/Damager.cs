@@ -17,6 +17,9 @@ public class Damager : MonoBehaviour
     public Collider2D LastHit { get { return m_LastHit; } }
 
     public int damage = 1;
+    public int hitTimes = 1;
+    public float hitIntervalTime = 0.1f;
+    private float hitIntervalTimer = 0;
     public Vector2 offset = new Vector2(1.5f, 1f);
     public Vector2 size = new Vector2(2.5f, 1f);
     [Tooltip("If this is set, the offset x will be changed base on the sprite flipX setting. e.g. Allow to make the damager alway forward in the direction of sprite")]
@@ -33,6 +36,7 @@ public class Damager : MonoBehaviour
     public LayerMask hittableLayers;
     public DamagableEvent OnDamageableHit;
     public NonDamagableEvent OnNonDamageableHit;
+    public UnityEvent OnAllHitFinish;
 
     protected bool m_SpriteOriginallyFlipped;
     protected bool m_CanDamage = true;
@@ -58,6 +62,10 @@ public class Damager : MonoBehaviour
 
     public void EnableDamage()
     {
+        //if (hitTimes > 0)
+        //{
+        //}
+        //hitIntervalTimer = 0;
         m_CanDamage = true;
     }
 
@@ -68,8 +76,15 @@ public class Damager : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (!m_CanDamage)
+        if (!m_CanDamage || hitTimes <= 0)
+        {
             return;
+        }
+        if (hitIntervalTimer > 0)
+        {
+            hitIntervalTimer -= Time.fixedDeltaTime;
+            return;
+        }
 
         Vector2 scale = m_DamagerTransform.lossyScale;
 
@@ -83,13 +98,14 @@ public class Damager : MonoBehaviour
         Vector2 pointB = pointA + scaledSize;
 
         int hitCount = Physics2D.OverlapArea(pointA, pointB, m_AttackContactFilter, m_AttackOverlapResults);
+        //Physics2D.GetContacts()
 
         for (int i = 0; i < hitCount; i++)
         {
             m_LastHit = m_AttackOverlapResults[i];
             Damageable damageable = m_LastHit.GetComponent<Damageable>();
 
-            if ((targetObject == null && damageable) || (targetObject != null && targetObject == damageable.gameObject))
+            if ((targetObject == null && damageable) || (targetObject != null && damageable && targetObject == damageable.gameObject))
             {
                 OnDamageableHit.Invoke(this, damageable);
                 damageable.TakeDamage(this, ignoreInvincibility);
@@ -99,6 +115,20 @@ public class Damager : MonoBehaviour
             else
             {
                 OnNonDamageableHit.Invoke(this);
+            }
+
+            if (i == hitCount - 1)
+            {
+                if (hitTimes > 0)
+                {
+                    hitIntervalTimer = hitIntervalTime;
+                    --hitTimes;
+                    if (hitTimes < 1)
+                    {
+                        DisableDamage();
+                        OnAllHitFinish.Invoke();
+                    }
+                }
             }
         }
     }

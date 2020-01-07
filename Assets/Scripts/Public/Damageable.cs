@@ -85,28 +85,22 @@ public class Damageable : MonoBehaviour
         }
         if (IsKnockDown)
         {
-            if (KnockDownWait)
-            {
-                knockDownTimer = knockDownTime;
-            }
-            else
+            if (!KnockDownWait)
             {
                 knockDownTimer -= Time.deltaTime;
+                IsKnockDownFinish = true;
             }
-            if (IsKnockDownFinish)
+            else if (IsKnockDownFinish)
             {
                 knockDownTimer = 0;
+                SetHealth(m_CurrentHealth);
             }
             if (knockDownTimer <= 0f)
             {
                 IsKnockDown = false;
                 isAutoHealing = true;
                 KnockDownWait = false;
-                if (m_CurrentHealth <= 0)
-                {
-                    SetHealth(m_CurrentHealth);
-                }
-                else if (knockDownHealth.Length < 2)
+                if (knockDownHealth.Length < 2 && m_CurrentHealth > 0)
                 {
                     SetHealth(knockDownHealth[knockDownHealthIndex] + recoveryHealthIncrement);
                 }

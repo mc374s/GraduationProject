@@ -4,8 +4,12 @@ using UnityEngine;
 
 public class AttackSMB : StateMachineBehaviour
 {
+    //public bool hitStop
     public GameObject attackEffect;
+    public bool effectAsChild = false;
+
     private CharacterController2D characterController = null;
+    GameObject effectClone = null;
     // OnStateEnter is called before OnStateEnter is called on any state inside this state machine
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
@@ -15,10 +19,23 @@ public class AttackSMB : StateMachineBehaviour
         }
         characterController.ResetMoveVector();
 
-        GameObject effectClone = Instantiate(attackEffect, characterController.rightPoint.position, characterController.rightPoint.rotation);
+        if (effectAsChild)
         {
-            effectClone.GetComponent<SpriteRenderer>().flipX = false;
+            effectClone = Instantiate(attackEffect, characterController.montionRightPoint);
+            if (effectClone.GetComponent<EffectController>() != null)
+            {
+                effectClone.GetComponent<EffectController>().parentAnimator = animator;
+            }
         }
+        else
+        {
+            effectClone = Instantiate(attackEffect, characterController.rightPoint.position, characterController.rightPoint.rotation);
+        }
+        //effectClone.GetComponent<Damager>().OnDamageableHit = characterController.OnDamagerDamageableHit;
+        //if (!characterController.IsFacingLeft)
+        //{
+        //    effectClone.GetComponent<SpriteRenderer>().flipX = false;
+        //}
 
     }
 
@@ -31,7 +48,10 @@ public class AttackSMB : StateMachineBehaviour
     //OnStateExit is called before OnStateExit is called on any state inside this state machine
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        //animator.SetBool("");
+        if (effectAsChild && effectClone != null)
+        {
+            Destroy(effectClone);
+        }
     }
 
     // OnStateMove is called before OnStateMove is called on any state inside this state machine

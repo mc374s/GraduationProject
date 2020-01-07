@@ -56,7 +56,7 @@ public class PlayerController : CharacterController2D
     private void FixedUpdate()
     {
         character2D.Move(moveVector * Time.fixedDeltaTime);
-
+        
         animator.SetFloat(hashHorizontalSpeed, character2D.Velocity.x);
         animator.SetFloat(hashVerticalSpeed, character2D.Velocity.y);
         animator.SetBool(hashGrounded, character2D.IsGrounded);
@@ -209,6 +209,11 @@ public class PlayerController : CharacterController2D
         if (input.Action.Down && !animator.GetBool(hashAttacking))
         {
             focusedObject = targetObject;
+
+            if (focusedObject == null)
+            {
+                return;
+            }
             focusedObject.GetComponent<EnemyController>().QualityAttackedStart();
             Debug.Log("QuilityAttackDetected: " + focusedObject.name);
             ResetMoveVector();
@@ -226,6 +231,9 @@ public class PlayerController : CharacterController2D
     {
         animator.SetBool(hashAttacking, false);
         focusedObject.GetComponent<EnemyController>().QualityAttackedFinish();
+
+        Time.timeScale = 1;
+        Time.fixedDeltaTime = 0.02f;
         Debug.Log("QuilityAttackFinish: " + focusedObject.name);
     }
 
@@ -270,7 +278,7 @@ public class PlayerController : CharacterController2D
 
     public override void OnAttackHit()
     {
-        Debug.Log("AttackHit");
+        
     }
 
 #if UNITY_EDITOR

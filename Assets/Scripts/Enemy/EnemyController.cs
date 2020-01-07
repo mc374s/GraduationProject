@@ -66,14 +66,20 @@ public class EnemyController : CharacterController2D
             animator.SetTrigger(hashAttack);
         }
     }
+
+    protected readonly string hurtStateName = "Hurt";
     public override void OnHurt()
     {
-        animator.SetTrigger(hashHurt);
+        //animator.SetTrigger(hashHurt);
+        animator.Play(hurtStateName, 1);
+        //if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
+        //{
+        //}
     }
     private Damager damagerRecord;
     public void OnHurt(Damager damager,Damageable damageable)
     {
-        if (damagerRecord != damager)
+        if (/*damagerRecord != damager*/true)
         {
             animator.SetTrigger(hashHurt);
             damagerRecord = damager;
@@ -94,6 +100,7 @@ public class EnemyController : CharacterController2D
     public override void OnDie()
     {
         animator.SetTrigger(hashDead);
+        gameObject.layer = initLayer;
         Destroy(gameObject, 2);
     }
 
@@ -109,6 +116,7 @@ public class EnemyController : CharacterController2D
     public void QualityAttackedStart()
     {
         damageable.KnockDownWait = true;
+        damageable.IsKnockDownFinish = false;
     }
     public void QualityAttackedFinish()
     {
