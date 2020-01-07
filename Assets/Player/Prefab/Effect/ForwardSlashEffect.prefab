@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7954707875276732885}
   - component: {fileID: 7954707875276732886}
   - component: {fileID: 7954707875276732887}
+  - component: {fileID: -2810371289646012186}
   m_Layer: 0
   m_Name: ForwardSlashEffect
   m_TagString: Untagged
@@ -77,7 +78,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 5.12, y: 5.12}
+  m_Size: {x: 20.48, y: 20.48}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 0
@@ -115,6 +116,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animationClip: {fileID: 7400000, guid: e60952cccd787ff49b51f4753a3afee3, type: 2}
+  destroyWithDuration: 1
+  duration: 5
 --- !u!114 &7954707875276732887
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -160,3 +163,17 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: Damager+NonDamagableEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
+  targetObject: {fileID: 0}
+--- !u!114 &-2810371289646012186
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7954707875276732880}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c86e537a32b3b484aa92f724084f0155, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 0.8

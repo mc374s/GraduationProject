@@ -11,6 +11,8 @@ public class SingleAnimation : MonoBehaviour
 
     private Animator animator;
 
+    public bool destroyWithDuration = false;
+    public float duration = 1;
     //public float delayTime = 0;
     //private float delayTimer = 0;
 
@@ -19,7 +21,15 @@ public class SingleAnimation : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         Play();
-        Destroy(gameObject, animationClip.length);
+        if (destroyWithDuration == false)
+        {
+            Destroy(gameObject, animationClip.length);
+        }
+        else
+        {
+            Debug.Log(gameObject.name + ", duration: " + duration);
+            Destroy(gameObject, duration);
+        }
     }
 
     // Update is called once per frame
