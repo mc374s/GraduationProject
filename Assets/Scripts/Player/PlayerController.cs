@@ -173,7 +173,6 @@ public class PlayerController : CharacterController2D
             case 1:
                 moveVector.x = character2D.spriteFaceLeft ? -10 : 10;
                 break;    
-
         }
 
     }
