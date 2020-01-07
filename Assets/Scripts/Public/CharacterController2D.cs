@@ -79,4 +79,6 @@ public class CharacterController2D : MonoBehaviour
     public virtual void OnAttackHit() { }
     public virtual void InvulnerableOn() { }
     public virtual void InvulnerableOff() { }
+    public virtual void Thrust() { }
+    public virtual void ThrustUpdate() { }
 }
