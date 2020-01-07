@@ -11,22 +11,45 @@ public class EffectController : MonoBehaviour
     public float duration = 4f;
     public float hitStopDelyTime = 0f;
     public Vector3 velocity = Vector3.zero;
+    public float maxMoveDistance = 500;
+
+    private Vector3 startPosition = Vector3.zero;
+    private float minDistanceFromParent = 6;
 
     [HideInInspector]
     public Animator parentAnimator = null;
+
+    protected readonly string waitStateName = "Waiting";
+    protected readonly int hashNext = Animator.StringToHash("next");
+    protected readonly int hashLast = Animator.StringToHash("last");
+    private int baseLayerIndex = 0;
+
+
+    private bool destoryFlag = false;
 
     // Start is called before the first frame update
     void Start()
     {
         animator = GetComponent<Animator>();
         damager = GetComponent<Damager>();
-        Play();
-
+        AudioSource audioSource = GetComponent<AudioSource>();
         if (destoryAfterLooped)
         {
             duration = animationClip.length;
         }
-        Destroy(gameObject, duration);
+        if (audioSource)
+        {
+            duration += audioSource.clip.length;
+        }
+
+
+        //Destroy(gameObject, duration);
+        StartCoroutine(Utility.DelayCoroutine(PlayNext, duration));
+
+        baseLayerIndex = animator.GetLayerIndex("Base Layer");
+
+        startPosition = transform.position;
+        Play();
     }
 
     // Update is called once per frame
@@ -34,9 +57,25 @@ public class EffectController : MonoBehaviour
     {
         if (velocity != Vector3.zero)
         {
-            transform.Translate(velocity * Time.deltaTime);
+            transform.Translate(velocity * Time.deltaTime * animator.speed);
+            //Debug.Log(velocity * Time.deltaTime * animator.speed);
+            if ((transform.position - startPosition).sqrMagnitude > maxMoveDistance * maxMoveDistance)
+            {
+                velocity = Vector3.zero;
+            }
+        }
+        if (destoryFlag)
+        {
+            AnimatorStateInfo curruntAnimatorState = animator.GetCurrentAnimatorStateInfo(baseLayerIndex);
+            if (curruntAnimatorState.IsName(waitStateName)/* || curruntAnimatorState.tagHash == hashLast*/)
+            {
+                Destroy(gameObject);
+                destoryFlag = false;
+            }
         }
     }
+
+    //private IEnumerator Delay(float useTime, float delayTime)
 
     void OnDestroy()
     {
@@ -76,7 +115,15 @@ public class EffectController : MonoBehaviour
         //animator.enabled = false;
         //parentAnimator.enabled = false;
         animator.speed = 0;
-        parentAnimator.speed = 0;
+
+        if (parentAnimator)
+        {
+            parentAnimator.speed = 0;
+        }
+        //if ((parentAnimator.transform.position - transform.position).sqrMagnitude < minDistanceFromParent * minDistanceFromParent)
+        //{
+        //    parentAnimator.speed = 0;
+        //}
         yield return new WaitForSeconds(useTime);
 
         //Debug.Log("HitStopFinished");
@@ -84,7 +131,19 @@ public class EffectController : MonoBehaviour
         //animator.enabled = true;
         //parentAnimator.enabled = true;
         animator.speed = 1f;
-        parentAnimator.speed = 1f;
+        if (parentAnimator)
+        {
+            parentAnimator.speed = 1f;
+        }
         hitStopFinished = true;
+    }
+
+    public void PlayNext()
+    {
+        if (animator != null && animationClip != null)
+        {
+            animator.SetTrigger(hashNext);
+            destoryFlag = true;
+        }
     }
 }

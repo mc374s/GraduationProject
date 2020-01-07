@@ -119,6 +119,7 @@ MonoBehaviour:
   duration: 6
   hitStopDelyTime: 0
   velocity: {x: 0, y: 0, z: 0}
+  maxMoveDistance: 500
   parentAnimator: {fileID: 0}
 --- !u!114 &763716701
 MonoBehaviour:
@@ -127,7 +128,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3092161727128022215}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9f5ebf0cb45896640b4c0bdebca23273, type: 3}
   m_Name: 

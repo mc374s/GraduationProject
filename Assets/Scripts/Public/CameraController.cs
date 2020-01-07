@@ -25,6 +25,8 @@ public class CameraController : MonoBehaviour
     public Vector3 FollowPosition { get; set; }
     public bool IsZooming { get; private set; }
 
+    public ShakeableTransform shakeableTransformRef = null;
+
     //void OnValidate()
     //{
     //    Debug.Log("OnValidate: " + followOffset);
@@ -119,6 +121,14 @@ public class CameraController : MonoBehaviour
         }
         transform.position = targetPosition;
         IsZooming = !IsZooming;
+    }
+
+    public void InduceStress(float stress)
+    {
+        if (shakeableTransformRef)
+        {
+            shakeableTransformRef.InduceStress(stress);
+        }
     }
 
 }

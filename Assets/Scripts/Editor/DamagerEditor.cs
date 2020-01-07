@@ -6,7 +6,7 @@ using UnityEngine;
 public class DamagerEditor : Editor
 {
     static BoxBoundsHandle s_BoxBoundsHandle = new BoxBoundsHandle();
-    static Color s_EnabledColor = Color.green + Color.grey;
+    static Color s_EnabledColor = Color.red/* + Color.grey*/;
 
     //SerializedProperty m_DamageProp;
     //SerializedProperty m_OffsetProp;

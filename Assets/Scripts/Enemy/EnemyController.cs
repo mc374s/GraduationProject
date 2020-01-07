@@ -66,9 +66,15 @@ public class EnemyController : CharacterController2D
             animator.SetTrigger(hashAttack);
         }
     }
+
+    protected readonly string hurtStateName = "Hurt";
     public override void OnHurt()
     {
-        animator.SetTrigger(hashHurt);
+        //animator.SetTrigger(hashHurt);
+        animator.Play(hurtStateName, 1);
+        //if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
+        //{
+        //}
     }
     private Damager damagerRecord;
     public void OnHurt(Damager damager,Damageable damageable)

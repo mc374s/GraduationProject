@@ -114,7 +114,8 @@ MonoBehaviour:
   jumpCounterMax: 2
   leftPoint: {fileID: 3297778844192384868}
   rightPoint: {fileID: 3297778842873182607}
-  attackEffectPoint: {fileID: 0}
+  montionRightPoint: {fileID: 0}
+  focusedObject: {fileID: 0}
   damageable: {fileID: 3297778842532651822}
   layerWhenKnockDown:
     serializedVersion: 2
@@ -244,7 +245,7 @@ GameObject:
   m_Layer: 9
   m_Name: RightPoint
   m_TagString: Untagged
-  m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -274,7 +275,7 @@ GameObject:
   m_Layer: 9
   m_Name: LeftPoint
   m_TagString: Untagged
-  m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -556,12 +557,12 @@ PrefabInstance:
     - target: {fileID: 1617523640982515048, guid: 9aed52855727c32419d9a4223ef888b4,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.9986641
+      value: -0.9986601
       objectReference: {fileID: 0}
     - target: {fileID: 1617523640982515048, guid: 9aed52855727c32419d9a4223ef888b4,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.05167248
+      value: 0.05175074
       objectReference: {fileID: 0}
     - target: {fileID: 8936900407527903848, guid: 9aed52855727c32419d9a4223ef888b4,
         type: 3}
@@ -581,7 +582,7 @@ PrefabInstance:
     - target: {fileID: 1248803179554845252, guid: 9aed52855727c32419d9a4223ef888b4,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.079108626
+      value: 0.07910899
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9aed52855727c32419d9a4223ef888b4, type: 3}

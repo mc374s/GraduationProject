@@ -10,12 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 1712971803299308536}
   - component: {fileID: 4462379798552911966}
-  - component: {fileID: 273011105145202693}
   - component: {fileID: 2252777519126206920}
   - component: {fileID: 8123814667198527017}
   m_Layer: 14
   m_Name: Camera
-  m_TagString: Untagged
+  m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -77,14 +76,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &273011105145202693
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6191809913267628251}
-  m_Enabled: 1
 --- !u!114 &2252777519126206920
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -112,12 +103,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   follow: {fileID: 0}
-  aim: {fileID: 0}
   targteOffset: {x: 0, y: 5, z: 0}
   smoothTime: 0.2
-  distance: 0
   border: {fileID: 102496254522689498}
-  sceneFiledHalfSize: {x: 0, y: 0, z: 0}
   velocity: {x: 0, y: 0, z: 0}
 --- !u!1 &7814253751024682600
 GameObject:

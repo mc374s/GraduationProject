@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 static class Utility
 {
@@ -29,5 +30,13 @@ static class Utility
         }
         target.position = newPosition;
         return direction;
+    }
+
+    public delegate void CallBackFunc();
+
+    public static IEnumerator DelayCoroutine(CallBackFunc callBackFunc, float delayTime)
+    {
+        yield return new WaitForSeconds(delayTime);
+        callBackFunc();
     }
 }

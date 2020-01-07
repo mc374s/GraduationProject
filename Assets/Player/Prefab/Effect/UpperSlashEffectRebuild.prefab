@@ -119,6 +119,7 @@ MonoBehaviour:
   duration: 5
   hitStopDelyTime: 0
   velocity: {x: 0, y: 0, z: 0}
+  maxMoveDistance: 500
   parentAnimator: {fileID: 0}
 --- !u!114 &763716701
 MonoBehaviour:
@@ -134,7 +135,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 20
   hitTimes: 5
-  hitIntervalTime: 0.06
+  hitIntervalTime: 0.04
   offset: {x: 0.24834532, y: -0.48416328}
   size: {x: 2.576192, y: 3.8049374}
   offsetBasedOnSpriteFacing: 1
