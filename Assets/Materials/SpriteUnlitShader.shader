@@ -6,20 +6,23 @@
         _MainTex ("Texture", 2D) = "white" {}
         _SubTex("Sub Texture", 2D) = "white" {}
 
-        [Enum(UnityEngine.Rendering.BlendMode)]
-        _BlendSrc("Blend Src", Float) = 5
-        [Enum(UnityEngine.Rendering.BlendMode)]
-        _BlendDst("Blend Dst", Float) = 10
-
-        [KeywordEnum(None, Additive, Multiply, Replace)]
-        _Overlay("Overlay mode", Float) = 2
+        [Enum(UnityEngine.Rendering.BlendMode)]_BlendSrc("Blend Src", Float) = 5
+        [Enum(UnityEngine.Rendering.BlendMode)]_BlendDst("Blend Dst", Float) = 10
+            
+        [Enum(UnityEngine.Rendering.CullMode)]_CullMode("Cull Mode", Float) = 0
+        [Enum(UnityEngine.Rendering.CompareFunction)]_ZTestMode("ZTest Mode", Float) = 3
+        [Toggle]_ZWriteParam("ZWrite", Float) = 0
+        [KeywordEnum(None, Additive, Multiply, Replace)]_Overlay("Overlay mode", Float) = 2
         //_TintColor("Tint Color", Color) = (1,1,1,1)
         _InvertThreshold("Invert Threshold", Range(0.0, 1.0)) = 0
     }
     SubShader
     {
         Tags { "RenderType" = "Transparent" "Queue" = "Transparent" }
-        Blend[_BlendSrc][_BlendDst]
+        Blend [_BlendSrc] [_BlendDst]
+        Cull [_CullMode]
+        ZTest [_ZTestMode]
+        ZWrite [_ZWriteParam]
         LOD 100
 
         Pass
@@ -59,8 +62,8 @@
                 v2f o;
                 o.vertex = UnityObjectToClipPos(v.vertex);
                 o.uv = TRANSFORM_TEX(v.uv, _MainTex);
-                o.uvSub = TRANSFORM_TEX(v.uv, _SubTex);
-                //o.uvSub = v.uv * _SubTex_ST.xy + _SubTex_ST.zw;
+                //o.uvSub = TRANSFORM_TEX(v.uv, _SubTex);
+                o.uvSub = v.uv * _SubTex_ST.xy + _SubTex_ST.zw;
                 o.color = v.color;
                 return o;
             }

@@ -57,6 +57,7 @@ public class QualityAttackSMB : StateMachineBehaviour
         {
             characterController.QualityAttackFinish();
             CameraController.Instance.ResetZoom(0.2f, 1f);
+            CameraController.Instance.InduceStress(1);
         }
         if (effectAsChild && effectClone != null)
         {

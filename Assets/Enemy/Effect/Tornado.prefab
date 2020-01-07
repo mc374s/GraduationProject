@@ -51,7 +51,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 7630ca5ecb9430347a092dcd6dc3b513, type: 2}
+  - {fileID: 2100000, guid: b03295c69a6408b4fa02424db31c5d3c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -118,8 +118,8 @@ MonoBehaviour:
   destoryAfterLooped: 0
   duration: 10
   hitStopDelyTime: 0
-  velocity: {x: 0, y: 0, z: 0}
-  maxMoveDistance: 500
+  velocity: {x: 20, y: 0, z: 0}
+  maxMoveDistance: 400
   parentAnimator: {fileID: 0}
 --- !u!114 &763716701
 MonoBehaviour:
@@ -128,14 +128,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3092161727128022215}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9f5ebf0cb45896640b4c0bdebca23273, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 20
+  damage: 30
   hitTimes: 20
-  hitIntervalTime: 0.4
+  hitIntervalTime: 0.02
   offset: {x: 0.019327462, y: -0.07160699}
   size: {x: 1.3563706, y: 1.215183}
   offsetBasedOnSpriteFacing: 1
@@ -161,6 +161,16 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+    m_TypeName: Damager+DamagableEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  OnNonDamageableHit:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Damager+NonDamagableEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  OnAllHitFinish:
+    m_PersistentCalls:
+      m_Calls:
       - m_Target: {fileID: 2256118904934066505}
         m_MethodName: PlayNext
         m_Mode: 1
@@ -172,11 +182,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_TypeName: Damager+DamagableEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
-  OnNonDamageableHit:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: Damager+NonDamagableEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   targetObject: {fileID: 0}

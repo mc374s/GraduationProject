@@ -36,6 +36,7 @@ public class Damager : MonoBehaviour
     public LayerMask hittableLayers;
     public DamagableEvent OnDamageableHit;
     public NonDamagableEvent OnNonDamageableHit;
+    public UnityEvent OnAllHitFinish;
 
     protected bool m_SpriteOriginallyFlipped;
     protected bool m_CanDamage = true;
@@ -97,6 +98,7 @@ public class Damager : MonoBehaviour
         Vector2 pointB = pointA + scaledSize;
 
         int hitCount = Physics2D.OverlapArea(pointA, pointB, m_AttackContactFilter, m_AttackOverlapResults);
+        //Physics2D.GetContacts()
 
         for (int i = 0; i < hitCount; i++)
         {
@@ -124,6 +126,7 @@ public class Damager : MonoBehaviour
                     if (hitTimes < 1)
                     {
                         DisableDamage();
+                        OnAllHitFinish.Invoke();
                     }
                 }
             }

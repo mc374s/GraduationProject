@@ -50,7 +50,7 @@ public class PlayerController : CharacterController2D
     private void FixedUpdate()
     {
         character2D.Move(moveVector * Time.fixedDeltaTime);
-
+        
         animator.SetFloat(hashHorizontalSpeed, character2D.Velocity.x);
         animator.SetFloat(hashVerticalSpeed, character2D.Velocity.y);
         animator.SetBool(hashGrounded, character2D.IsGrounded);

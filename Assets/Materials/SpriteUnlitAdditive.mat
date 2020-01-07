@@ -30,6 +30,9 @@ Material:
     m_Floats:
     - _BlendDst: 1
     - _BlendSrc: 5
+    - _CullMode: 0
     - _InvertThreshold: 0
     - _Overlay: 2
+    - _ZTestMode: 4
+    - _ZWriteParam: 0
     m_Colors: []

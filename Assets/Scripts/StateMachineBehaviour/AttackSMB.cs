@@ -22,16 +22,16 @@ public class AttackSMB : StateMachineBehaviour
         if (effectAsChild)
         {
             effectClone = Instantiate(attackEffect, characterController.montionRightPoint);
+            if (effectClone.GetComponent<EffectController>() != null)
+            {
+                effectClone.GetComponent<EffectController>().parentAnimator = animator;
+            }
         }
         else
         {
             effectClone = Instantiate(attackEffect, characterController.rightPoint.position, characterController.rightPoint.rotation);
         }
         //effectClone.GetComponent<Damager>().OnDamageableHit = characterController.OnDamagerDamageableHit;
-        if (effectClone.GetComponent<EffectController>() != null)
-        {
-            effectClone.GetComponent<EffectController>().parentAnimator = animator;
-        }
         //if (!characterController.IsFacingLeft)
         //{
         //    effectClone.GetComponent<SpriteRenderer>().flipX = false;

@@ -31,7 +31,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackEffect: {fileID: 3092161727128022215, guid: 05b2e21f3d9adb143b3c3f3725959609,
     type: 3}
-  effectAsChild: 0
+  effectAsChild: 1
 --- !u!1109 &-9014738372148784938
 AnimatorTransition:
   m_ObjectHideFlags: 1
@@ -203,7 +203,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 8ee74039f94ed9249a4866e40524ae80, type: 2}
+  m_Motion: {fileID: 7400000, guid: 20a3af1db173d5446841b12eaad6f097, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
