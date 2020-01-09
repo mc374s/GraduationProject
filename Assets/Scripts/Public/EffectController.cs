@@ -7,7 +7,7 @@ public class EffectController : MonoBehaviour
     private Animator animator;
     private Damager damager;
     public AnimationClip animationClip = null;
-    public bool destoryAfterLooped = true;
+    public bool destroyAfterLooped = true;
     public float duration = 4f;
     public float hitStopDelyTime = 0f;
     public Vector3 velocity = Vector3.zero;
@@ -25,7 +25,7 @@ public class EffectController : MonoBehaviour
     private int baseLayerIndex = 0;
 
 
-    private bool destoryFlag = false;
+    private bool destroyFlag = false;
 
     // Start is called before the first frame update
     void Start()
@@ -33,7 +33,7 @@ public class EffectController : MonoBehaviour
         animator = GetComponent<Animator>();
         damager = GetComponent<Damager>();
         AudioSource audioSource = GetComponent<AudioSource>();
-        if (destoryAfterLooped)
+        if (destroyAfterLooped)
         {
             duration = animationClip.length;
         }
@@ -64,13 +64,13 @@ public class EffectController : MonoBehaviour
                 velocity = Vector3.zero;
             }
         }
-        if (destoryFlag)
+        if (destroyFlag)
         {
             AnimatorStateInfo curruntAnimatorState = animator.GetCurrentAnimatorStateInfo(baseLayerIndex);
             if (curruntAnimatorState.IsName(waitStateName)/* || curruntAnimatorState.tagHash == hashLast*/)
             {
                 Destroy(gameObject);
-                destoryFlag = false;
+                destroyFlag = false;
             }
         }
     }
@@ -143,7 +143,7 @@ public class EffectController : MonoBehaviour
         if (animator != null && animationClip != null)
         {
             animator.SetTrigger(hashNext);
-            destoryFlag = true;
+            destroyFlag = true;
         }
     }
 }
