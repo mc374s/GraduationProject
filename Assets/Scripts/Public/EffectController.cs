@@ -10,7 +10,10 @@ public class EffectController : MonoBehaviour
     public bool destoryAfterLooped = true;
     public float duration = 4f;
     public float hitStopDelyTime = 0f;
-    public Vector3 velocity = Vector3.zero;
+    public Vector3 startvelocity = Vector3.zero;
+    public Vector3 acceleration = Vector3.zero;
+    public Vector3 maxVelocity = Vector3.zero;
+    private Vector3 velocity = Vector3.zero;
     public float maxMoveDistance = 500;
 
     private Vector3 startPosition = Vector3.zero;
@@ -21,7 +24,6 @@ public class EffectController : MonoBehaviour
 
     protected readonly string waitStateName = "Waiting";
     protected readonly int hashNext = Animator.StringToHash("next");
-    protected readonly int hashLast = Animator.StringToHash("last");
     private int baseLayerIndex = 0;
 
 
@@ -50,11 +52,15 @@ public class EffectController : MonoBehaviour
 
         startPosition = transform.position;
         Play();
+
+        velocity = startvelocity;
     }
 
     // Update is called once per frame
     void Update()
     {
+        velocity += acceleration;
+        velocity = Vector3.Min(velocity, maxVelocity);
         if (velocity != Vector3.zero)
         {
             transform.Translate(velocity * Time.deltaTime * animator.speed);

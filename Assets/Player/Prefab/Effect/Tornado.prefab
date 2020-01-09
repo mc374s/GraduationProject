@@ -93,7 +93,7 @@ Animator:
   m_GameObject: {fileID: 3092161727128022215}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 11e3d21ec4c173a4292879cf9bbea265, type: 2}
+  m_Controller: {fileID: 9100000, guid: df0a0efa6af1dbe49a5ad9bd66883137, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -120,7 +120,7 @@ MonoBehaviour:
   hitStopDelyTime: 0
   startvelocity: {x: 0, y: 0, z: 0}
   acceleration: {x: 2, y: 0, z: 0}
-  maxVelocity: {x: 40, y: 0, z: 0}
+  maxVelocity: {x: 30, y: 0, z: 0}
   maxMoveDistance: 100
   parentAnimator: {fileID: 0}
 --- !u!114 &763716701
@@ -148,7 +148,7 @@ MonoBehaviour:
   ignoreInvincibility: 0
   hittableLayers:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 33280
   OnDamageableHit:
     m_PersistentCalls:
       m_Calls:

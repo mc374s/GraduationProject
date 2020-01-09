@@ -118,7 +118,9 @@ MonoBehaviour:
   destoryAfterLooped: 0
   duration: 10
   hitStopDelyTime: 0
-  velocity: {x: 0, y: 0, z: 0}
+  startvelocity: {x: 0, y: 0, z: 0}
+  acceleration: {x: 0, y: 0, z: 0}
+  maxVelocity: {x: 0, y: 0, z: 0}
   maxMoveDistance: 500
   parentAnimator: {fileID: 0}
 --- !u!114 &763716701
@@ -168,4 +170,9 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: Damager+NonDamagableEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
+  OnAllHitFinish:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   targetObject: {fileID: 0}
