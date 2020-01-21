@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2256118904934066505}
   - component: {fileID: 763716701}
   m_Layer: 0
-  m_Name: Tornado
+  m_Name: UpperSlashEffectRebuild 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 3092161727128022215}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 8, y: 8, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -51,7 +51,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: b03295c69a6408b4fa02424db31c5d3c, type: 2}
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -74,10 +74,10 @@ SpriteRenderer:
   m_SortingOrder: 30
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 1
+  m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.28, y: 1.28}
+  m_Size: {x: 5.12, y: 5.12}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 0
@@ -114,14 +114,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8beb6bf47e9f7de48bd34118958d150d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animationClip: {fileID: 7400000, guid: 9f367eecf50dcf94eb79f8b7980b101f, type: 2}
+  animationClip: {fileID: 7400000, guid: 5f7d8497715a41c4e9c82166f426920e, type: 2}
   destoryAfterLooped: 0
-  duration: 10
+  duration: 5
   hitStopDelyTime: 0
   startvelocity: {x: 0, y: 0, z: 0}
-  acceleration: {x: -0.2, y: 0, z: 0}
-  maxVelocity: {x: -20, y: 0, z: 0}
-  maxMoveDistance: -100
+  acceleration: {x: 0, y: 0, z: 0}
+  maxVelocity: {x: 0, y: 0, z: 0}
+  maxMoveDistance: 500
   parentAnimator: {fileID: 0}
 --- !u!114 &763716701
 MonoBehaviour:
@@ -135,11 +135,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f5ebf0cb45896640b4c0bdebca23273, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 30
-  hitTimes: 20
-  hitIntervalTime: 0.02
-  offset: {x: 0.019327462, y: -0.07160699}
-  size: {x: 1.3563706, y: 1.215183}
+  damage: 20
+  hitTimes: 5
+  hitIntervalTime: 0.04
+  offset: {x: 0.24834532, y: -0.48416328}
+  size: {x: 2.576192, y: 3.8049374}
   offsetBasedOnSpriteFacing: 1
   spriteRenderer: {fileID: 0}
   canHitTriggers: 0
@@ -148,7 +148,7 @@ MonoBehaviour:
   ignoreInvincibility: 0
   hittableLayers:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 33280
   OnDamageableHit:
     m_PersistentCalls:
       m_Calls:
@@ -159,7 +159,7 @@ MonoBehaviour:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
-          m_FloatArgument: 0.1
+          m_FloatArgument: 0.2
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
@@ -172,18 +172,7 @@ MonoBehaviour:
       PublicKeyToken=null
   OnAllHitFinish:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2256118904934066505}
-        m_MethodName: PlayNext
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   targetObject: {fileID: 0}

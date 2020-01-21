@@ -7,16 +7,26 @@ using UnityEditor;
 public class EnemyController : CharacterController2D
 {
     protected readonly int hashHorizontalSpeed = Animator.StringToHash("horizontalSpeed");
+    protected readonly int hashVerticalSpeed = Animator.StringToHash("verticalSpeed");
     protected readonly int hashGrounded = Animator.StringToHash("grounded");
+    protected readonly int hashCeilinged = Animator.StringToHash("ceilinged");
     protected readonly int hashAttack = Animator.StringToHash("attack");
+    protected readonly int hashUsingSkill = Animator.StringToHash("usingSkill");
+    protected readonly int hashSkillType = Animator.StringToHash("skillType");
+    protected readonly int hashAction = Animator.StringToHash("action");
     protected readonly int hashHurt = Animator.StringToHash("hurt");
     protected readonly int hashKnockDown = Animator.StringToHash("knockDown");
     protected readonly int hashDead = Animator.StringToHash("dead");
+    protected readonly int hashAttacking = Animator.StringToHash("attacking");
 
     public Damageable damageable;
     public LayerMask layerWhenKnockDown;
     private int initLayer;
     private int newLayer;
+
+    
+    [SerializeField]
+    protected float verticalSpeed = 30;
 
     // Start is called before the first frame update
     void Start()
@@ -41,8 +51,14 @@ public class EnemyController : CharacterController2D
         character2D.Move(moveVector * Time.fixedDeltaTime);
 
         animator.SetFloat(hashHorizontalSpeed, character2D.Velocity.x);
-        //animator.SetFloat(hashVerticalSpeed, character2D.Velocity.y);
+        animator.SetFloat(hashVerticalSpeed, character2D.Velocity.y);
         animator.SetBool(hashGrounded, character2D.IsGrounded);
+    }
+
+    public override void HorizatalMovment()
+    {
+        base.HorizatalMovment();
+        moveVector.y = input.Vertical * verticalSpeed;
     }
 
     public override void Jump()
@@ -64,6 +80,22 @@ public class EnemyController : CharacterController2D
         {
             ResetMoveVector();
             animator.SetTrigger(hashAttack);
+        }
+        if (input.Skill.Down)
+        {
+            animator.SetTrigger(hashUsingSkill);
+            if (input.Horizontal != 0)
+            {
+                animator.SetInteger(hashSkillType, 2);
+            }
+            else if (input.Vertical > 0)
+            {
+                animator.SetInteger(hashSkillType, 3);
+            }
+            else
+            {
+                animator.SetInteger(hashSkillType, 1);
+            }
         }
     }
 

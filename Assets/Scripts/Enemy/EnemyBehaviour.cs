@@ -12,12 +12,22 @@ public class EnemyBehaviour : MonoBehaviour
 
     public Transform target = null;
 
-    [Range(0,360)]
+    [Range(0, 360)]
     public float attackFov = 30;
-    [Range(0,360)]
+    [Range(0, 360)]
     public float attackDirection = 180;
     public float attackDistance = 10;
     public Vector3 offset = Vector3.zero;
+
+    public enum Pattern
+    {
+        Simple = 0,
+        Boss = 1,
+        Player = 2
+    }
+
+    public Pattern movePattern = Pattern.Simple;
+
 
     // Start is called before the first frame update
     void Start()
@@ -33,7 +43,20 @@ public class EnemyBehaviour : MonoBehaviour
         {
             return;
         }
-        SimpleBehaviour();
+        switch (movePattern)
+        {
+            case Pattern.Simple:
+                SimpleBehaviour();
+                break;
+            case Pattern.Boss:
+                BossBehaviour();
+                break;
+            case Pattern.Player:
+                enemyController.input.Gain();
+                break;
+            default:
+                break;
+        }
     }
 
     void SimpleBehaviour()
@@ -42,7 +65,6 @@ public class EnemyBehaviour : MonoBehaviour
         {
             return;
         }
-        //enemyController.input.Gain();
         Vector3 dir = target.position - transform.position - offset;
         //dir = new Vector3(dir.x, 0, dir.z);
         if (Vector3.Angle(Vector3.left, dir) < 80 )
@@ -63,6 +85,10 @@ public class EnemyBehaviour : MonoBehaviour
 
     }
 
+    void BossBehaviour()
+    {
+        enemyController.input.Gain();
+    }
 
 
 

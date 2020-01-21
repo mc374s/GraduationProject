@@ -15,6 +15,7 @@ public class CharacterController2D : MonoBehaviour
 
     [SerializeField]
     protected float gravity = -30;
+    public float grivatyScale = 1;
     [SerializeField]
     protected float horzontalSpeed = 10;
 
@@ -43,7 +44,7 @@ public class CharacterController2D : MonoBehaviour
     }
     public virtual void VerticalMovment()
     {
-        moveVector.y += gravity * Time.deltaTime;
+        moveVector.y += gravity * grivatyScale * Time.deltaTime;
         if (character2D.IsGrounded && moveVector.y < 0)
         {
             moveVector.y = 0;
