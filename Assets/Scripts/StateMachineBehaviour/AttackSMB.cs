@@ -5,7 +5,7 @@ using UnityEngine;
 public class AttackSMB : StateMachineBehaviour
 {
     //public bool hitStop
-    public GameObject attackEffect;
+    public GameObject attackEffect = null;
     public bool effectAsChild = false;
 
     private CharacterController2D characterController = null;
@@ -19,17 +19,20 @@ public class AttackSMB : StateMachineBehaviour
         }
         characterController.ResetMoveVector();
 
-        if (effectAsChild)
+        if (attackEffect)
         {
-            effectClone = Instantiate(attackEffect, characterController.montionRightPoint);
-            if (effectClone.GetComponent<EffectController>() != null)
+            if (effectAsChild)
             {
-                effectClone.GetComponent<EffectController>().parentAnimator = animator;
+                effectClone = Instantiate(attackEffect, characterController.montionRightPoint);
+                if (effectClone.GetComponent<EffectController>() != null)
+                {
+                    effectClone.GetComponent<EffectController>().parentAnimator = animator;
+                }
             }
-        }
-        else
-        {
-            effectClone = Instantiate(attackEffect, characterController.rightPoint.position, characterController.rightPoint.rotation);
+            else
+            {
+                effectClone = Instantiate(attackEffect, characterController.rightPoint.position, characterController.rightPoint.rotation);
+            }
         }
         //effectClone.GetComponent<Damager>().OnDamageableHit = characterController.OnDamagerDamageableHit;
         //if (!characterController.IsFacingLeft)

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3297778842532651811}
   - component: {fileID: 3297778842532651810}
   - component: {fileID: 3297778842532651821}
-  - component: {fileID: 3297778842532651820}
+  - component: {fileID: 5481018002971776746}
   - component: {fileID: 3297778842532651823}
   - component: {fileID: 3297778842532651822}
   m_Layer: 9
@@ -95,7 +95,7 @@ MonoBehaviour:
   groundedRaycastDistance: 0.1
   spriteFaceLeft: 1
   doSimpleMove: 0
---- !u!114 &3297778842532651820
+--- !u!114 &5481018002971776746
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -104,14 +104,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 3297778842532651816}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fb2d309797caca845a676aa651846b68, type: 3}
+  m_Script: {fileID: 11500000, guid: 27a9b742dced1cc4b85affb5f69d6bc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 8765085782515822948}
   gravity: -50
+  grivatyScale: 1
   horzontalSpeed: 10
   jumpHeight: 20
-  jumpCounterMax: 2
+  jumpCounterMax: 1
   leftPoint: {fileID: 3297778844192384868}
   rightPoint: {fileID: 3297778842873182607}
   montionRightPoint: {fileID: 0}
@@ -120,6 +121,7 @@ MonoBehaviour:
   layerWhenKnockDown:
     serializedVersion: 2
     m_Bits: 32768
+  verticalSpeed: 30
 --- !u!114 &3297778842532651823
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -137,6 +139,7 @@ MonoBehaviour:
   attackDirection: 360
   attackDistance: 10
   offset: {x: -0.14, y: 5.19, z: 0}
+  movePattern: 0
 --- !u!114 &3297778842532651822
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -177,7 +180,7 @@ MonoBehaviour:
   OnTakeDamage:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3297778842532651820}
+      - m_Target: {fileID: 5481018002971776746}
         m_MethodName: OnHurt
         m_Mode: 0
         m_Arguments:
@@ -193,7 +196,7 @@ MonoBehaviour:
   OnKnockDown:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3297778842532651820}
+      - m_Target: {fileID: 5481018002971776746}
         m_MethodName: OnKnockDown
         m_Mode: 1
         m_Arguments:
@@ -209,7 +212,7 @@ MonoBehaviour:
   OnDie:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3297778842532651820}
+      - m_Target: {fileID: 5481018002971776746}
         m_MethodName: OnDie
         m_Mode: 1
         m_Arguments:
@@ -557,12 +560,12 @@ PrefabInstance:
     - target: {fileID: 1617523640982515048, guid: 9aed52855727c32419d9a4223ef888b4,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.9986601
+      value: -0.9986618
       objectReference: {fileID: 0}
     - target: {fileID: 1617523640982515048, guid: 9aed52855727c32419d9a4223ef888b4,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.05175074
+      value: 0.05171663
       objectReference: {fileID: 0}
     - target: {fileID: 8936900407527903848, guid: 9aed52855727c32419d9a4223ef888b4,
         type: 3}
@@ -577,12 +580,12 @@ PrefabInstance:
     - target: {fileID: 1248803179554845252, guid: 9aed52855727c32419d9a4223ef888b4,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.99686605
+      value: 0.99686635
       objectReference: {fileID: 0}
     - target: {fileID: 1248803179554845252, guid: 9aed52855727c32419d9a4223ef888b4,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.07910899
+      value: 0.07910472
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9aed52855727c32419d9a4223ef888b4, type: 3}

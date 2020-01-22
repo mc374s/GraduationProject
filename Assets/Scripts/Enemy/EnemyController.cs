@@ -10,26 +10,17 @@ public class EnemyController : CharacterController2D
     protected readonly int hashVerticalSpeed = Animator.StringToHash("verticalSpeed");
     protected readonly int hashGrounded = Animator.StringToHash("grounded");
     protected readonly int hashCeilinged = Animator.StringToHash("ceilinged");
-    protected readonly int hashAttack = Animator.StringToHash("attack");
-    protected readonly int hashUsingSkill = Animator.StringToHash("usingSkill");
-    protected readonly int hashSkillType = Animator.StringToHash("skillType");
-    protected readonly int hashAction = Animator.StringToHash("action");
     protected readonly int hashHurt = Animator.StringToHash("hurt");
     protected readonly int hashKnockDown = Animator.StringToHash("knockDown");
     protected readonly int hashDead = Animator.StringToHash("dead");
-    protected readonly int hashAttacking = Animator.StringToHash("attacking");
 
     public Damageable damageable;
     public LayerMask layerWhenKnockDown;
-    private int initLayer;
-    private int newLayer;
-
-    
-    [SerializeField]
-    protected float verticalSpeed = 30;
+    protected int initLayer;
+    protected int newLayer;
 
     // Start is called before the first frame update
-    void Start()
+    protected virtual void Start()
     {
         character2D = GetComponent<Character2D>();
         initLayer = gameObject.layer;
@@ -41,12 +32,12 @@ public class EnemyController : CharacterController2D
     //{
     //    //input.Release();
     //}
-    private void LateUpdate()
+    protected virtual void LateUpdate()
     {
         input.Release();
     }
 
-    private void FixedUpdate()
+    protected virtual void FixedUpdate()
     {
         character2D.Move(moveVector * Time.fixedDeltaTime);
 
@@ -55,61 +46,14 @@ public class EnemyController : CharacterController2D
         animator.SetBool(hashGrounded, character2D.IsGrounded);
     }
 
-    public override void HorizatalMovment()
-    {
-        base.HorizatalMovment();
-        moveVector.y = input.Vertical * verticalSpeed;
-    }
-
-    public override void Jump()
-    {
-        if (character2D.IsGrounded)
-        {
-            jumpCounter = 0;
-        }
-        if (input.Jump.Down && ++jumpCounter < jumpCounterMax)
-        {
-            moveVector.y = 0;
-            moveVector.y = Mathf.Sqrt(-2f * gravity * jumpHeight);
-        }
-    }
-
-    public override void Attack()
-    {
-        if (input.Attack.Down)
-        {
-            ResetMoveVector();
-            animator.SetTrigger(hashAttack);
-        }
-        if (input.Skill.Down)
-        {
-            animator.SetTrigger(hashUsingSkill);
-            if (input.Horizontal != 0)
-            {
-                animator.SetInteger(hashSkillType, 2);
-            }
-            else if (input.Vertical > 0)
-            {
-                animator.SetInteger(hashSkillType, 3);
-            }
-            else
-            {
-                animator.SetInteger(hashSkillType, 1);
-            }
-        }
-    }
-
     protected readonly string hurtStateName = "Hurt";
     public override void OnHurt()
     {
         //animator.SetTrigger(hashHurt);
         animator.Play(hurtStateName, 1);
-        //if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
-        //{
-        //}
     }
-    private Damager damagerRecord;
-    public void OnHurt(Damager damager,Damageable damageable)
+    protected Damager damagerRecord;
+    public virtual void OnHurt(Damager damager,Damageable damageable)
     {
         if (/*damagerRecord != damager*/true)
         {
@@ -145,12 +89,12 @@ public class EnemyController : CharacterController2D
         }
     }
 
-    public void QualityAttackedStart()
+    public virtual void QualityAttackedStart()
     {
         damageable.KnockDownWait = true;
         damageable.IsKnockDownFinish = false;
     }
-    public void QualityAttackedFinish()
+    public virtual void QualityAttackedFinish()
     {
         damageable.IsKnockDownFinish = true;
     }
