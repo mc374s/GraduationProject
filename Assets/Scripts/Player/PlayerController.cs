@@ -219,7 +219,7 @@ public class PlayerController : CharacterController2D
             ResetMoveVector();
             animator.SetTrigger(hashAction);
             animator.SetBool(hashAttacking, true);
-            animator.SetInteger(hashSkillType, Random.Range(1, 4));
+            //animator.SetInteger(hashSkillType, Random.Range(1, 4));
         }
     }
 
