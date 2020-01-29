@@ -133,7 +133,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee35cf05536b9a442a8832843cc1230f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
+  target: {fileID: 881608968056563467, guid: 56f075b394b99d44f878c4da54357302, type: 3}
   attackFov: 360
   attackDirection: 360
   attackDistance: 10
@@ -188,9 +188,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33914396592d55142a102751fac28421, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingHealth: 500
+  startingHealth: 600
   maxSkillEnergy: 5
-  knockDownHealth: 96000000
+  knockDownHealth: c8000000
   recoveryHealthIncrement: 300
   healSpeed: 0
   invulnerableAfterDamage: 0
@@ -524,11 +524,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3297778842532651817}
     m_Modifications:
-    - target: {fileID: 3074480270425239371, guid: 9aed52855727c32419d9a4223ef888b4,
-        type: 3}
-      propertyPath: m_Name
-      value: enemy_front
-      objectReference: {fileID: 0}
     - target: {fileID: 7911516536674002696, guid: 9aed52855727c32419d9a4223ef888b4,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -583,6 +578,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3074480270425239371, guid: 9aed52855727c32419d9a4223ef888b4,
+        type: 3}
+      propertyPath: m_Name
+      value: enemy_front
       objectReference: {fileID: 0}
     - target: {fileID: 3660474166502253686, guid: 9aed52855727c32419d9a4223ef888b4,
         type: 3}

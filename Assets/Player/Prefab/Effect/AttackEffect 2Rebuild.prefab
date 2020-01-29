@@ -115,7 +115,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f5ebf0cb45896640b4c0bdebca23273, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 80
+  damage: 100
   hitTimes: 1
   hitIntervalTime: 0.1
   offset: {x: 1.401689, y: -4.109967}
@@ -267,6 +267,9 @@ MonoBehaviour:
   duration: 4
   generateDelayTime: 0
   hitStopDelayTime: 0
+  startvelocity: {x: 0, y: 0, z: 0}
+  acceleration: {x: 0, y: 0, z: 0}
+  maxVelocity: {x: 0, y: 0, z: 0}
   velocity: {x: 0, y: 0, z: 0}
   maxMoveDistance: 500
   parentAnimator: {fileID: 0}
