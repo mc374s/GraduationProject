@@ -17,7 +17,10 @@ public class EnemySpawner : MonoBehaviour
     public Vector2 offset = new Vector2(1.5f, 1f);
     public Vector2 size = new Vector2(2.5f, 1f);
     [Header("指定生成位置"), Tooltip("When RandomSapwn is false")]
-    public GameObject[] spawnPoints;
+    public Transform[] spawnPointCollection;
+
+    [Header("行動参照位置")]
+    public Transform[] movePointCollection;
 
     private bool isSpawning = false;
 
@@ -57,12 +60,13 @@ public class EnemySpawner : MonoBehaviour
                 }
                 else
                 {
-                    int spawnPointIndex = count < spawnPoints.Length ? count : spawnPoints.Length - 1;
-                    spawnPosition = spawnPoints[spawnPointIndex].transform.position;
-                    spawnRotation = spawnPoints[spawnPointIndex].transform.rotation;
+                    int spawnPointIndex = count < spawnPointCollection.Length ? count : spawnPointCollection.Length - 1;
+                    spawnPosition = spawnPointCollection[spawnPointIndex].position;
+                    spawnRotation = spawnPointCollection[spawnPointIndex].rotation;
                 }
                 enemyCollection[count] = Instantiate(enemyPrefab, spawnPosition, spawnRotation);
                 enemyCollection[count].GetComponent<EnemyBehaviour>().target = target;
+                enemyCollection[count].GetComponent<EnemyBehaviour>().movePointCollection = movePointCollection;
                 ++count;
                 spawnTimer = 0;
             }

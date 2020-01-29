@@ -5,11 +5,11 @@ using UnityEngine;
 public class BirdEnemyController : EnemyController
 {
 
-    protected readonly int hashAttacking = Animator.StringToHash("attacking");
-    protected readonly int hashUsingSkill = Animator.StringToHash("usingSkill");
-    protected readonly int hashSkillType = Animator.StringToHash("skillType");
-    protected readonly int hashAction = Animator.StringToHash("action");
-    protected readonly int hashNext = Animator.StringToHash("next");
+    public readonly int hashAttacking = Animator.StringToHash("attacking");
+    public readonly int hashUsingSkill = Animator.StringToHash("usingSkill");
+    public readonly int hashSkillType = Animator.StringToHash("skillType");
+    public readonly int hashAction = Animator.StringToHash("action");
+    public readonly int hashNext = Animator.StringToHash("next");
 
     [SerializeField]
     protected float verticalSpeed = 50;
@@ -48,8 +48,9 @@ public class BirdEnemyController : EnemyController
     public void DropAttackUpdate()
     {
         // DropAttackStart()
-        if (jumpCounter++ < jumpCounterMax)
+        if (jumpCounter < jumpCounterMax)
         {
+            ++jumpCounter;
             moveVector.y = 0;
             moveVector.y = Mathf.Sqrt(-2f * gravity * jumpHeight);
         }
@@ -58,7 +59,14 @@ public class BirdEnemyController : EnemyController
             jumpCounter = 0;
             animator.SetInteger(hashSkillType, 0);
         }
-
-        base.VerticalMovment();
+        else
+        {
+            if (character2D.Velocity.y > -50)
+            {
+                HorizatalMovment();
+            }
+            base.VerticalMovment();
+        }
     }
+
 }

@@ -22,8 +22,8 @@ public class EffectController : MonoBehaviour
     [HideInInspector]
     public Animator parentAnimator = null;
 
-    protected readonly string waitStateName = "Waiting";
-    protected readonly int hashNext = Animator.StringToHash("next");
+    public readonly string waitStateName = "Waiting";
+    public readonly int hashNext = Animator.StringToHash("next");
     private int baseLayerIndex = 0;
 
 

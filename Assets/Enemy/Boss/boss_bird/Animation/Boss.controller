@@ -1022,7 +1022,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e14d4c8a4c8540946830c68c5b979bb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackEffect: {fileID: 3092161727128022215, guid: d570a1fa1ec65e845addb46d0d245c3d,
+  attackEffect: {fileID: 3092161727128022215, guid: bcd38e52f163ea74cb91e42d38eae12c,
     type: 3}
   effectAsChild: 0
 --- !u!1102 &-3444027692817589520
@@ -1087,7 +1087,7 @@ BlendTree:
   m_Name: LocomotionBlendTree
   m_Childs:
   - serializedVersion: 2
-    m_Motion: {fileID: 7400000, guid: f3b2a909ca0c2bd438cf573e8b1aa157, type: 2}
+    m_Motion: {fileID: 7400000, guid: 21cdf7a4082907144bae1595ab51793d, type: 2}
     m_Threshold: -0.001
     m_Position: {x: 0, y: 0}
     m_TimeScale: 1
@@ -1095,7 +1095,7 @@ BlendTree:
     m_DirectBlendParameter: horizentalSpeed
     m_Mirror: 0
   - serializedVersion: 2
-    m_Motion: {fileID: 7400000, guid: f3b2a909ca0c2bd438cf573e8b1aa157, type: 2}
+    m_Motion: {fileID: 7400000, guid: 21cdf7a4082907144bae1595ab51793d, type: 2}
     m_Threshold: 0
     m_Position: {x: 0, y: 0}
     m_TimeScale: 1
@@ -1103,7 +1103,7 @@ BlendTree:
     m_DirectBlendParameter: horizentalSpeed
     m_Mirror: 0
   - serializedVersion: 2
-    m_Motion: {fileID: 7400000, guid: f3b2a909ca0c2bd438cf573e8b1aa157, type: 2}
+    m_Motion: {fileID: 7400000, guid: 21cdf7a4082907144bae1595ab51793d, type: 2}
     m_Threshold: 0.001
     m_Position: {x: 0, y: 0}
     m_TimeScale: 1
@@ -1351,7 +1351,7 @@ BlendTree:
   m_Name: LocomotionBlendTree
   m_Childs:
   - serializedVersion: 2
-    m_Motion: {fileID: 7400000, guid: f3b2a909ca0c2bd438cf573e8b1aa157, type: 2}
+    m_Motion: {fileID: 7400000, guid: e7a3ae73f24a09547a0156ecae8778af, type: 2}
     m_Threshold: -0.001
     m_Position: {x: 0, y: 0}
     m_TimeScale: 1
@@ -1367,7 +1367,7 @@ BlendTree:
     m_DirectBlendParameter: horizentalSpeed
     m_Mirror: 0
   - serializedVersion: 2
-    m_Motion: {fileID: 7400000, guid: f3b2a909ca0c2bd438cf573e8b1aa157, type: 2}
+    m_Motion: {fileID: 7400000, guid: e7a3ae73f24a09547a0156ecae8778af, type: 2}
     m_Threshold: 0.001
     m_Position: {x: 0, y: 0}
     m_TimeScale: 1
@@ -2056,7 +2056,7 @@ AnimatorStateMachine:
     - {fileID: 926463930345323372}
   m_StateMachineBehaviours: []
   m_AnyStatePosition: {x: 220, y: 0, z: 0}
-  m_EntryPosition: {x: 180, y: 80, z: 0}
+  m_EntryPosition: {x: 440, y: -10, z: 0}
   m_ExitPosition: {x: 680, y: 0, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
   m_DefaultState: {fileID: -5253551282726599953}
@@ -2873,7 +2873,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e14d4c8a4c8540946830c68c5b979bb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackEffect: {fileID: 3092161727128022215, guid: d570a1fa1ec65e845addb46d0d245c3d,
+  attackEffect: {fileID: 3092161727128022215, guid: bcd38e52f163ea74cb91e42d38eae12c,
     type: 3}
   effectAsChild: 0
 --- !u!1101 &5844735296366473476

@@ -91,7 +91,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   groundedLayerMask:
     serializedVersion: 2
-    m_Bits: 1024
+    m_Bits: 7168
   groundedRaycastDistance: 0.1
   spriteFaceLeft: 1
   doSimpleMove: 0
@@ -121,7 +121,6 @@ MonoBehaviour:
   layerWhenKnockDown:
     serializedVersion: 2
     m_Bits: 32768
-  verticalSpeed: 30
 --- !u!114 &3297778842532651823
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -139,6 +138,7 @@ MonoBehaviour:
   attackDirection: 360
   attackDistance: 10
   offset: {x: -0.14, y: 5.19, z: 0}
+  ground: {fileID: 0}
   movePattern: 0
 --- !u!114 &3297778842532651822
 MonoBehaviour:

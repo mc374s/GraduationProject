@@ -3,7 +3,8 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Boss
   layers:
   - Default
   - TransparentFX
@@ -16,13 +17,13 @@ TagManager:
   - Player
   - Enemy
   - Platform
-  - PlayerWeapon
-  - EnemyWeapon
+  - Ground
+  - Obstacle
   - IgnorePlayer
   - Camera
   - KnockDownEnemy
-  - 
-  - 
+  - Effect
+  - BehaviourTrigger
   - 
   - 
   - 
@@ -52,6 +53,9 @@ TagManager:
     locked: 0
   - name: Player
     uniqueID: 4293225401
+    locked: 0
+  - name: Effect
+    uniqueID: 3541815085
     locked: 0
   - name: Foreground
     uniqueID: 2775889689

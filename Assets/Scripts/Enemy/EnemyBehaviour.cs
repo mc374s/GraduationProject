@@ -18,16 +18,20 @@ public class EnemyBehaviour : MonoBehaviour
     public float attackDirection = 180;
     public float attackDistance = 10;
     public Vector3 offset = Vector3.zero;
+    private Vector3 position = Vector3.zero;
+
+    public Transform ground = null;
+    public Transform[] movePointCollection;
+    //public Vec
 
     public enum Pattern
     {
-        Simple = 0,
-        Boss = 1,
+        BoneEnemy = 0,
+        BirdBoss = 1,
         Player = 2
     }
 
-    public Pattern movePattern = Pattern.Simple;
-
+    public Pattern movePattern = Pattern.BoneEnemy;
 
     // Start is called before the first frame update
     void Start()
@@ -43,13 +47,14 @@ public class EnemyBehaviour : MonoBehaviour
         {
             return;
         }
+        position = transform.position + offset;
         switch (movePattern)
         {
-            case Pattern.Simple:
-                SimpleBehaviour();
+            case Pattern.BoneEnemy:
+                BoneEnemyBehaviour();
                 break;
-            case Pattern.Boss:
-                BossBehaviour();
+            case Pattern.BirdBoss:
+                BirdBossBehaviour();
                 break;
             case Pattern.Player:
                 enemyController.input.Gain();
@@ -59,13 +64,13 @@ public class EnemyBehaviour : MonoBehaviour
         }
     }
 
-    void SimpleBehaviour()
+    void BoneEnemyBehaviour()
     {
         if (target == null)
         {
             return;
         }
-        Vector3 dir = target.position - transform.position - offset;
+        Vector3 dir = target.position - position;
         //dir = new Vector3(dir.x, 0, dir.z);
         if (Vector3.Angle(Vector3.left, dir) < 80 )
         {
@@ -81,13 +86,234 @@ public class EnemyBehaviour : MonoBehaviour
             enemyController.input.Horizontal = 0;
             enemyController.input.Attack.Down = true;
         }
-
-
     }
 
-    void BossBehaviour()
+
+    [Header("ボスパラメータ")]
+    [SerializeField]
+    private float nearDistance = 15;
+    [SerializeField]
+    private float mediumDistance = 40;
+    [SerializeField]
+    private float farDistance = 90;
+    enum MoveStep
     {
-        enemyController.input.Gain();
+        BattleSatrt = 0,
+        LoopStart,
+        Loop,
+        AttackStart,
+        Attack,
+        Damaged,
+    }
+    private MoveStep moveStep = MoveStep.BattleSatrt;
+    public float moveToleranceMin = 1;
+    public float moveToleranceMax = 10;
+    private float moveTolerance = 1;
+    public int targetPointIndex = 0;
+    [SerializeField]
+    private float skillCoolDownTime = 5;
+    [SerializeField]
+    private float skillCoolDownTimeOnGround = 3;
+    private float skillCoolDownTimer = 0;
+    private bool isTargetLeft = true;
+    void BirdBossBehaviour()
+    {
+        Vector3 dir;
+        if (target == null)
+        {
+            return;
+        }
+        if (movePointCollection.Length > 0)
+        {
+            skillCoolDownTimer += Time.deltaTime;
+            switch (moveStep)
+            {
+                case MoveStep.BattleSatrt:
+
+
+                    moveStep = MoveStep.LoopStart;
+                    break;
+                case MoveStep.LoopStart:
+                    float sqrMagnitudeMax = float.MaxValue;
+                    for (int i = 0; i < movePointCollection.Length; i++)
+                    {
+                        dir = movePointCollection[i].position - position;
+                        if (dir.sqrMagnitude < sqrMagnitudeMax)
+                        {
+                            sqrMagnitudeMax = dir.sqrMagnitude;
+                            targetPointIndex = i;
+                        }
+                    }
+                    dir = target.position - position;
+                    isTargetLeft = Vector3.Dot(dir, Vector3.left) > 0 ? true : false;
+                    moveTolerance = moveToleranceMin;
+                    skillCoolDownTimer = 0;
+                    moveStep = MoveStep.Loop;
+                    break;
+                case MoveStep.Loop:
+                    // DropAttack close to target 
+                    Vector3 movePointPosition = movePointCollection[targetPointIndex].position;
+                    if (enemyController.animator.GetInteger(((BirdEnemyController)enemyController).hashSkillType) == 3)
+                    {
+                        movePointPosition = target.position;
+                        if (character2D.IsGrounded)
+                        {
+                            moveStep = MoveStep.AttackStart;
+                            skillCoolDownTimer = 0;
+                        }
+                    }
+                    Debug.DrawLine(position, movePointPosition);
+                    if (position.x < movePointPosition.x - moveTolerance)
+                    {
+                        enemyController.input.Horizontal = 1;
+                    }
+                    else if (position.x > movePointPosition.x + moveTolerance)
+                    {
+                        enemyController.input.Horizontal = -1;
+                    }
+                    if (position.y < movePointPosition.y - moveTolerance)
+                    {
+                        enemyController.input.Vertical = 1;
+                    }
+                    else if (position.y > movePointPosition.y + moveTolerance)
+                    {
+                        enemyController.input.Vertical = -1;
+                    }
+                    if (skillCoolDownTimer > skillCoolDownTime)
+                    {
+                        moveStep = MoveStep.AttackStart;
+                        skillCoolDownTimer = 0;
+                    }
+                    break;
+                case MoveStep.AttackStart:
+                    if (position.x < target.position.x)
+                    {
+                        enemyController.input.Horizontal = 1;
+                    }
+                    else
+                    {
+                        enemyController.input.Horizontal = -1;
+                    }
+                    // Towards to target before attack
+                    dir = target.position - position;
+                    if (Vector3.Dot(transform.right, dir) <= 0)
+                    {
+                        moveStep = MoveStep.Attack;
+                    }
+                    break;
+                case MoveStep.Attack:
+                    Debug.DrawLine(position, target.position, Color.red);
+                    if (!character2D.IsGrounded)
+                    {
+                        enemyController.input.Skill.Down = true;
+                        if (Random.Range(0, 100) < 70)
+                        {
+                            enemyController.input.Vertical = 1;
+                        }
+                        moveStep = MoveStep.LoopStart;
+                    }
+                    else
+                    {
+                        dir = target.position - position;
+                        if (dir.sqrMagnitude < nearDistance * nearDistance)
+                        {
+                            targetPointIndex = movePointCollection.Length / 2 + 1;
+                            moveStep = MoveStep.LoopStart;
+                        }
+                        else if (dir.sqrMagnitude < mediumDistance * mediumDistance)
+                        {
+                            enemyController.input.Skill.Down = true;
+                            if (Random.Range(0, 100) < 30)
+                            {
+                                enemyController.input.Vertical = -1;
+                            }
+                            moveStep = MoveStep.AttackStart;
+                        }
+                        else/* if(dir.sqrMagnitude < farDistance * farDistance)*/
+                        {
+                            enemyController.input.Skill.Down = true;
+                            if (Random.Range(0, 100) < 60)
+                            {
+                                enemyController.input.Vertical = -1;
+                            }
+                            moveStep = MoveStep.AttackStart;
+                        }
+                        if (skillCoolDownTimer > skillCoolDownTimeOnGround)
+                        {
+                            moveStep = MoveStep.LoopStart;
+                        }
+                    }
+                    break;
+                case MoveStep.Damaged:
+                    if (true)
+                    {
+
+                    }
+
+                    break;
+
+                default:
+                    break;
+            }
+        }
+    }
+    public void NextMovePoint()
+    {
+        targetPointIndex = isTargetLeft ? targetPointIndex + 1 : targetPointIndex - 1 + movePointCollection.Length;
+        targetPointIndex %= movePointCollection.Length;
+        moveTolerance = moveToleranceMin;
+
+    }
+    public void MoveAroundObstacle(GameObject other)
+    {
+        moveTolerance = moveToleranceMax;
+        Vector3 otherPosition = other.transform.position + new Vector3(0, -6, 0);
+        Debug.DrawLine(position, otherPosition);
+
+        //float angelToNextPoint = Vector3.Angle(Vector3.left, movePointCollection[targetPointIndex].position - position);
+        //if (angelToNextPoint > 45 && angelToNextPoint < 135)
+        //{
+        //    if (position.x < otherPosition.x)
+        //    {
+        //        enemyController.input.Horizontal = -1;
+        //    }
+        //    else if (position.x > otherPosition.x)
+        //    {
+        //        enemyController.input.Horizontal = 1;
+        //    }
+        //}
+        //else
+        //{
+        //    if (position.y < otherPosition.y)
+        //    {
+        //        enemyController.input.Vertical = -1;
+        //    }
+        //    else if (position.y > otherPosition.y)
+        //    {
+        //        enemyController.input.Vertical = 1;
+        //    }
+        //}
+        //if (position.x < otherPosition.x)
+        //{
+        //    enemyController.input.Horizontal = -1;
+        //}
+        //else if (position.x >= otherPosition.x)
+        //{
+        //    enemyController.input.Horizontal = 1;
+        //}
+        if (position.y < otherPosition.y)
+        {
+            enemyController.input.Vertical = -1;
+        }
+        else if (position.y >= otherPosition.y)
+        {
+            enemyController.input.Vertical = 1;
+        }
+    }
+
+    public void EscapeFromMovePoint()
+    {
+        //moveTolerance = moveToleranceMin;
     }
 
 
@@ -121,7 +347,7 @@ public class EnemyBehaviour : MonoBehaviour
     //}
     private void OnDrawGizmosSelected()
     {
-        Vector3 position = transform.position + offset;
+        //Vector3 position = transform.position + offset;
         //draw the cone of view
         Vector3 forward = (character2D == null ? spriteFaceLeft : character2D.spriteFaceLeft) ? Vector2.left : Vector2.right;
         forward = Quaternion.Euler(0, 0, (character2D == null ? spriteFaceLeft : character2D.spriteFaceLeft) ? -attackDirection : attackDirection) * forward;
@@ -132,6 +358,17 @@ public class EnemyBehaviour : MonoBehaviour
 
         Handles.color = new Color(1.0f, 0, 0, 0.2f);
         Handles.DrawSolidArc(position, -Vector3.forward, (endpoint - position).normalized, attackFov, attackDistance);
+
+        if (movePattern == Pattern.BirdBoss)
+        {
+            Handles.color = new Color(1.0f, 1.0f, 0, 0.1f);
+            Handles.DrawSolidArc(position, -Vector3.forward, (endpoint - position).normalized, attackFov, farDistance);
+            Handles.color = new Color(1.0f, 0, 0, 0.1f);
+            Handles.DrawSolidArc(position, -Vector3.forward, (endpoint - position).normalized, attackFov, mediumDistance);
+            Handles.color = new Color(0.0f, 0, 1.0f, 0.1f);
+            Handles.DrawSolidArc(position, -Vector3.forward, (endpoint - position).normalized, attackFov, nearDistance);
+
+        }
 
         //Draw attack range
         //Handles.color = new Color(1.0f, 0, 0, 0.1f);

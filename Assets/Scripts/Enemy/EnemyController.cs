@@ -6,13 +6,13 @@ using UnityEditor;
 #endif
 public class EnemyController : CharacterController2D
 {
-    protected readonly int hashHorizontalSpeed = Animator.StringToHash("horizontalSpeed");
-    protected readonly int hashVerticalSpeed = Animator.StringToHash("verticalSpeed");
-    protected readonly int hashGrounded = Animator.StringToHash("grounded");
-    protected readonly int hashCeilinged = Animator.StringToHash("ceilinged");
-    protected readonly int hashHurt = Animator.StringToHash("hurt");
-    protected readonly int hashKnockDown = Animator.StringToHash("knockDown");
-    protected readonly int hashDead = Animator.StringToHash("dead");
+    public readonly int hashHorizontalSpeed = Animator.StringToHash("horizontalSpeed");
+    public readonly int hashVerticalSpeed = Animator.StringToHash("verticalSpeed");
+    public readonly int hashGrounded = Animator.StringToHash("grounded");
+    public readonly int hashCeilinged = Animator.StringToHash("ceilinged");
+    public readonly int hashHurt = Animator.StringToHash("hurt");
+    public readonly int hashKnockDown = Animator.StringToHash("knockDown");
+    public readonly int hashDead = Animator.StringToHash("dead");
 
     public Damageable damageable;
     public LayerMask layerWhenKnockDown;
