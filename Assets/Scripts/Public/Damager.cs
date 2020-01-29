@@ -37,6 +37,7 @@ public class Damager : MonoBehaviour
     public DamagableEvent OnDamageableHit;
     public NonDamagableEvent OnNonDamageableHit;
     public UnityEvent OnAllHitFinish;
+    public UnityEvent HitEventBridge;
 
     protected bool m_SpriteOriginallyFlipped;
     protected bool m_CanDamage = true;
@@ -108,6 +109,7 @@ public class Damager : MonoBehaviour
             if ((targetObject == null && damageable) || (targetObject != null && damageable && targetObject == damageable.gameObject))
             {
                 OnDamageableHit.Invoke(this, damageable);
+                HitEventBridge.Invoke();
                 damageable.TakeDamage(this, ignoreInvincibility);
                 if (disableDamageAfterHit)
                     DisableDamage();

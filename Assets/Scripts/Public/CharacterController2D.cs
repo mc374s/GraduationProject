@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(Character2D))]
 public class CharacterController2D : MonoBehaviour
@@ -30,6 +31,8 @@ public class CharacterController2D : MonoBehaviour
     public Transform montionRightPoint;
     [HideInInspector]
     public GameObject focusedObject;
+
+    public UnityEvent HitEventBridge;
 
     public bool IsFacingLeft { get { return character2D.spriteFaceLeft; } }
 
