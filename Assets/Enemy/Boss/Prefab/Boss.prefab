@@ -358,9 +358,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33914396592d55142a102751fac28421, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingHealth: 7500
+  startingHealth: 3000
   maxSkillEnergy: 5
-  knockDownHealth: 64000000d0070000a00f0000581b0000
+  knockDownHealth: 64000000840300000807000060090000
   recoveryHealthIncrement: 0
   healSpeed: 0
   invulnerableAfterDamage: 0
