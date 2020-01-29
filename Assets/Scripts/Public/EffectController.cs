@@ -13,7 +13,7 @@ public class EffectController : MonoBehaviour
     public Vector3 startvelocity = Vector3.zero;
     public Vector3 acceleration = Vector3.zero;
     public Vector3 maxVelocity = Vector3.zero;
-    private Vector3 velocity = Vector3.zero;
+    public Vector3 velocity = Vector3.zero;
     public float maxMoveDistance = 500;
 
     private Vector3 startPosition = Vector3.zero;
@@ -60,7 +60,7 @@ public class EffectController : MonoBehaviour
     void Update()
     {
         velocity += acceleration;
-        velocity = Vector3.Min(velocity, maxVelocity);
+        velocity = Vector2.Min(velocity, maxVelocity);
         if (velocity != Vector3.zero)
         {
             transform.Translate(velocity * Time.deltaTime * animator.speed);

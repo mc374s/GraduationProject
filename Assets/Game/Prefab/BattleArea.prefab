@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3404024101757727420}
   - component: {fileID: 3404024101757727423}
-  m_Layer: 15
+  m_Layer: 12
   m_Name: Right
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
@@ -67,7 +67,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3404024102030367536}
   - component: {fileID: 3404024102030367537}
-  m_Layer: 15
+  m_Layer: 12
   m_Name: Left
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
@@ -123,7 +123,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3404024102062305343}
-  m_Layer: 15
+  m_Layer: 12
   m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -294,4 +294,5 @@ MonoBehaviour:
   RandomSapwn: 1
   offset: {x: 0, y: 0}
   size: {x: 100, y: 60}
-  spawnPoints: []
+  spawnPointCollection: []
+  movePointCollection: []

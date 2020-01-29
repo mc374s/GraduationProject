@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
@@ -88,14 +89,34 @@ public class EnemyBehaviour : MonoBehaviour
         }
     }
 
+    [System.Serializable]
+    public class BirdParameter
+    {
+       public float nearDistance = 15;
+       public float[] nearAttackRate = new float[3];
+       public float mediumDistance = 40;
+       public float[] mediunAttackRate = new float[3];
+       public float farDistance = 90;
+       public float[] farAttackRate = new float[3];
+    }
+    [Header("ボス攻撃パラメータ")]
+    [SerializeField]
+    private BirdParameter birdAttackParameter;
 
-    [Header("ボスパラメータ")]
     [SerializeField]
     private float nearDistance = 15;
     [SerializeField]
+    private float[] nearAttackRate = new float[3];
+    [SerializeField]
     private float mediumDistance = 40;
     [SerializeField]
+    private float[] mediunAttackRate = new float[3];
+    [SerializeField]
     private float farDistance = 90;
+    [SerializeField]
+    private float[] farAttackRate = new float[3];
+
+    [SerializeField]
     enum MoveStep
     {
         BattleSatrt = 0,
@@ -106,16 +127,20 @@ public class EnemyBehaviour : MonoBehaviour
         Damaged,
     }
     private MoveStep moveStep = MoveStep.BattleSatrt;
+
+    [Header("ボス移動パラメータ")]
     public float moveToleranceMin = 1;
-    public float moveToleranceMax = 10;
+    public float moveToleranceMax = 7;
     private float moveTolerance = 1;
-    public int targetPointIndex = 0;
+    private int targetPointIndex = 0;
     [SerializeField]
     private float skillCoolDownTime = 5;
     [SerializeField]
     private float skillCoolDownTimeOnGround = 3;
     private float skillCoolDownTimer = 0;
     private bool isTargetLeft = true;
+    [SerializeField]
+
     void BirdBossBehaviour()
     {
         Vector3 dir;
