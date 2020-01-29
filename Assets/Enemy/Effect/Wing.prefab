@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 3092161727128022215}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children:
   - {fileID: 6947944137603847030}
   - {fileID: 76060088052654577}
@@ -121,9 +121,9 @@ MonoBehaviour:
   duration: 20
   generateDelayTime: 0
   hitStopDelayTime: 0
-  startvelocity: {x: -20, y: 0, z: 0}
+  startvelocity: {x: -30, y: 0, z: 0}
   acceleration: {x: 0, y: 0, z: 0}
-  maxVelocity: {x: -20, y: 0, z: 0}
+  maxVelocity: {x: -30, y: 0, z: 0}
   velocity: {x: 0, y: 0, z: 0}
   maxMoveDistance: -200
   parentAnimator: {fileID: 0}
@@ -310,9 +310,9 @@ MonoBehaviour:
   duration: 20
   generateDelayTime: 0
   hitStopDelayTime: 0
-  startvelocity: {x: -20, y: 0, z: 0}
+  startvelocity: {x: 0, y: 0, z: 0}
   acceleration: {x: 0, y: 0, z: 0}
-  maxVelocity: {x: -20, y: 0, z: 0}
+  maxVelocity: {x: 0, y: 0, z: 0}
   velocity: {x: 0, y: 0, z: 0}
   maxMoveDistance: -200
   parentAnimator: {fileID: 0}
@@ -499,9 +499,9 @@ MonoBehaviour:
   duration: 20
   generateDelayTime: 0
   hitStopDelayTime: 0
-  startvelocity: {x: -20, y: 0, z: 0}
+  startvelocity: {x: 0, y: 0, z: 0}
   acceleration: {x: 0, y: 0, z: 0}
-  maxVelocity: {x: -20, y: 0, z: 0}
+  maxVelocity: {x: 0, y: 0, z: 0}
   velocity: {x: 0, y: 0, z: 0}
   maxMoveDistance: -200
   parentAnimator: {fileID: 0}

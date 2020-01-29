@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 3092161727128022267}
   - component: {fileID: 3092161727128022212}
   - component: {fileID: 3092161727128022213}
-  - component: {fileID: 2256118904934066505}
+  - component: {fileID: 880182606428716232}
   - component: {fileID: 763716701}
   m_Layer: 0
-  m_Name: UpperSlashEffectRebuild 1
+  m_Name: DropAttack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -102,7 +102,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &2256118904934066505
+--- !u!114 &880182606428716232
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -114,9 +114,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8beb6bf47e9f7de48bd34118958d150d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animationClip: {fileID: 7400000, guid: 5f7d8497715a41c4e9c82166f426920e, type: 2}
+  animationClip: {fileID: 7400000, guid: fa283ddec29a48340825c0a2bfc0088d, type: 2}
   destroyAfterLooped: 1
-  duration: 5
+  duration: 6
   generateDelayTime: 0
   hitStopDelayTime: 0
   startvelocity: {x: 0, y: 0, z: 0}
@@ -137,9 +137,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f5ebf0cb45896640b4c0bdebca23273, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 20
-  hitTimes: 5
-  hitIntervalTime: 0.04
+  damage: 100
+  hitTimes: 10
+  hitIntervalTime: 0.02
   offset: {x: 0.24834532, y: -0.48416328}
   size: {x: 2.576192, y: 3.8049374}
   offsetBasedOnSpriteFacing: 1
@@ -150,11 +150,11 @@ MonoBehaviour:
   ignoreInvincibility: 0
   hittableLayers:
     serializedVersion: 2
-    m_Bits: 33280
+    m_Bits: 256
   OnDamageableHit:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2256118904934066505}
+      - m_Target: {fileID: 880182606428716232}
         m_MethodName: HitStop
         m_Mode: 4
         m_Arguments:
