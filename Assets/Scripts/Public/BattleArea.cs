@@ -7,24 +7,36 @@ public class BattleArea : Trigger
     public Event onBattleFinish;
 
     public Collider2D[] wallCollection;
-    [HideInInspector]
-    public EnemySpawner spawner;
+
+    public EnemySpawner[] spawnerCollection;
     // Start is called before the first frame update
     void Start()
     {
         collider = GetComponent<Collider2D>();
         collider.enabled = true;
-        spawner = GetComponent<EnemySpawner>();
-        spawner.enabled = false;
+        if (spawnerCollection.Length > 0)
+        {
+            foreach (EnemySpawner spawner in spawnerCollection)
+            {
+                spawner.enabled = false;
+            }
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (!spawner.CheckAlive() && Global.isBattling)
+        if (spawnerCollection.Length > 0 && Global.isBattling)
         {
-            //FinishBattle();
-            onBattleFinish.Invoke(gameObject);
+            bool noEnemyAlive = true;
+            foreach (EnemySpawner spawner in spawnerCollection)
+            {
+                noEnemyAlive = noEnemyAlive && !spawner.CheckAlive();
+            }
+            if (noEnemyAlive)
+            {
+                onBattleFinish.Invoke(gameObject);
+            }
         }
     }
 
@@ -33,7 +45,13 @@ public class BattleArea : Trigger
         Debug.Log("Start Battle!");
         Global.isBattling = true;
         collider.enabled = false;
-        spawner.enabled = true;
+        if (spawnerCollection.Length > 0)
+        {
+            foreach (EnemySpawner spawner in spawnerCollection)
+            {
+                spawner.enabled = true;
+            }
+        }
         Global.borderLeft = wallCollection[0].transform.position.x/* + wallCollection[0].GetComponentInParent<Transform>().position.x + transform.position.x*/;
         Global.borderRight = wallCollection[1].transform.position.x/* + wallCollection[1].GetComponentInParent<Transform>().position.x + transform.position.x*/;
 
@@ -52,7 +70,13 @@ public class BattleArea : Trigger
     {
         Debug.Log("Finish Battle!");
         gameObject.SetActive(false);
-        spawner.enabled = false;
+        if (spawnerCollection.Length > 0)
+        {
+            foreach (EnemySpawner spawner in spawnerCollection)
+            {
+                spawner.enabled = false;
+            }
+        }
         Global.isBattling = false;
     }
 }

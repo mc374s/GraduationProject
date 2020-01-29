@@ -310,7 +310,7 @@ MonoBehaviour:
   offset: {x: -0.14, y: 5.19, z: 0}
   ground: {fileID: 0}
   movePointCollection: []
-  movePattern: 1
+  movePattern: 3
   birdAttackParameter:
     nearDistance: 15
     nearAttackRate:

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3092161727128022267}
   - component: {fileID: 3092161727128022212}
   - component: {fileID: 3092161727128022213}
-  - component: {fileID: -848599025713907196}
+  - component: {fileID: 3363258240909325651}
   - component: {fileID: 763716701}
   - component: {fileID: 7525097687673154265}
   m_Layer: 0
@@ -103,7 +103,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &
+--- !u!114 &3363258240909325651
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -117,7 +117,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animationClip: {fileID: 7400000, guid: b368dbe15cf32a04ebb06e8f2f6f30c6, type: 2}
   destroyAfterLooped: 1
-  duration: 1
+  duration: 4
   generateDelayTime: 0
   hitStopDelayTime: 0
   startvelocity: {x: 0, y: 0, z: 0}
