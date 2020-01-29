@@ -19,6 +19,8 @@ public class PlayerController : CharacterController2D
     public float thrustMaxDistance = 300f;
     public float thrustMoveSpeed = 20f;
     private bool canThrust = false;
+    protected int m_CurrentSkillEnergy;
+    public int maxSkillEnergy = 100;
 
     protected readonly int hashHorizontalSpeed = Animator.StringToHash("horizontalSpeed");
     protected readonly int hashVerticalSpeed = Animator.StringToHash("verticalSpeed");
@@ -36,11 +38,18 @@ public class PlayerController : CharacterController2D
     protected readonly int hashThrust = Animator.StringToHash("thrust");
 
     public Damageable damageableReference;
+    public PlayerUI playerUI;
+
+    public int CurrentSkillEnergy
+    {
+        get { return m_CurrentSkillEnergy; }
+    }
 
     // Start is called before the first frame update
     void Start()
     {
         character2D = GetComponent<Character2D>();
+        m_CurrentSkillEnergy = 0;
     }
 
     // Update is called once per frame
@@ -202,7 +211,9 @@ public class PlayerController : CharacterController2D
         }
         if (input.Skill.Down)
         {
-            animator.SetTrigger(hashUsingSkill);
+            {
+                animator.SetTrigger(hashUsingSkill);
+            }
             if (input.HorizontalRaw != 0)
             {
                 animator.SetInteger(hashSkillType, 2);
@@ -258,9 +269,7 @@ public class PlayerController : CharacterController2D
         Time.timeScale = 1;
         Time.fixedDeltaTime = 0.02f;
         Debug.Log("QuilityAttackFinish: " + focusedObject.name);
-        moveVector.x = character2D.spriteFaceLeft ? 10 : -10;
-        transform.position = new Vector3(transform.position.x + moveVector.x, transform.position.y, transform.position.z);
-        moveVector.x = 0;
+
     }
 
 
@@ -305,6 +314,31 @@ public class PlayerController : CharacterController2D
     public override void OnAttackHit()
     {
         
+    }
+
+    public void ChargeSkillEnergy(int amount)
+    {
+        m_CurrentSkillEnergy += amount;
+
+        if (m_CurrentSkillEnergy > maxSkillEnergy)
+            m_CurrentSkillEnergy = maxSkillEnergy;
+
+        playerUI.ChangeSkillEnergy(this);
+
+    }
+
+    public bool CheckSkillEnergy(int amount)
+    {
+        if (m_CurrentSkillEnergy >= amount)
+        {
+            m_CurrentSkillEnergy -= amount;
+            playerUI.ChangeSkillEnergy(this);
+            return true;
+        }
+        playerUI.ChangeSkillEnergy(this);
+        return false;
+
+
     }
 
 #if UNITY_EDITOR

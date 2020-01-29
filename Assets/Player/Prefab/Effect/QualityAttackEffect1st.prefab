@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3837189176838635218}
   m_Layer: 0
   m_Name: QualityAttackEffect1st
-  m_TagString: Untagged
+  m_TagString: finish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -119,6 +119,9 @@ MonoBehaviour:
   duration: 6
   generateDelayTime: 0
   hitStopDelayTime: 0
+  startvelocity: {x: 0, y: 0, z: 0}
+  acceleration: {x: 0, y: 0, z: 0}
+  maxVelocity: {x: 0, y: 0, z: 0}
   velocity: {x: 0, y: 0, z: 0}
   maxMoveDistance: 500
   parentAnimator: {fileID: 0}

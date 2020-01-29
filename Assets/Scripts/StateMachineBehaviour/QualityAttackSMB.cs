@@ -46,7 +46,7 @@ public class QualityAttackSMB : StateMachineBehaviour
     // OnStateUpdate is called before OnStateUpdate is called on any state inside this state machine
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        characterController.QualityAttackUpdate();
+        //characterController.QualityAttackUpdate();
         //Time.fixedDeltaTime = Time.timeScale * 0.02f;
     }
 
@@ -56,8 +56,8 @@ public class QualityAttackSMB : StateMachineBehaviour
         if (KilledMontion)
         {
             characterController.QualityAttackFinish();
-            CameraController.Instance.ResetZoom(0.2f, 1f);
-            CameraController.Instance.InduceStress(1);
+            CameraController.Instance.ResetZoom(0.2f, 0.5f);
+            //CameraController.Instance.InduceStress(1);
         }
         if (effectAsChild && effectClone != null)
         {

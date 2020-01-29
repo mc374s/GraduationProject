@@ -16,8 +16,11 @@ public class Damageable : MonoBehaviour
     public class HealEvent : UnityEvent<int, Damageable>
     { }
 
+    [Serializable]
+    public class SkillEvent : UnityEvent<Damageable>
+    { }
+
     public int startingHealth = 5;
-    public int maxSkillEnergy = 5;
     public int[] knockDownHealth;
     private int knockDownHealthIndex;
     private int maxHealHealth;
@@ -41,7 +44,6 @@ public class Damageable : MonoBehaviour
     protected float m_InulnerabilityTimer;
     [SerializeField]
     protected int m_CurrentHealth;
-    protected int m_CurrentSkillEnergy;
     protected Vector2 m_DamageDirection;
     protected bool m_ResetHealthOnSceneReload;
     protected bool m_ResetSkillEnergyOnSceneReload;
@@ -49,11 +51,6 @@ public class Damageable : MonoBehaviour
     public int CurrentHealth
     {
         get { return m_CurrentHealth; }
-    }
-
-    public int CurrentSkillEnergy
-    {
-        get { return m_CurrentSkillEnergy; }
     }
 
 
@@ -65,7 +62,6 @@ public class Damageable : MonoBehaviour
     void OnEnable()
     {
         m_CurrentHealth = startingHealth;
-        m_CurrentSkillEnergy = 0;
 
         OnHealthSet.Invoke(this);
 

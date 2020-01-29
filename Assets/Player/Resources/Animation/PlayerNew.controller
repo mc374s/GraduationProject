@@ -554,13 +554,6 @@ AnimatorStateMachine:
   m_AnyStateTransitions: []
   m_EntryTransitions: []
   m_StateMachineTransitions:
-  - first: {fileID: 8515728760548432236}
-    second:
-    - {fileID: -5953029926328372906}
-    - {fileID: 8578405349640877249}
-    - {fileID: 1385707629954636211}
-    - {fileID: -7345736092150456167}
-    - {fileID: 3012223836658195621}
   - first: {fileID: -8718666593229491761}
     second:
     - {fileID: -8894609578343804325}
@@ -570,6 +563,13 @@ AnimatorStateMachine:
     - {fileID: -9159811028583249050}
     - {fileID: 8915751914285716229}
     - {fileID: 341353171804565359}
+  - first: {fileID: 8515728760548432236}
+    second:
+    - {fileID: -5953029926328372906}
+    - {fileID: 8578405349640877249}
+    - {fileID: 1385707629954636211}
+    - {fileID: -7345736092150456167}
+    - {fileID: 3012223836658195621}
   - first: {fileID: -7317356204175811067}
     second:
     - {fileID: -7724627637563990633}
@@ -1584,7 +1584,10 @@ AnimatorTransition:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: 
-  m_Conditions: []
+  m_Conditions:
+  - m_ConditionMode: 1
+    m_ConditionEvent: action
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 7909629975406007325}
   m_Solo: 0
@@ -2131,8 +2134,7 @@ AnimatorState:
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -1089811121379550763}
-  m_StateMachineBehaviours:
-  - {fileID: 1846271638383745117}
+  m_StateMachineBehaviours: []
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -2567,22 +2569,6 @@ AnimatorState:
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
---- !u!114 &1846271638383745117
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2ad2bb8d6b481db41b6629c17bd975c3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  KilledMontion: 0
-  attackEffect: {fileID: 2281635666313082440, guid: c7bdde0127cce3c43ad178aaf5cf6dbc,
-    type: 3}
-  effectAsChild: 1
 --- !u!1102 &2163657137147825646
 AnimatorState:
   serializedVersion: 5
@@ -2704,6 +2690,11 @@ AnimatorStateMachine:
     - {fileID: 7907374584373131902}
     - {fileID: 6532967679696633739}
     - {fileID: -6907616833285671280}
+  - first: {fileID: -538648716263191892}
+    second:
+    - {fileID: 6632843977044592083}
+    - {fileID: 6233279061831105222}
+    - {fileID: -8157378463150361208}
   - first: {fileID: 7015729129502818786}
     second:
     - {fileID: 6892556966653823032}
@@ -2712,11 +2703,6 @@ AnimatorStateMachine:
     - {fileID: -2310965275862444130}
     - {fileID: 8547768228723012776}
     - {fileID: -4456000303807546497}
-  - first: {fileID: -538648716263191892}
-    second:
-    - {fileID: 6632843977044592083}
-    - {fileID: 6233279061831105222}
-    - {fileID: -8157378463150361208}
   m_StateMachineBehaviours: []
   m_AnyStatePosition: {x: 220, y: 0, z: 0}
   m_EntryPosition: {x: 440, y: 0, z: 0}

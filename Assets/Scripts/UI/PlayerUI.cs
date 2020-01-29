@@ -49,9 +49,9 @@ public class PlayerUI : MonoBehaviour
         HealthGauge.fillAmount = (float)damageable.CurrentHealth / (float)damageable.startingHealth;
     }
 
-    public void ChangeSkillEnergy(Damageable damageable)
+    public void ChangeSkillEnergy(PlayerController player)
     {
-        skillEnergyGauge.fillAmount = (float)damageable.CurrentSkillEnergy / (float)damageable.maxSkillEnergy;
+        skillEnergyGauge.fillAmount = (float)player.CurrentSkillEnergy / (float)player.maxSkillEnergy;
     }
 
 

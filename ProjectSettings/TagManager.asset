@@ -3,7 +3,10 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: [normal, Boss]
+  tags:
+  - normal
+  - Boss
+  - finish
   layers:
   - Default
   - TransparentFX
