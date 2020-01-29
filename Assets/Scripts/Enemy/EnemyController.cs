@@ -20,6 +20,8 @@ public class EnemyController : CharacterController2D
     protected int initLayer;
     protected int newLayer;
 
+    public EnemyUI UIReference = null;
+
     // Start is called before the first frame update
     protected virtual void Start()
     {
@@ -76,6 +78,10 @@ public class EnemyController : CharacterController2D
     {
         animator.SetBool(hashKnockDown, true);
         gameObject.layer = newLayer;
+        if (UIReference)
+        {
+            UIReference.ShowKnockDownButton();
+        }
     }
 
     public override void OnDie()
@@ -91,6 +97,10 @@ public class EnemyController : CharacterController2D
         {
             animator.SetBool(hashKnockDown, false);
             gameObject.layer = initLayer;
+            if (UIReference)
+            {
+                UIReference.HideKnockDownButton();
+            }
         }
     }
 
@@ -98,6 +108,10 @@ public class EnemyController : CharacterController2D
     {
         damageable.KnockDownWait = true;
         damageable.IsKnockDownFinish = false;
+        if (UIReference)
+        {
+            UIReference.HideKnockDownButton();
+        }
     }
     public virtual void QualityAttackedFinish()
     {

@@ -10,6 +10,8 @@ public class EnemyUI : MonoBehaviour
 
     [SerializeField]
     public Damageable representedDamageable;
+
+    public Image knockDownButton = null;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,13 +20,24 @@ public class EnemyUI : MonoBehaviour
         {
             StartCoroutine(FillGauge());
         }
+        if (knockDownButton)
+        {
+            knockDownButton.enabled = false;
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        transform.eulerAngles = Vector3.zero;
     }
+    //private void LateUpdate()
+    //{
+    //    if (knockDownButton && knockDownButton.enabled)
+    //    {
+    //        knockDownButton.enabled = false;
+    //    }
+    //}
 
     private IEnumerator FillGauge()
     {
@@ -42,6 +55,15 @@ public class EnemyUI : MonoBehaviour
     public void ChangeHealth(Damageable damageable)
     {
         HealthGauge.fillAmount = (float)damageable.CurrentHealth / (float)damageable.startingHealth;
+    }
+
+    public void ShowKnockDownButton()
+    {
+        knockDownButton.enabled = true;
+    }
+    public void HideKnockDownButton()
+    {
+        knockDownButton.enabled = false;
     }
 
 }
