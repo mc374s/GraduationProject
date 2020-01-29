@@ -36,12 +36,12 @@ public class PlayerUI : MonoBehaviour
         for (float start = 0; start < usedTime; start += Time.deltaTime)
         {
             HealthGauge.fillAmount = start / usedTime;
-            //skillPowerGauge.fillAmount = start / usedTime;
+            skillEnergyGauge.fillAmount = start / usedTime;
             yield return null;
         }
 
         HealthGauge.fillAmount = 1;
-        //skillPowerGauge.fillAmount = 1;
+        skillEnergyGauge.fillAmount = 1;
     }
 
     public void ChangeHealth(Damageable damageable)

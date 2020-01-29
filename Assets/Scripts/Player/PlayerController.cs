@@ -20,7 +20,7 @@ public class PlayerController : CharacterController2D
     public float thrustMoveSpeed = 20f;
     private bool canThrust = false;
     protected int m_CurrentSkillEnergy;
-    public int maxSkillEnergy = 100;
+    public int maxSkillEnergy = 250;
 
     protected readonly int hashHorizontalSpeed = Animator.StringToHash("horizontalSpeed");
     protected readonly int hashVerticalSpeed = Animator.StringToHash("verticalSpeed");
@@ -49,7 +49,7 @@ public class PlayerController : CharacterController2D
     void Start()
     {
         character2D = GetComponent<Character2D>();
-        m_CurrentSkillEnergy = 0;
+        m_CurrentSkillEnergy = 250;
     }
 
     // Update is called once per frame
@@ -211,29 +211,33 @@ public class PlayerController : CharacterController2D
         }
         if (input.Skill.Down)
         {
+
+            if (CheckSkillEnergy(20))
             {
                 animator.SetTrigger(hashUsingSkill);
-            }
-            if (input.HorizontalRaw != 0)
-            {
-                animator.SetInteger(hashSkillType, 2);
-                thrustDistance = thrustMaxDistance;
-                canThrust = false;
-            }
-            else if (input.VerticalRaw > 0)
-            {
-                ResetMoveVector();
-                animator.SetInteger(hashSkillType, 3);
-            }
-            else if (input.VerticalRaw < 0)
-            {
-                ResetMoveVector();
-                animator.SetInteger(hashSkillType, 4);
-            }
-            else
-            {
-                ResetMoveVector();
-                animator.SetInteger(hashSkillType, 1);
+
+
+                if (input.HorizontalRaw != 0)
+                {
+                    animator.SetInteger(hashSkillType, 2);
+                    thrustDistance = thrustMaxDistance;
+                    canThrust = false;
+                }
+                else if (input.VerticalRaw > 0)
+                {
+                    ResetMoveVector();
+                    animator.SetInteger(hashSkillType, 3);
+                }
+                else if (input.VerticalRaw < 0)
+                {
+                    ResetMoveVector();
+                    animator.SetInteger(hashSkillType, 4);
+                }
+                else
+                {
+                    ResetMoveVector();
+                    animator.SetInteger(hashSkillType, 1);
+                }
             }
         }
     }

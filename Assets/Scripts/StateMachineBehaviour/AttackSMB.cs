@@ -33,7 +33,7 @@ public class AttackSMB : StateMachineBehaviour
             {
                 effectClone = Instantiate(attackEffect, characterController.rightPoint.position, characterController.rightPoint.rotation);
             }
-            if (effectClone.GetComponent<Damager>() != null)
+            if (effectClone.GetComponent<Damager>() != null && effectClone.tag == "normal")
             {
                 effectClone.GetComponent<Damager>().HitEventBridge = characterController.HitEventBridge;
             }
