@@ -116,9 +116,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animationClip: {fileID: 7400000, guid: b368dbe15cf32a04ebb06e8f2f6f30c6, type: 2}
-  destoryAfterLooped: 1
+  destroyAfterLooped: 1
   duration: 1
-  hitStopDelyTime: 0
+  generateDelayTime: 0
+  hitStopDelayTime: 0
+  startvelocity: {x: 0, y: 0, z: 0}
+  acceleration: {x: 0, y: 0, z: 0}
+  maxVelocity: {x: 0, y: 0, z: 0}
   velocity: {x: 0, y: 0, z: 0}
   maxMoveDistance: 500
   parentAnimator: {fileID: 0}
@@ -134,7 +138,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f5ebf0cb45896640b4c0bdebca23273, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 20
+  damage: 150
   hitTimes: 1
   hitIntervalTime: 0.1
   offset: {x: -0.020122528, y: -3.056058}
@@ -158,6 +162,11 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: Damager+NonDamagableEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
+  OnAllHitFinish:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   targetObject: {fileID: 0}
 --- !u!82 &7525097687673154265
 AudioSource:

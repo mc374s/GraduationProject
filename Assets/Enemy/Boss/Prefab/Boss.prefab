@@ -279,7 +279,7 @@ MonoBehaviour:
   animator: {fileID: 8992080780019340303}
   gravity: -100
   grivatyScale: 1
-  horzontalSpeed: 30
+  horzontalSpeed: 20
   jumpHeight: 70
   jumpCounterMax: 1
   leftPoint: {fileID: 3297778844192384868}
@@ -358,7 +358,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33914396592d55142a102751fac28421, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingHealth: 8000
+  startingHealth: 7500
   maxSkillEnergy: 5
   knockDownHealth: 64000000d0070000a00f0000581b0000
   recoveryHealthIncrement: 0
@@ -529,6 +529,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6185823395277430840}
     m_Modifications:
+    - target: {fileID: 6863202935628906820, guid: c460070c3075df940a562cd7f36b1dc9,
+        type: 3}
+      propertyPath: m_Name
+      value: boss_tori
+      objectReference: {fileID: 0}
     - target: {fileID: 4454364044219138831, guid: c460070c3075df940a562cd7f36b1dc9,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -583,11 +588,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6863202935628906820, guid: c460070c3075df940a562cd7f36b1dc9,
-        type: 3}
-      propertyPath: m_Name
-      value: boss_tori
       objectReference: {fileID: 0}
     - target: {fileID: 6016624498316059484, guid: c460070c3075df940a562cd7f36b1dc9,
         type: 3}

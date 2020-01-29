@@ -137,7 +137,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f5ebf0cb45896640b4c0bdebca23273, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 1
+  damage: 200
   hitTimes: 1
   hitIntervalTime: 0.5
   offset: {x: -0.32, y: 0.02}
@@ -145,7 +145,7 @@ MonoBehaviour:
   offsetBasedOnSpriteFacing: 1
   spriteRenderer: {fileID: 0}
   canHitTriggers: 0
-  disableDamageAfterHit: 0
+  disableDamageAfterHit: 1
   forceRespawn: 0
   ignoreInvincibility: 0
   hittableLayers:

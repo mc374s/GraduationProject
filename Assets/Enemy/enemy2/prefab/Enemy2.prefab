@@ -190,7 +190,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startingHealth: 500
   maxSkillEnergy: 5
-  knockDownHealth: 2c010000
+  knockDownHealth: c8000000
   recoveryHealthIncrement: 300
   healSpeed: 0
   invulnerableAfterDamage: 0
@@ -524,6 +524,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3297778842532651817}
     m_Modifications:
+    - target: {fileID: 3074480270425239371, guid: 9aed52855727c32419d9a4223ef888b4,
+        type: 3}
+      propertyPath: m_Name
+      value: enemy_front
+      objectReference: {fileID: 0}
     - target: {fileID: 7911516536674002696, guid: 9aed52855727c32419d9a4223ef888b4,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -578,11 +583,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3074480270425239371, guid: 9aed52855727c32419d9a4223ef888b4,
-        type: 3}
-      propertyPath: m_Name
-      value: enemy_front
       objectReference: {fileID: 0}
     - target: {fileID: 3660474166502253686, guid: 9aed52855727c32419d9a4223ef888b4,
         type: 3}
