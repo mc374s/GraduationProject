@@ -8,6 +8,8 @@ public class EnemyUI : MonoBehaviour
     [SerializeField]
     public Image HealthGauge;
 
+    [SerializeField]
+    public Damageable representedDamageable;
     // Start is called before the first frame update
     void Start()
     {

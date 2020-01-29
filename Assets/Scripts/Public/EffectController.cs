@@ -102,6 +102,8 @@ public class EffectController : MonoBehaviour
         {
             //Debug.Log("HitStopStart");
             StartCoroutine(HitStopCoroutine(useTime, hitStopDelyTime));
+            CameraController.Instance.InduceStress(1);
+
         }
     }
     private IEnumerator HitStopCoroutine(float useTime, float delayTime)

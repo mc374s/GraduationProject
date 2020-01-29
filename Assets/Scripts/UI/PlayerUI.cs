@@ -49,11 +49,11 @@ public class PlayerUI : MonoBehaviour
         HealthGauge.fillAmount = (float)damageable.CurrentHealth / (float)damageable.startingHealth;
     }
 
-    //public void ChangeSkillEnergy(Damageable damageable)
-    //{
-    //    skillEnergyGauge.fillAmount = (float)damageable.CurrentSkillEnergy / (float)damageable.startingSkillEnergy;
-    //}
-
+   /* public void ChangeSkillEnergy(Damageable damageable)
+    {
+        skillEnergyGauge.fillAmount = (float)damageable.CurrentSkillEnergy / (float)damageable.startingSkillEnergy;
+    }
+    */
 
 
 }

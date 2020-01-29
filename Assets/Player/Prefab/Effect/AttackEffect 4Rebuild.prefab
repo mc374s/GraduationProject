@@ -135,8 +135,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 80
-  hitTimes: 3
-  hitIntervalTime: 0.06
+  hitTimes: 1
+  hitIntervalTime: 0.02
   offset: {x: 1.8039262, y: -2.0529952}
   size: {x: 12.581238, y: 14.034997}
   offsetBasedOnSpriteFacing: 1
@@ -169,6 +169,11 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: Damager+NonDamagableEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
+  OnAllHitFinish:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   targetObject: {fileID: 0}
 --- !u!82 &-626025216372430185
 AudioSource:
