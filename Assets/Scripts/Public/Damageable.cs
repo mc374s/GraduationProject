@@ -17,6 +17,7 @@ public class Damageable : MonoBehaviour
     { }
 
     public int startingHealth = 5;
+    public int maxSkillEnergy = 5;
     public int[] knockDownHealth;
     private int knockDownHealthIndex;
     private int maxHealHealth;
@@ -50,6 +51,11 @@ public class Damageable : MonoBehaviour
         get { return m_CurrentHealth; }
     }
 
+    public int CurrentSkillEnergy
+    {
+        get { return m_CurrentSkillEnergy; }
+    }
+
 
     public bool IsKnockDown { get; set; }
     public bool KnockDownWait { get; set; }
@@ -59,6 +65,7 @@ public class Damageable : MonoBehaviour
     void OnEnable()
     {
         m_CurrentHealth = startingHealth;
+        m_CurrentSkillEnergy = 0;
 
         OnHealthSet.Invoke(this);
 

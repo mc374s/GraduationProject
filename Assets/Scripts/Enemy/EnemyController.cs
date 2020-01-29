@@ -10,6 +10,7 @@ public class EnemyController : CharacterController2D
     protected readonly int hashGrounded = Animator.StringToHash("grounded");
     protected readonly int hashAttack = Animator.StringToHash("attack");
     protected readonly int hashHurt = Animator.StringToHash("hurt");
+    protected readonly int hashHurtSpecial = Animator.StringToHash("hurtSpecial");
     protected readonly int hashKnockDown = Animator.StringToHash("knockDown");
     protected readonly int hashDead = Animator.StringToHash("dead");
 
@@ -81,7 +82,11 @@ public class EnemyController : CharacterController2D
     {
         if (/*damagerRecord != damager*/true)
         {
-            animator.SetTrigger(hashHurt);
+            if(damager.tag == "normal")
+            {
+                animator.SetTrigger(hashHurt);
+            }
+            else animator.SetTrigger(hashHurtSpecial);
             damagerRecord = damager;
             if (gameObject.layer == newLayer)
             {

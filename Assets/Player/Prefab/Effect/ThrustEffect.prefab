@@ -28,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8748692958385267840}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -2, y: -1, z: 0}
   m_LocalScale: {x: 4, y: 4, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -51,7 +51,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: b03295c69a6408b4fa02424db31c5d3c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -117,7 +117,8 @@ MonoBehaviour:
   animationClip: {fileID: 7400000, guid: 95a1a82ac741bc5438dffcb0d333abf6, type: 2}
   destroyAfterLooped: 0
   duration: 4
-  hitStopDelyTime: 0
+  generateDelayTime: 0
+  hitStopDelayTime: 0
   velocity: {x: 0, y: 0, z: 0}
   maxMoveDistance: 500
   parentAnimator: {fileID: 0}
@@ -134,7 +135,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
-  hitTimes: 10
+  hitTimes: 1
   hitIntervalTime: 0.1
   offset: {x: 0, y: 1}
   size: {x: 2.5, y: 1}

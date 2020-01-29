@@ -33,7 +33,7 @@ public class ThrustSMB : StateMachineBehaviour
                 effectClone = Instantiate(attackEffect, characterController.rightPoint.position, characterController.rightPoint.rotation);
             }
         }
-
+        characterController.InvulnerableOn();
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

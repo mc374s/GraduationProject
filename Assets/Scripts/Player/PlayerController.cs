@@ -171,7 +171,13 @@ public class PlayerController : CharacterController2D
                 }
                 break;
             case 1:
-                moveVector.x = character2D.spriteFaceLeft ? -10 : 10;
+                moveVector.x = character2D.spriteFaceLeft ? -thrustMoveSpeed : thrustMoveSpeed;
+                thrustDistance -= thrustMoveSpeed;
+                if (thrustDistance <= 0)
+                {
+                    moveVector.x = 0;
+                    InvulnerableOff();
+                }
                 break;    
         }
 
@@ -187,18 +193,25 @@ public class PlayerController : CharacterController2D
         if (input.Skill.Down)
         {
             animator.SetTrigger(hashUsingSkill);
-            if (input.Horizontal != 0)
+            if (input.HorizontalRaw != 0)
             {
                 animator.SetInteger(hashSkillType, 2);
                 thrustDistance = thrustMaxDistance;
                 state = 0;
             }
-            else if (input.Vertical > 0)
+            else if (input.VerticalRaw > 0)
             {
+                ResetMoveVector();
                 animator.SetInteger(hashSkillType, 3);
+            }
+            else if (input.VerticalRaw < 0)
+            {
+                ResetMoveVector();
+                animator.SetInteger(hashSkillType, 4);
             }
             else
             {
+                ResetMoveVector();
                 animator.SetInteger(hashSkillType, 1);
             }
         }
@@ -235,6 +248,9 @@ public class PlayerController : CharacterController2D
         Time.timeScale = 1;
         Time.fixedDeltaTime = 0.02f;
         Debug.Log("QuilityAttackFinish: " + focusedObject.name);
+        moveVector.x = character2D.spriteFaceLeft ? 10 : -10;
+        transform.position = new Vector3(transform.position.x + moveVector.x, transform.position.y, transform.position.z);
+        moveVector.x = 0;
     }
 
 

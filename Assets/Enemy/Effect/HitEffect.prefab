@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1782381596059890952}
   - component: {fileID: -7638607632818599873}
   m_Layer: 0
-  m_Name: HitEffect
+  m_Name: HitEffect 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -114,10 +114,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8beb6bf47e9f7de48bd34118958d150d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animationClip: {fileID: 7400000, guid: f6b00a937a5ab26429bd30a1b9082ca2, type: 2}
-  destoryAfterLooped: 0
+  animationClip: {fileID: 7400000, guid: 0e0e8a410d0ae7b42a4cb82964ba2e42, type: 2}
+  destroyAfterLooped: 1
   duration: 1
-  hitStopDelyTime: 0
+  generateDelayTime: 0
+  hitStopDelayTime: 0
   velocity: {x: 0, y: 0, z: 0}
   maxMoveDistance: 500
   parentAnimator: {fileID: 0}
