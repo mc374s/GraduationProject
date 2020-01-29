@@ -73,10 +73,10 @@ public class EnemySpawner : MonoBehaviour
         }
         if (count >= total)
         {
-            if (!CheckAlive())
-            {
-                Global.isBattling = false;
-            }
+            //if (!CheckAlive())
+            //{
+            //    Global.isBattling = false;
+            //}
         }
 
     }
