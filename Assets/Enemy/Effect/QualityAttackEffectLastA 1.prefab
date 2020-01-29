@@ -93,7 +93,7 @@ Animator:
   m_GameObject: {fileID: 3092161727128022215}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: df0a0efa6af1dbe49a5ad9bd66883137, type: 2}
+  m_Controller: {fileID: 9100000, guid: 4904972fc3aa02e489fa8d01f3cbf014, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -115,12 +115,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animationClip: {fileID: 7400000, guid: 01b9c0cf566acf540a23a7b2d3f4674a, type: 2}
-  destoryAfterLooped: 0
+  destroyAfterLooped: 1
   duration: 10
-  hitStopDelyTime: 0
+  generateDelayTime: 0
+  hitStopDelayTime: 0
   startvelocity: {x: 0, y: 0, z: 0}
   acceleration: {x: 0, y: 0, z: 0}
   maxVelocity: {x: 0, y: 0, z: 0}
+  velocity: {x: 0, y: 0, z: 0}
   maxMoveDistance: 500
   parentAnimator: {fileID: 0}
 --- !u!114 &763716701
