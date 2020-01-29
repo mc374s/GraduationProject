@@ -278,7 +278,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 8992080780019340303}
   gravity: -100
-  grivatyScale: 1
+  grivatyScale: 2
   horzontalSpeed: 20
   jumpHeight: 70
   jumpCounterMax: 1

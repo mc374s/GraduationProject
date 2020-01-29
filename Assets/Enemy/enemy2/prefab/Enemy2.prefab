@@ -190,7 +190,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startingHealth: 500
   maxSkillEnergy: 5
-  knockDownHealth: c8000000
+  knockDownHealth: 96000000
   recoveryHealthIncrement: 300
   healSpeed: 0
   invulnerableAfterDamage: 0
