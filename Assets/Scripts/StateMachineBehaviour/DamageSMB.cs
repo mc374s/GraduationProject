@@ -26,7 +26,9 @@ public class DamageSMB : StateMachineBehaviour
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         characterController.input.Release();
+        characterController.ResetMoveVector();
         characterController.DamageUpdate();
+        characterController.VerticalMovment();
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state

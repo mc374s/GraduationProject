@@ -69,8 +69,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1741895
-  m_SortingLayer: 4
+  m_SortingLayerID: -753152211
+  m_SortingLayer: 5
   m_SortingOrder: 30
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -93,7 +93,7 @@ Animator:
   m_GameObject: {fileID: 3092161727128022215}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 11e3d21ec4c173a4292879cf9bbea265, type: 2}
+  m_Controller: {fileID: 9100000, guid: 4904972fc3aa02e489fa8d01f3cbf014, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -115,12 +115,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animationClip: {fileID: 7400000, guid: 5f7d8497715a41c4e9c82166f426920e, type: 2}
-  destoryAfterLooped: 0
+  destroyAfterLooped: 1
   duration: 5
-  hitStopDelyTime: 0
+  generateDelayTime: 0
+  hitStopDelayTime: 0
   startvelocity: {x: 0, y: 0, z: 0}
   acceleration: {x: 0, y: 0, z: 0}
   maxVelocity: {x: 0, y: 0, z: 0}
+  velocity: {x: 0, y: 0, z: 0}
   maxMoveDistance: 500
   parentAnimator: {fileID: 0}
 --- !u!114 &763716701

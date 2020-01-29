@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 3092161727128022215}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children:
   - {fileID: 6947944137603847030}
   - {fileID: 76060088052654577}
@@ -95,7 +95,7 @@ Animator:
   m_GameObject: {fileID: 3092161727128022215}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 11e3d21ec4c173a4292879cf9bbea265, type: 2}
+  m_Controller: {fileID: 9100000, guid: 4904972fc3aa02e489fa8d01f3cbf014, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -117,13 +117,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animationClip: {fileID: 7400000, guid: 8b0c9c41001591747aa0045420e2520d, type: 2}
-  destoryAfterLooped: 0
+  destroyAfterLooped: 0
   duration: 20
-  hitStopDelyTime: 0
-  startvelocity: {x: -20, y: 0, z: 0}
+  generateDelayTime: 0
+  hitStopDelayTime: 0
+  startvelocity: {x: -30, y: 0, z: 0}
   acceleration: {x: 0, y: 0, z: 0}
-  maxVelocity: {x: -20, y: 0, z: 0}
-  maxMoveDistance: 200
+  maxVelocity: {x: -30, y: 0, z: 0}
+  velocity: {x: 0, y: 0, z: 0}
+  maxMoveDistance: -200
   parentAnimator: {fileID: 0}
 --- !u!114 &763716701
 MonoBehaviour:
@@ -282,7 +284,7 @@ Animator:
   m_GameObject: {fileID: 5628247075189176544}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 11e3d21ec4c173a4292879cf9bbea265, type: 2}
+  m_Controller: {fileID: 9100000, guid: 4904972fc3aa02e489fa8d01f3cbf014, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -304,13 +306,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animationClip: {fileID: 7400000, guid: 8b0c9c41001591747aa0045420e2520d, type: 2}
-  destoryAfterLooped: 0
+  destroyAfterLooped: 0
   duration: 20
-  hitStopDelyTime: 0
-  startvelocity: {x: -20, y: 0, z: 0}
+  generateDelayTime: 0
+  hitStopDelayTime: 0
+  startvelocity: {x: 0, y: 0, z: 0}
   acceleration: {x: 0, y: 0, z: 0}
-  maxVelocity: {x: -20, y: 0, z: 0}
-  maxMoveDistance: 200
+  maxVelocity: {x: 0, y: 0, z: 0}
+  velocity: {x: 0, y: 0, z: 0}
+  maxMoveDistance: -200
   parentAnimator: {fileID: 0}
 --- !u!114 &5091897903964694153
 MonoBehaviour:
@@ -469,7 +473,7 @@ Animator:
   m_GameObject: {fileID: 7074095265934634259}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 11e3d21ec4c173a4292879cf9bbea265, type: 2}
+  m_Controller: {fileID: 9100000, guid: 4904972fc3aa02e489fa8d01f3cbf014, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -491,13 +495,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animationClip: {fileID: 7400000, guid: 8b0c9c41001591747aa0045420e2520d, type: 2}
-  destoryAfterLooped: 0
+  destroyAfterLooped: 0
   duration: 20
-  hitStopDelyTime: 0
-  startvelocity: {x: -20, y: 0, z: 0}
+  generateDelayTime: 0
+  hitStopDelayTime: 0
+  startvelocity: {x: 0, y: 0, z: 0}
   acceleration: {x: 0, y: 0, z: 0}
-  maxVelocity: {x: -20, y: 0, z: 0}
-  maxMoveDistance: 200
+  maxVelocity: {x: 0, y: 0, z: 0}
+  velocity: {x: 0, y: 0, z: 0}
+  maxMoveDistance: -200
   parentAnimator: {fileID: 0}
 --- !u!114 &3951981673403535461
 MonoBehaviour:

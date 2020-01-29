@@ -1709,6 +1709,8 @@ MonoBehaviour:
   attackEffect: {fileID: 3092161727128022215, guid: 78543e30e40b0e544b68ccc0e2983d65,
     type: 3}
   effectAsChild: 0
+  montionEffect: {fileID: 0}
+  montionEffectSetCenter: 0
 --- !u!1102 &4149537159284698347
 AnimatorState:
   serializedVersion: 5

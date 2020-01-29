@@ -55,7 +55,7 @@ public class EffectController : MonoBehaviour
         //Destroy(gameObject, duration);
         StartCoroutine(Utility.DelayCoroutine(PlayNext, duration));
 
-        baseLayerIndex = animator.GetLayerIndex("Base Layer");
+        //baseLayerIndex = animator.GetLayerIndex("Base Layer");
 
         startPosition = transform.position;
 

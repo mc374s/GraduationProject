@@ -65,6 +65,10 @@ public class BirdEnemyController : EnemyController
             {
                 HorizatalMovment();
             }
+            else
+            {
+                moveVector.x = 0;
+            }
             base.VerticalMovment();
         }
     }

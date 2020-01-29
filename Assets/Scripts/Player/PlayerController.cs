@@ -18,7 +18,7 @@ public class PlayerController : CharacterController2D
     private float thrustDistance;
     public float thrustMaxDistance = 300f;
     public float thrustMoveSpeed = 20f;
-    private int state = 0;
+    private bool canThrust = false;
 
     protected readonly int hashHorizontalSpeed = Animator.StringToHash("horizontalSpeed");
     protected readonly int hashVerticalSpeed = Animator.StringToHash("verticalSpeed");
@@ -148,37 +148,47 @@ public class PlayerController : CharacterController2D
 
     public override void Thrust()
     {
-        if (state == 0)
+        if (!canThrust)
         {
             animator.SetTrigger(hashThrust);
-            state = 1;
+            canThrust = true;
         }
     }
 
     public override void ThrustUpdate()
     {
         input.Release();
-        switch (state)
-        {
-            case 0:
-                moveVector.x = character2D.spriteFaceLeft ? -thrustMoveSpeed : thrustMoveSpeed;
-                thrustDistance -= thrustMoveSpeed;
+        moveVector.x = character2D.spriteFaceLeft ? -thrustMoveSpeed : thrustMoveSpeed;
+        thrustDistance -= thrustMoveSpeed;
 
-                if (thrustDistance <= 0)
-                {
-                    animator.SetTrigger(hashThrust);
-                    state = 1;
-                }
-                break;
-            case 1:
-                moveVector.x = character2D.spriteFaceLeft ? -thrustMoveSpeed : thrustMoveSpeed;
-                thrustDistance -= thrustMoveSpeed;
-                if (thrustDistance <= 0)
-                {
-                    moveVector.x = 0;
-                    InvulnerableOff();
-                }
-                break;    
+        if (Global.isBattling)
+        {
+            if (transform.position.x < Global.borderLeft + 1)
+            {
+                moveVector.x = 0;
+                InvulnerableOff();
+                transform.position = new Vector3(Global.borderLeft + 1, transform.position.y, transform.position.z);
+            }
+            if (transform.position.x > Global.borderRight - 1)
+            {
+                moveVector.x = 0;
+                InvulnerableOff();
+                transform.position = new Vector3(Global.borderRight - 1, transform.position.y, transform.position.z);
+            }
+        }
+
+        if (thrustDistance <= 0)
+        {
+            if (!canThrust)
+            {
+                animator.SetTrigger(hashThrust);
+                canThrust = true;
+            }
+            else
+            {
+                moveVector.x = 0;
+            }
+
         }
 
     }
@@ -197,7 +207,7 @@ public class PlayerController : CharacterController2D
             {
                 animator.SetInteger(hashSkillType, 2);
                 thrustDistance = thrustMaxDistance;
-                state = 0;
+                canThrust = false;
             }
             else if (input.VerticalRaw > 0)
             {
@@ -276,7 +286,8 @@ public class PlayerController : CharacterController2D
     {
         animator.SetTrigger(hashDead);
         //Destroy(gameObject, 2);
-        SceneController.Instance.ReloadCurrentScene(1);
+        //SceneController.Instance.ReloadCurrentScene(1);
+        SceneController.Instance.LoadNextScene(4);
     }
 
     public override void DamageUpdate()
