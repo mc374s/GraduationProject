@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 3092161727128022215}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 4, y: 4, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -115,8 +115,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animationClip: {fileID: 7400000, guid: fa283ddec29a48340825c0a2bfc0088d, type: 2}
-  destroyAfterLooped: 1
-  duration: 6
+  destroyAfterLooped: 0
+  duration: 20
   generateDelayTime: 0
   hitStopDelayTime: 0
   startvelocity: {x: 0, y: 0, z: 0}
@@ -132,7 +132,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3092161727128022215}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9f5ebf0cb45896640b4c0bdebca23273, type: 3}
   m_Name: 
@@ -140,8 +140,8 @@ MonoBehaviour:
   damage: 100
   hitTimes: 10
   hitIntervalTime: 0.02
-  offset: {x: 0.24834532, y: -0.48416328}
-  size: {x: 2.576192, y: 3.8049374}
+  offset: {x: -0.002274096, y: -0.48416328}
+  size: {x: 1.6338629, y: 3.8049374}
   offsetBasedOnSpriteFacing: 1
   spriteRenderer: {fileID: 0}
   canHitTriggers: 0

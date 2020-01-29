@@ -4,11 +4,19 @@ using UnityEngine;
 
 public class AttackSMB : StateMachineBehaviour
 {
+    private CharacterController2D characterController = null;
+
     //public bool hitStop
     public GameObject attackEffect = null;
     public bool effectAsChild = false;
 
-    private CharacterController2D characterController = null;
+    public GameObject montionEffect = null;
+    public bool effectSetCenter = false;
+
+    public Vector3 effectOffset = Vector3.zero;
+
+    public bool updateCustomFunc = true;
+
     GameObject effectClone = null;
     // OnStateEnter is called before OnStateEnter is called on any state inside this state machine
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -19,11 +27,17 @@ public class AttackSMB : StateMachineBehaviour
         }
         characterController.ResetMoveVector();
 
+
+        Transform targetPoint = characterController.montionRightPoint;
+        if (effectSetCenter)
+        {
+            targetPoint = characterController.transform;
+        }
         if (attackEffect)
         {
             if (effectAsChild)
             {
-                effectClone = Instantiate(attackEffect, characterController.montionRightPoint);
+                effectClone = Instantiate(attackEffect, targetPoint);
                 if (effectClone.GetComponent<EffectController>() != null)
                 {
                     effectClone.GetComponent<EffectController>().parentAnimator = animator;
@@ -33,6 +47,16 @@ public class AttackSMB : StateMachineBehaviour
             {
                 effectClone = Instantiate(attackEffect, characterController.rightPoint.position, characterController.rightPoint.rotation);
             }
+            effectClone.transform.position += effectOffset;
+        }
+        if (montionEffect)
+        {
+            GameObject effectClone = Instantiate(montionEffect, targetPoint);
+            if (effectClone.GetComponent<EffectController>() != null)
+            {
+                effectClone.GetComponent<EffectController>().parentAnimator = animator;
+            }
+            effectClone.transform.position += effectOffset;
         }
         //effectClone.GetComponent<Damager>().OnDamageableHit = characterController.OnDamagerDamageableHit;
         //if (!characterController.IsFacingLeft)
@@ -45,7 +69,10 @@ public class AttackSMB : StateMachineBehaviour
     // OnStateUpdate is called before OnStateUpdate is called on any state inside this state machine
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        characterController.Attack();
+        if (updateCustomFunc)
+        {
+            characterController.Attack();
+        }
     }
 
     //OnStateExit is called before OnStateExit is called on any state inside this state machine
