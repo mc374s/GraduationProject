@@ -144,7 +144,7 @@ Transform:
   - {fileID: 3404024102030367536}
   - {fileID: 3404024101757727420}
   m_Father: {fileID: 3404024102112210059}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3404024102112210056
 GameObject:
@@ -157,7 +157,6 @@ GameObject:
   - component: {fileID: 3404024102112210059}
   - component: {fileID: 5682695733415723904}
   - component: {fileID: 1724653346}
-  - component: {fileID: 2749497390243680285}
   m_Layer: 0
   m_Name: BattleArea
   m_TagString: Untagged
@@ -176,6 +175,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 9157077610600088621}
   - {fileID: 3404024102062305343}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -274,13 +274,46 @@ MonoBehaviour:
   - {fileID: 3404024102030367537}
   - {fileID: 3404024101757727423}
   spawner: {fileID: 0}
---- !u!114 &2749497390243680285
+  spawnerCollection:
+  - {fileID: 6415711768851547125}
+--- !u!1 &7747014960752570727
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9157077610600088621}
+  - component: {fileID: 6415711768851547125}
+  m_Layer: 0
+  m_Name: Sapwner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9157077610600088621
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7747014960752570727}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3404024102112210059}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6415711768851547125
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3404024102112210056}
+  m_GameObject: {fileID: 7747014960752570727}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e08b569931832774eaca4a43e15c5c3e, type: 3}

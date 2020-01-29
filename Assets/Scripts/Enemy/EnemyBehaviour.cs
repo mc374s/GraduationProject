@@ -27,9 +27,10 @@ public class EnemyBehaviour : MonoBehaviour
 
     public enum Pattern
     {
-        BoneEnemy = 0,
-        BirdBoss = 1,
-        Player = 2
+        Player = 0,
+        BoneEnemy,
+        SlimeEnemy,
+        BirdBoss,
     }
 
     public Pattern movePattern = Pattern.BoneEnemy;
@@ -51,14 +52,17 @@ public class EnemyBehaviour : MonoBehaviour
         position = transform.position + offset;
         switch (movePattern)
         {
+            case Pattern.Player:
+                enemyController.input.Gain();
+                break;
             case Pattern.BoneEnemy:
                 BoneEnemyBehaviour();
                 break;
+            case Pattern.SlimeEnemy:
+                SlimeEnemyBehaviour();
+                break;
             case Pattern.BirdBoss:
                 BirdBossBehaviour();
-                break;
-            case Pattern.Player:
-                enemyController.input.Gain();
                 break;
             default:
                 break;
@@ -86,6 +90,31 @@ public class EnemyBehaviour : MonoBehaviour
         {
             enemyController.input.Horizontal = 0;
             enemyController.input.Attack.Down = true;
+        }
+    }
+    void SlimeEnemyBehaviour()
+    {
+        if (target == null)
+        {
+            return;
+        }
+
+        Vector3 dir = target.position - position;
+        if (dir.sqrMagnitude < attackDistance * attackDistance)
+        {
+            //dir = new Vector3(dir.x, 0, dir.z);
+            if (Vector3.Angle(Vector3.left, dir) < 80)
+            {
+                enemyController.input.Horizontal = -1;
+            }
+            else if (Vector3.Angle(Vector3.left, dir) > 100)
+            {
+                enemyController.input.Horizontal = 1;
+            }
+            if (character2D.IsGrounded)
+            {
+                enemyController.input.Attack.Down = true;
+            }
         }
     }
 
