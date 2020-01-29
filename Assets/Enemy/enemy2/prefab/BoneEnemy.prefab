@@ -121,6 +121,7 @@ MonoBehaviour:
   layerWhenKnockDown:
     serializedVersion: 2
     m_Bits: 32768
+  UIReference: {fileID: 6287586865614097927}
 --- !u!114 &3297778842532651823
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -485,6 +486,16 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 7505066770834872220, guid: 9df973a10fde5a64aa41b6def32c39be,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -33
+      objectReference: {fileID: 0}
+    - target: {fileID: 5281678875782446070, guid: 9df973a10fde5a64aa41b6def32c39be,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9df973a10fde5a64aa41b6def32c39be, type: 3}
 --- !u!224 &6287586865614097923 stripped
@@ -597,12 +608,12 @@ PrefabInstance:
     - target: {fileID: 1617523640982515048, guid: 9aed52855727c32419d9a4223ef888b4,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.9986618
+      value: -0.9986601
       objectReference: {fileID: 0}
     - target: {fileID: 1617523640982515048, guid: 9aed52855727c32419d9a4223ef888b4,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.05171663
+      value: 0.05175074
       objectReference: {fileID: 0}
     - target: {fileID: 8936900407527903848, guid: 9aed52855727c32419d9a4223ef888b4,
         type: 3}
@@ -617,12 +628,12 @@ PrefabInstance:
     - target: {fileID: 1248803179554845252, guid: 9aed52855727c32419d9a4223ef888b4,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.99686635
+      value: 0.99686605
       objectReference: {fileID: 0}
     - target: {fileID: 1248803179554845252, guid: 9aed52855727c32419d9a4223ef888b4,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.07910472
+      value: 0.07910899
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9aed52855727c32419d9a4223ef888b4, type: 3}
