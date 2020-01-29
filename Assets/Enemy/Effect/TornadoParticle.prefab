@@ -118,7 +118,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animationClip: {fileID: 7400000, guid: ba9a13fc02b3e874693eb623fb0420c6, type: 2}
-  destroyAfterLooped: 1
+  destroyAfterLooped: 0
   duration: 10
   generateDelayTime: 0
   hitStopDelayTime: 0
@@ -391,6 +391,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 16
       objectReference: {fileID: 0}
+    - target: {fileID: 3776227458521358222, guid: e67431a3945f3b4479ae27457b160905,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3776227457762452822, guid: e67431a3945f3b4479ae27457b160905,
         type: 3}
       propertyPath: EmissionModule.enabled
@@ -471,6 +476,16 @@ PrefabInstance:
       propertyPath: m_SortingLayer
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 3776227458345561853, guid: e67431a3945f3b4479ae27457b160905,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 57a0867b27cef714aae51222441f7100, type: 2}
+    - target: {fileID: 3776227458345561853, guid: e67431a3945f3b4479ae27457b160905,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 57a0867b27cef714aae51222441f7100, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e67431a3945f3b4479ae27457b160905, type: 3}
 --- !u!4 &9015513470303479968 stripped
