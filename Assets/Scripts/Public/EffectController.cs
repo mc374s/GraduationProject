@@ -125,7 +125,7 @@ public class EffectController : MonoBehaviour
         if (hitStopFinished)
         {
             //Debug.Log("HitStopStart");
-            StartCoroutine(HitStopCoroutine(useTime, hitStopDelyTime));
+            StartCoroutine(HitStopCoroutine(useTime, hitStopDelayTime));
         }
     }
     private IEnumerator HitStopCoroutine(float useTime, float delayTime)

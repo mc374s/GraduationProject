@@ -13,6 +13,7 @@ public class EnemyController : CharacterController2D
     public readonly int hashHurt = Animator.StringToHash("hurt");
     public readonly int hashKnockDown = Animator.StringToHash("knockDown");
     public readonly int hashDead = Animator.StringToHash("dead");
+    public readonly int hashHurtSpecial = Animator.StringToHash("hurtSpecial");
 
     public Damageable damageable;
     public LayerMask layerWhenKnockDown;

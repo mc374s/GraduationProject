@@ -119,7 +119,10 @@ MonoBehaviour:
   duration: 1
   generateDelayTime: 0.4
   hitStopDelayTime: 0
-  velocity: {x: 50, y: 0, z: 0}
+  startvelocity: {x: 0, y: 0, z: 0}
+  acceleration: {x: 4, y: 0, z: 0}
+  maxVelocity: {x: 50, y: 0, z: 0}
+  velocity: {x: 0, y: 0, z: 0}
   maxMoveDistance: 400
   parentAnimator: {fileID: 0}
 --- !u!114 &3945086600212332166
