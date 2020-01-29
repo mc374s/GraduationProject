@@ -57,7 +57,11 @@ public class EnemyController : CharacterController2D
     {
         if (/*damagerRecord != damager*/true)
         {
-            animator.SetTrigger(hashHurt);
+            if(damager.tag == "normal")
+            {
+                animator.SetTrigger(hashHurt);
+            }
+            else animator.SetTrigger(hashHurtSpecial);
             damagerRecord = damager;
             if (gameObject.layer == newLayer)
             {

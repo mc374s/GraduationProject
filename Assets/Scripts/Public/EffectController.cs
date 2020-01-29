@@ -7,14 +7,16 @@ public class EffectController : MonoBehaviour
     private Animator animator;
     private Damager damager;
     public AnimationClip animationClip = null;
-    public bool destoryAfterLooped = true;
+    public bool destroyAfterLooped = true;
     public float duration = 4f;
-    public float hitStopDelyTime = 0f;
+    public float generateDelayTime = 0f;
+    public float hitStopDelayTime = 0f;
     public Vector3 startvelocity = Vector3.zero;
     public Vector3 acceleration = Vector3.zero;
     public Vector3 maxVelocity = Vector3.zero;
     public Vector3 velocity = Vector3.zero;
     public float maxMoveDistance = 500;
+
 
     private Vector3 startPosition = Vector3.zero;
     private float minDistanceFromParent = 6;
@@ -27,7 +29,8 @@ public class EffectController : MonoBehaviour
     private int baseLayerIndex = 0;
 
 
-    private bool destoryFlag = false;
+    private bool destroyFlag = false;
+    private bool canUpdate = true;
 
     // Start is called before the first frame update
     void Start()
@@ -35,13 +38,17 @@ public class EffectController : MonoBehaviour
         animator = GetComponent<Animator>();
         damager = GetComponent<Damager>();
         AudioSource audioSource = GetComponent<AudioSource>();
-        if (destoryAfterLooped)
+        if (destroyAfterLooped)
         {
             duration = animationClip.length;
         }
         if (audioSource)
         {
             duration += audioSource.clip.length;
+        }
+        if(generateDelayTime > 0)
+        {
+            duration += generateDelayTime;
         }
 
 
@@ -51,32 +58,43 @@ public class EffectController : MonoBehaviour
         baseLayerIndex = animator.GetLayerIndex("Base Layer");
 
         startPosition = transform.position;
-        Play();
 
+        if (generateDelayTime > 0)
+        {
+            canUpdate = false;
+            StartCoroutine(GenerateCoroutine(generateDelayTime));
+        }
+        else
+        {
+            Play();
+        }
         velocity = startvelocity;
     }
 
     // Update is called once per frame
     void Update()
     {
-        velocity += acceleration;
-        velocity = Vector2.Min(velocity, maxVelocity);
-        if (velocity != Vector3.zero)
+        if (canUpdate)
         {
-            transform.Translate(velocity * Time.deltaTime * animator.speed);
-            //Debug.Log(velocity * Time.deltaTime * animator.speed);
-            if ((transform.position - startPosition).sqrMagnitude > maxMoveDistance * maxMoveDistance)
+            velocity += acceleration;
+            velocity = Vector2.Min(velocity, maxVelocity);
+            if (velocity != Vector3.zero)
             {
-                velocity = Vector3.zero;
+                transform.Translate(velocity * Time.deltaTime * animator.speed);
+                //Debug.Log(velocity * Time.deltaTime * animator.speed);
+                if ((transform.position - startPosition).sqrMagnitude > maxMoveDistance * maxMoveDistance)
+                {
+                    velocity = Vector3.zero;
+                }
             }
-        }
-        if (destoryFlag)
-        {
-            AnimatorStateInfo curruntAnimatorState = animator.GetCurrentAnimatorStateInfo(baseLayerIndex);
-            if (curruntAnimatorState.IsName(waitStateName)/* || curruntAnimatorState.tagHash == hashLast*/)
+            if (destroyFlag)
             {
-                Destroy(gameObject);
-                destoryFlag = false;
+                AnimatorStateInfo curruntAnimatorState = animator.GetCurrentAnimatorStateInfo(baseLayerIndex);
+                if (curruntAnimatorState.IsName(waitStateName)/* || curruntAnimatorState.tagHash == hashLast*/)
+                {
+                    Destroy(gameObject);
+                    destroyFlag = false;
+                }
             }
         }
     }
@@ -108,8 +126,6 @@ public class EffectController : MonoBehaviour
         {
             //Debug.Log("HitStopStart");
             StartCoroutine(HitStopCoroutine(useTime, hitStopDelyTime));
-            CameraController.Instance.InduceStress(1);
-
         }
     }
     private IEnumerator HitStopCoroutine(float useTime, float delayTime)
@@ -151,7 +167,17 @@ public class EffectController : MonoBehaviour
         if (animator != null && animationClip != null)
         {
             animator.SetTrigger(hashNext);
-            destoryFlag = true;
+            destroyFlag = true;
+        }
+    }
+
+    private IEnumerator GenerateCoroutine(float delayTime)
+    {
+        if (delayTime > 0)
+        {
+            yield return new WaitForSeconds(delayTime);
+            canUpdate = true;
+            Play();
         }
     }
 }

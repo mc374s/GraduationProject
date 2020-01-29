@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class ThrustSMB : StateMachineBehaviour
 {
-    //public GameObject hitEffect;
+    public GameObject attackEffect;
+    public bool effectAsChild = false;
     private CharacterController2D characterController = null;
+    GameObject effectClone = null;
+
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
@@ -15,11 +18,22 @@ public class ThrustSMB : StateMachineBehaviour
         }
         characterController.ResetMoveVector();
 
-        /*GameObject effectClone = Instantiate(hitEffect, characterController.transform.position + new Vector3(Random.Range(-2, 2), Random.Range(2, 8), 0), Quaternion.Euler(new Vector3(0, 0, Random.Range(0, 360))));
-        if (characterController.IsFacingLeft)
+        if (attackEffect)
         {
-            effectClone.GetComponent<SpriteRenderer>().flipX = false;
-        }*/
+            if (effectAsChild)
+            {
+                effectClone = Instantiate(attackEffect, characterController.montionRightPoint);
+                if (effectClone.GetComponent<EffectController>() != null)
+                {
+                    effectClone.GetComponent<EffectController>().parentAnimator = animator;
+                }
+            }
+            else
+            {
+                effectClone = Instantiate(attackEffect, characterController.rightPoint.position, characterController.rightPoint.rotation);
+            }
+        }
+        characterController.InvulnerableOn();
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

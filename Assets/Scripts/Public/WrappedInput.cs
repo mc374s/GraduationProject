@@ -16,6 +16,8 @@ public class WrappedInput
     }
     public float Horizontal;
     public float Vertical;
+    public float HorizontalRaw;
+    public float VerticalRaw;
 
     public Button Jump = new Button();
     public Button Attack = new Button();
@@ -32,6 +34,8 @@ public class WrappedInput
     {
         Horizontal = Input.GetAxis("Horizontal");
         Vertical = Input.GetAxis("Vertical");
+        HorizontalRaw = Input.GetAxisRaw("Horizontal");
+        VerticalRaw = Input.GetAxisRaw("Vertical");
         Attack.Down = Input.GetButtonDown("Attack");
         Jump.Down = Input.GetButtonDown("Jump");
         Jump.Held = Input.GetButton("Jump");
