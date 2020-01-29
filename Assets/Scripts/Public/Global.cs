@@ -22,6 +22,8 @@ public class Global : MonoBehaviour
 
     //}
 
+
+
 #if UNITY_EDITOR
 
     static public float debugUIStartX = 10f;
