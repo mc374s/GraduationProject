@@ -139,7 +139,43 @@ MonoBehaviour:
   attackDistance: 10
   offset: {x: -0.14, y: 5.19, z: 0}
   ground: {fileID: 0}
+  movePointCollection: []
   movePattern: 0
+  birdAttackParameter:
+    nearDistance: 15
+    nearAttackRate:
+    - 0
+    - 0
+    - 0
+    mediumDistance: 40
+    mediunAttackRate:
+    - 0
+    - 0
+    - 0
+    farDistance: 90
+    farAttackRate:
+    - 0
+    - 0
+    - 0
+  nearDistance: 15
+  nearAttackRate:
+  - 0
+  - 0
+  - 0
+  mediumDistance: 40
+  mediunAttackRate:
+  - 0
+  - 0
+  - 0
+  farDistance: 90
+  farAttackRate:
+  - 0
+  - 0
+  - 0
+  moveToleranceMin: 1
+  moveToleranceMax: 7
+  skillCoolDownTime: 5
+  skillCoolDownTimeOnGround: 3
 --- !u!114 &3297778842532651822
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -152,7 +188,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33914396592d55142a102751fac28421, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingHealth: 1000
+  startingHealth: 500
+  maxSkillEnergy: 5
   knockDownHealth: 2c010000
   recoveryHealthIncrement: 300
   healSpeed: 0
@@ -487,11 +524,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3297778842532651817}
     m_Modifications:
-    - target: {fileID: 3074480270425239371, guid: 9aed52855727c32419d9a4223ef888b4,
-        type: 3}
-      propertyPath: m_Name
-      value: enemy_front
-      objectReference: {fileID: 0}
     - target: {fileID: 7911516536674002696, guid: 9aed52855727c32419d9a4223ef888b4,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -546,6 +578,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3074480270425239371, guid: 9aed52855727c32419d9a4223ef888b4,
+        type: 3}
+      propertyPath: m_Name
+      value: enemy_front
       objectReference: {fileID: 0}
     - target: {fileID: 3660474166502253686, guid: 9aed52855727c32419d9a4223ef888b4,
         type: 3}

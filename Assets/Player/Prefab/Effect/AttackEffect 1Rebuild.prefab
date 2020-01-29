@@ -265,8 +265,11 @@ MonoBehaviour:
   animationClip: {fileID: 7400000, guid: bca953bffb9b6a34b96ca894527cc815, type: 2}
   destroyAfterLooped: 1
   duration: 4
-  generateDelayTime: 0.3
+  generateDelayTime: 0.2
   hitStopDelayTime: 0
+  startvelocity: {x: 0, y: 0, z: 0}
+  acceleration: {x: 0, y: 0, z: 0}
+  maxVelocity: {x: 0, y: 0, z: 0}
   velocity: {x: 0, y: 0, z: 0}
   maxMoveDistance: 500
   parentAnimator: {fileID: 0}

@@ -279,8 +279,8 @@ MonoBehaviour:
   animator: {fileID: 8992080780019340303}
   gravity: -100
   grivatyScale: 1
-  horzontalSpeed: 50
-  jumpHeight: 100
+  horzontalSpeed: 30
+  jumpHeight: 70
   jumpCounterMax: 1
   leftPoint: {fileID: 3297778844192384868}
   rightPoint: {fileID: 3297778842873182607}
@@ -290,7 +290,7 @@ MonoBehaviour:
   layerWhenKnockDown:
     serializedVersion: 2
     m_Bits: 32768
-  verticalSpeed: 50
+  verticalSpeed: 30
 --- !u!114 &3297778842532651823
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -311,12 +311,39 @@ MonoBehaviour:
   ground: {fileID: 0}
   movePointCollection: []
   movePattern: 1
+  birdAttackParameter:
+    nearDistance: 15
+    nearAttackRate:
+    - 0
+    - 0
+    - 0
+    mediumDistance: 40
+    mediunAttackRate:
+    - 0
+    - 0
+    - 0
+    farDistance: 90
+    farAttackRate:
+    - 0
+    - 0
+    - 0
   nearDistance: 15
+  nearAttackRate:
+  - 0
+  - 0
+  - 0
   mediumDistance: 40
+  mediunAttackRate:
+  - 0
+  - 0
+  - 0
   farDistance: 90
+  farAttackRate:
+  - 0
+  - 0
+  - 0
   moveToleranceMin: 1
   moveToleranceMax: 7
-  targetPointIndex: 0
   skillCoolDownTime: 5
   skillCoolDownTimeOnGround: 3
 --- !u!114 &3297778842532651822
@@ -331,7 +358,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33914396592d55142a102751fac28421, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingHealth: 10000
+  startingHealth: 8000
+  maxSkillEnergy: 5
   knockDownHealth: 64000000d0070000a00f0000581b0000
   recoveryHealthIncrement: 0
   healSpeed: 0
@@ -501,11 +529,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6185823395277430840}
     m_Modifications:
-    - target: {fileID: 6863202935628906820, guid: c460070c3075df940a562cd7f36b1dc9,
-        type: 3}
-      propertyPath: m_Name
-      value: boss_tori
-      objectReference: {fileID: 0}
     - target: {fileID: 4454364044219138831, guid: c460070c3075df940a562cd7f36b1dc9,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -560,6 +583,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6863202935628906820, guid: c460070c3075df940a562cd7f36b1dc9,
+        type: 3}
+      propertyPath: m_Name
+      value: boss_tori
       objectReference: {fileID: 0}
     - target: {fileID: 6016624498316059484, guid: c460070c3075df940a562cd7f36b1dc9,
         type: 3}
