@@ -276,7 +276,8 @@ public class PlayerController : CharacterController2D
     {
         animator.SetTrigger(hashDead);
         //Destroy(gameObject, 2);
-        SceneController.Instance.ReloadCurrentScene(1);
+        //SceneController.Instance.ReloadCurrentScene(1);
+        SceneController.Instance.LoadNextScene(1);
     }
 
     public override void DamageUpdate()
